@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:GTToolsUI/GTToolsUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GTTools/GTTools.xcodeproj">
+   </FileRef>
+</Workspace>
