@@ -21,4 +21,5 @@
 @property(nonatomic,assign)CGFloat radius;
 @property(nonatomic,assign)CGFloat borderWidth;
 @property(nonatomic,strong)UIColor *borderColor;
+- (void)gt_drawRectWithRoundeCorner:(CGFloat)radius borderWidth:(CGFloat)borderWidth backgroundColor:(UIColor *)backgroundColor borderColor:(UIColor *)borderColor rectCorner:(UIRectCorner)corner;
 @end

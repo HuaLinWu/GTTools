@@ -15,5 +15,5 @@ FOUNDATION_EXPORT double GTToolsVersionNumber;
 FOUNDATION_EXPORT const unsigned char GTToolsVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <GTTools/PublicHeader.h>
-
+#import "UIView+GTTools.h"
 

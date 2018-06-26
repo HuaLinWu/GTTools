@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface GTMemoryCache : NSObject
-
+- (void)setObject:(id)anObject forKey:(nonnull id)aKey;
+- (id)objectForKey:(id)key;
+- (BOOL)containObjectForKey:(id)key;
 @end

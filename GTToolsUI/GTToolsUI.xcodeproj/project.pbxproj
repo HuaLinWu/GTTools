@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE1E040020E1CD4900FB080E /* WKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E03FE20E1CD4900FB080E /* WKWebViewController.m */; };
+		FE1E040120E1CD4900FB080E /* WKWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE1E03FF20E1CD4900FB080E /* WKWebViewController.xib */; };
+		FE1E040520E1CD5B00FB080E /* UIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040320E1CD5B00FB080E /* UIWebViewController.m */; };
+		FE1E040620E1CD5B00FB080E /* UIWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE1E040420E1CD5B00FB080E /* UIWebViewController.xib */; };
+		FE1E041520E2476100FB080E /* GTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1E041420E2476100FB080E /* GTTools.framework */; };
 		FE3A416420DB74C500F78947 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A416320DB74C500F78947 /* AppDelegate.m */; };
 		FE3A416720DB74C500F78947 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A416620DB74C500F78947 /* ViewController.m */; };
 		FE3A416A20DB74C500F78947 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE3A416820DB74C500F78947 /* Main.storyboard */; };
@@ -35,6 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE1E03FD20E1CD4900FB080E /* WKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKWebViewController.h; sourceTree = "<group>"; };
+		FE1E03FE20E1CD4900FB080E /* WKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKWebViewController.m; sourceTree = "<group>"; };
+		FE1E03FF20E1CD4900FB080E /* WKWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKWebViewController.xib; sourceTree = "<group>"; };
+		FE1E040220E1CD5B00FB080E /* UIWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIWebViewController.h; sourceTree = "<group>"; };
+		FE1E040320E1CD5B00FB080E /* UIWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIWebViewController.m; sourceTree = "<group>"; };
+		FE1E040420E1CD5B00FB080E /* UIWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIWebViewController.xib; sourceTree = "<group>"; };
+		FE1E041220E2466F00FB080E /* GTTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE1E041420E2476100FB080E /* GTTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3A415F20DB74C500F78947 /* GTToolsUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTToolsUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3A416220DB74C500F78947 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE3A416320DB74C500F78947 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE1E041520E2476100FB080E /* GTTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE1E041120E2466F00FB080E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE1E041420E2476100FB080E /* GTTools.framework */,
+				FE1E041220E2466F00FB080E /* GTTools.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FE3A415620DB74C500F78947 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +108,7 @@
 				FE3A417A20DB74C900F78947 /* GTToolsUITests */,
 				FE3A418520DB74C900F78947 /* GTToolsUIUITests */,
 				FE3A416020DB74C500F78947 /* Products */,
+				FE1E041120E2466F00FB080E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +130,12 @@
 				FE3A416520DB74C500F78947 /* ViewController.h */,
 				FE3A416620DB74C500F78947 /* ViewController.m */,
 				FE3A416820DB74C500F78947 /* Main.storyboard */,
+				FE1E03FD20E1CD4900FB080E /* WKWebViewController.h */,
+				FE1E03FE20E1CD4900FB080E /* WKWebViewController.m */,
+				FE1E03FF20E1CD4900FB080E /* WKWebViewController.xib */,
+				FE1E040220E1CD5B00FB080E /* UIWebViewController.h */,
+				FE1E040320E1CD5B00FB080E /* UIWebViewController.m */,
+				FE1E040420E1CD5B00FB080E /* UIWebViewController.xib */,
 				FE3A416B20DB74C800F78947 /* Assets.xcassets */,
 				FE3A416D20DB74C800F78947 /* LaunchScreen.storyboard */,
 				FE3A417020DB74C800F78947 /* Info.plist */,
@@ -238,6 +268,8 @@
 				FE3A416F20DB74C800F78947 /* LaunchScreen.storyboard in Resources */,
 				FE3A416C20DB74C800F78947 /* Assets.xcassets in Resources */,
 				FE3A416A20DB74C500F78947 /* Main.storyboard in Resources */,
+				FE1E040620E1CD5B00FB080E /* UIWebViewController.xib in Resources */,
+				FE1E040120E1CD4900FB080E /* WKWebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +297,8 @@
 				FE3A416720DB74C500F78947 /* ViewController.m in Sources */,
 				FE3A417220DB74C800F78947 /* main.m in Sources */,
 				FE3A416420DB74C500F78947 /* AppDelegate.m in Sources */,
+				FE1E040520E1CD5B00FB080E /* UIWebViewController.m in Sources */,
+				FE1E040020E1CD4900FB080E /* WKWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

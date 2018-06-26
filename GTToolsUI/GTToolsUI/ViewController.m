@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-
+#import "UIWebViewController.h"
+#import <GTTools/GTTools.h>
 @interface ViewController ()
 
 @end
@@ -19,6 +20,14 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (IBAction)jumpWebViewBtnClick:(UIButton *)sender {
+    UIWebViewController *webVC = [[UIWebViewController alloc] init];
+    [self presentViewController:webVC animated:YES completion:nil];
+}
+- (IBAction)jumpWKWebViewClick:(UIButton *)sender {
+    [sender gt_drawRectWithRoundeCorner:5.0 borderWidth:1 backgroundColor:[UIColor greenColor] borderColor:[UIColor redColor] rectCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft|UIRectCornerBottomRight];
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

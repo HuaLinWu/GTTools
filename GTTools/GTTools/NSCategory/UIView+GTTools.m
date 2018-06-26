@@ -84,7 +84,43 @@
     
 }
 #pragma mark private_method
-- (void)gt_drawRectWithRoundeCorner:(CGFloat)radius borderWidth:(CGFloat)borderWidth backgroundColor:(UIColor *)backgroundColor borderColor:(UIColor *)borderColor {
+- (void)gt_drawRectWithRoundeCorner:(CGFloat)radius borderWidth:(CGFloat)borderWidth backgroundColor:(UIColor *)backgroundColor borderColor:(UIColor *)borderColor rectCorner:(UIRectCorner)corner {
+   
+    UIGraphicsBeginImageContextWithOptions(self.size, false, [UIScreen mainScreen].scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+  CGFloat minx = CGRectGetMinX(self.bounds), midx = CGRectGetMidX(self.bounds), maxx = CGRectGetMaxX(self.bounds);
+  CGFloat miny = CGRectGetMinY(self.bounds), midy = CGRectGetMidY(self.bounds), maxy = CGRectGetMaxY(self.bounds);
+    CGContextMoveToPoint(context,minx,midy);
+    CGContextSetLineWidth(context, borderWidth);
+    CGContextSetStrokeColorWithColor(context, borderColor.CGColor);
+    CGContextSetFillColorWithColor(context, backgroundColor.CGColor);
+    if(corner|UIRectCornerTopLeft) {
+        //左上角
+        CGContextAddArcToPoint(context,minx,miny,midx,miny,radius);
+    }
+    if(corner|UIRectCornerTopRight) {
+        //右上角
+        CGContextAddArcToPoint(context,maxx,miny,maxx,midy,radius);
+       
+    }
+    if(corner|UIRectCornerBottomLeft) {
+        //左下角
+        CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
+    }
+    if(corner|UIRectCornerBottomRight) {
+        //右下角
+        CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
+    }
     
+    if(corner|UIRectCornerAllCorners) {
+        //全部角度
+    }
+     CGContextDrawPath(context,kCGPathFillStroke);
+    UIImage *outImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:outImage];
+    imageView.frame = self.bounds;
+    [self insertSubview:imageView atIndex:0];
+   
 }
 @end

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1E040720E1D4DF00FB080E /* GTUIWebViewJSBridge.h */; };
+		FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */; };
+		FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */; };
+		FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */; };
+		FE1E041020E2065000FB080E /* GTHtmlJSBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = FE1E040F20E2065000FB080E /* GTHtmlJSBridge.js */; };
 		FE3A40D720D9E93100F78947 /* GTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3A40CD20D9E93100F78947 /* GTTools.framework */; };
 		FE3A40DC20D9E93100F78947 /* GTToolsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A40DB20D9E93100F78947 /* GTToolsTests.m */; };
 		FE3A40DE20D9E93100F78947 /* GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A40D020D9E93100F78947 /* GTTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,7 +45,7 @@
 		FE3A412D20DA767300F78947 /* UIResponder+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A412B20DA767200F78947 /* UIResponder+GTTools.h */; };
 		FE3A413420DA790E00F78947 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A413220DA790E00F78947 /* UICKeyChainStore.h */; };
 		FE3A413520DA790E00F78947 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A413320DA790E00F78947 /* UICKeyChainStore.m */; };
-		FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A413A20DB361700F78947 /* UIView+GTTools.h */; };
+		FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A413A20DB361700F78947 /* UIView+GTTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE3A413D20DB361700F78947 /* UIView+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A413B20DB361700F78947 /* UIView+GTTools.m */; };
 		FE3A414420DB3F2F00F78947 /* GTMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A414220DB3F2F00F78947 /* GTMemoryCache.h */; };
 		FE3A414520DB3F2F00F78947 /* GTMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A414320DB3F2F00F78947 /* GTMemoryCache.m */; };
@@ -50,6 +55,10 @@
 		FE3A414D20DB3FF500F78947 /* GTWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A414B20DB3FF500F78947 /* GTWebView.m */; };
 		FE3A419720DB786000F78947 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A419520DB786000F78947 /* Aspects.m */; };
 		FE3A419820DB786000F78947 /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A419620DB786000F78947 /* Aspects.h */; };
+		FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE62891420DCA50100AA27B5 /* GTBaseJSBridge.h */; };
+		FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891520DCA50100AA27B5 /* GTBaseJSBridge.m */; };
+		FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */; };
+		FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +72,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE1E040720E1D4DF00FB080E /* GTUIWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUIWebViewJSBridge.h; sourceTree = "<group>"; };
+		FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUIWebViewJSBridge.m; sourceTree = "<group>"; };
+		FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTWKWebViewJSBridge.h; sourceTree = "<group>"; };
+		FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWKWebViewJSBridge.m; sourceTree = "<group>"; };
+		FE1E040F20E2065000FB080E /* GTHtmlJSBridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GTHtmlJSBridge.js; sourceTree = "<group>"; };
 		FE3A40CD20D9E93100F78947 /* GTTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3A40D020D9E93100F78947 /* GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTools.h; sourceTree = "<group>"; };
 		FE3A40D120D9E93100F78947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +123,10 @@
 		FE3A414B20DB3FF500F78947 /* GTWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWebView.m; sourceTree = "<group>"; };
 		FE3A419520DB786000F78947 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		FE3A419620DB786000F78947 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		FE62891420DCA50100AA27B5 /* GTBaseJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTBaseJSBridge.h; sourceTree = "<group>"; };
+		FE62891520DCA50100AA27B5 /* GTBaseJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBaseJSBridge.m; sourceTree = "<group>"; };
+		FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+GTTools.h"; sourceTree = "<group>"; };
+		FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GTTools.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +238,8 @@
 				FE3A412A20DA767200F78947 /* UIResponder+GTTools.m */,
 				FE3A413A20DB361700F78947 /* UIView+GTTools.h */,
 				FE3A413B20DB361700F78947 /* UIView+GTTools.m */,
+				FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */,
+				FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */,
 			);
 			path = NSCategory;
 			sourceTree = "<group>";
@@ -249,6 +269,13 @@
 			children = (
 				FE3A414A20DB3FF500F78947 /* GTWebView.h */,
 				FE3A414B20DB3FF500F78947 /* GTWebView.m */,
+				FE1E040F20E2065000FB080E /* GTHtmlJSBridge.js */,
+				FE1E040720E1D4DF00FB080E /* GTUIWebViewJSBridge.h */,
+				FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */,
+				FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */,
+				FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */,
+				FE62891420DCA50100AA27B5 /* GTBaseJSBridge.h */,
+				FE62891520DCA50100AA27B5 /* GTBaseJSBridge.m */,
 			);
 			path = GTWebView;
 			sourceTree = "<group>";
@@ -269,20 +296,24 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */,
 				FE3A412220DA4D5900F78947 /* GTDateFormatterManager.h in Headers */,
 				FE3A40F520DA00BE00F78947 /* GTNullFilter.h in Headers */,
+				FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */,
+				FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */,
 				FE3A40F920DA0EC000F78947 /* GTModelManager.h in Headers */,
 				FE3A410320DA0F4100F78947 /* YYModel.h in Headers */,
 				FE3A411F20DA49F000F78947 /* UIColor+GTTools.h in Headers */,
 				FE3A40E920D9F0EC00F78947 /* NSDictionary+GTTools.h in Headers */,
-				FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */,
 				FE3A412820DA62BC00F78947 /* GTSoftwareInfo.h in Headers */,
 				FE3A411A20DA45AA00F78947 /* CAGradientLayer+GTTools.h in Headers */,
 				FE3A410220DA0F4100F78947 /* YYClassInfo.h in Headers */,
 				FE3A419820DB786000F78947 /* Aspects.h in Headers */,
+				FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */,
 				FE3A412D20DA767300F78947 /* UIResponder+GTTools.h in Headers */,
 				FE3A410820DA220700F78947 /* GTModelProtocol.h in Headers */,
 				FE3A414420DB3F2F00F78947 /* GTMemoryCache.h in Headers */,
+				FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */,
 				FE3A410C20DA28AE00F78947 /* NSArray+GTTools.h in Headers */,
 				FE3A40DE20D9E93100F78947 /* GTTools.h in Headers */,
 				FE3A413420DA790E00F78947 /* UICKeyChainStore.h in Headers */,
@@ -371,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE1E041020E2065000FB080E /* GTHtmlJSBridge.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +423,8 @@
 				FE3A411E20DA49F000F78947 /* UIColor+GTTools.m in Sources */,
 				FE3A40EA20D9F0EC00F78947 /* NSDictionary+GTTools.m in Sources */,
 				FE3A40FA20DA0EC000F78947 /* GTModelManager.m in Sources */,
+				FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */,
+				FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */,
 				FE3A411B20DA45AA00F78947 /* CAGradientLayer+GTTools.m in Sources */,
 				FE3A40F620DA00BE00F78947 /* GTNullFilter.m in Sources */,
 				FE3A414920DB3F5E00F78947 /* GTDiskCache.m in Sources */,
@@ -400,6 +434,8 @@
 				FE3A414520DB3F2F00F78947 /* GTMemoryCache.m in Sources */,
 				FE3A414D20DB3FF500F78947 /* GTWebView.m in Sources */,
 				FE3A413D20DB361700F78947 /* UIView+GTTools.m in Sources */,
+				FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */,
+				FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */,
 				FE3A419720DB786000F78947 /* Aspects.m in Sources */,
 				FE3A412320DA4D5900F78947 /* GTDateFormatterManager.m in Sources */,
 				FE3A410420DA0F4100F78947 /* NSObject+YYModel.m in Sources */,
