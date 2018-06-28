@@ -24,16 +24,15 @@
 - (IBAction)jumpWebViewBtnClick:(UIButton *)sender {
 //    UIWebViewController *webVC = [[UIWebViewController alloc] init];
 //    [self presentViewController:webVC animated:YES completion:nil];
-    sender.layer.borderColor = [UIColor redColor].CGColor;
-    sender.layer.cornerRadius = sender.height/2;
-    sender.backgroundColor = [UIColor greenColor];
-    sender.layer.masksToBounds = YES;
+    self.testView.layer.borderColor = [UIColor redColor].CGColor;
+    self.testView.layer.cornerRadius = sender.height/2;
+    
+    self.testView.layer.masksToBounds = YES;
 }
 - (IBAction)jumpWKWebViewClick:(UIButton *)sender {
 
-    
-    [self.testView gt_setCornerRadius:5 borderColor:nil borderWidth:0];
-    [self.testView removeFromSuperview];
+    [self.testView gt_setCornerRadius:20 borderColor:nil borderWidth:0];
+//    [self.testView gt_setCornerRadiusRatioToHeight:0.5];
 }
 
 - (void)didReceiveMemoryWarning {
