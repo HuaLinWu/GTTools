@@ -10,6 +10,7 @@
 #import "UIWebViewController.h"
 #import <GTTools/GTTools.h>
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIView *testView;
 
 @end
 
@@ -21,12 +22,18 @@
 }
 
 - (IBAction)jumpWebViewBtnClick:(UIButton *)sender {
-    UIWebViewController *webVC = [[UIWebViewController alloc] init];
-    [self presentViewController:webVC animated:YES completion:nil];
+//    UIWebViewController *webVC = [[UIWebViewController alloc] init];
+//    [self presentViewController:webVC animated:YES completion:nil];
+    sender.layer.borderColor = [UIColor redColor].CGColor;
+    sender.layer.cornerRadius = sender.height/2;
+    sender.backgroundColor = [UIColor greenColor];
+    sender.layer.masksToBounds = YES;
 }
 - (IBAction)jumpWKWebViewClick:(UIButton *)sender {
-    [sender gt_drawRectWithRoundeCorner:5.0 borderWidth:1 backgroundColor:[UIColor greenColor] borderColor:[UIColor redColor] rectCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft|UIRectCornerBottomRight];
 
+    
+    [self.testView gt_setCornerRadius:5 borderColor:nil borderWidth:0];
+    [self.testView removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -18,8 +18,6 @@
 @end
 
 @interface UIView (Shape)
-@property(nonatomic,assign)CGFloat radius;
-@property(nonatomic,assign)CGFloat borderWidth;
-@property(nonatomic,strong)UIColor *borderColor;
-- (void)gt_drawRectWithRoundeCorner:(CGFloat)radius borderWidth:(CGFloat)borderWidth backgroundColor:(UIColor *)backgroundColor borderColor:(UIColor *)borderColor rectCorner:(UIRectCorner)corner;
+- (void)gt_setCornerRadius:(CGFloat)radius borderColor:(UIColor *)borderColor borderWidth:(CGFloat)borderWidth;
+- (void)gt_setCornerRadius:(CGFloat)radius;
 @end
