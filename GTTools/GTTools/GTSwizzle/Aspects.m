@@ -9,7 +9,7 @@
 #import <libkern/OSAtomic.h>
 #import <objc/runtime.h>
 #import <objc/message.h>
-
+#import <os/lock.h>
 #define AspectLog(...)
 //#define AspectLog(...) do { NSLog(__VA_ARGS__); }while(0)
 #define AspectLogError(...) do { NSLog(__VA_ARGS__); }while(0)
@@ -114,7 +114,7 @@ static NSString *const AspectsMessagePrefix = @"aspects_";
 ///////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Private Helper
 
-static id aspect_add(id self, SEL selector, AspectOptions options, id block, NSError **error) {
+static id aspect_add(id self, SEL selector, AspectOptions options, id block, NSError * __autoreleasing *error) {
     NSCParameterAssert(self);
     NSCParameterAssert(selector);
     NSCParameterAssert(block);
@@ -135,7 +135,7 @@ static id aspect_add(id self, SEL selector, AspectOptions options, id block, NSE
     return identifier;
 }
 
-static BOOL aspect_remove(AspectIdentifier *aspect, NSError **error) {
+static BOOL aspect_remove(AspectIdentifier *aspect, NSError * __autoreleasing *error) {
     NSCAssert([aspect isKindOfClass:AspectIdentifier.class], @"Must have correct type.");
 
     __block BOOL success = NO;
@@ -159,12 +159,18 @@ static BOOL aspect_remove(AspectIdentifier *aspect, NSError **error) {
 }
 
 static void aspect_performLocked(dispatch_block_t block) {
-  
-   
+#ifdef __IPHONE_10_0
+    static os_unfair_lock_t unfairLock;
+    unfairLock = &OS_UNFAIR_LOCK_INIT;
+    os_unfair_lock_lock(unfairLock);
+    block();
+    os_unfair_lock_unlock(unfairLock);
+#else
     static OSSpinLock aspect_lock = OS_SPINLOCK_INIT;
     OSSpinLockLock(&aspect_lock);
     block();
     OSSpinLockUnlock(&aspect_lock);
+#endif
 }
 
 static SEL aspect_aliasForSelector(SEL selector) {

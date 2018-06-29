@@ -45,15 +45,15 @@
 
 + (CAGradientLayer *)generateGraColor:(CGSize)size fromHexColor:(NSString *)fromHexColor toHexColor:(NSString *)toHexColor type:(GradientType)type {
     
-    UIColor *fromColor = [UIColor colorWithHexString:fromHexColor];
-    UIColor *toColor = [UIColor colorWithHexString:toHexColor];
+    UIColor *fromColor = [UIColor gt_colorWithHexString:fromHexColor];
+    UIColor *toColor = [UIColor gt_colorWithHexString:toHexColor];
     return [self generateGraColor:size fromColor:fromColor toColor:toColor type:type];
 }
 
 + (CAGradientLayer *)generateGraColor:(CGSize)size fromHexColor:(NSString *)fromHexColor toHexColor:(NSString *)toHexColor startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint {
     
-    UIColor *fromColor = [UIColor colorWithHexString:fromHexColor];
-    UIColor *toColor = [UIColor colorWithHexString:toHexColor];
+    UIColor *fromColor = [UIColor gt_colorWithHexString:fromHexColor];
+    UIColor *toColor = [UIColor gt_colorWithHexString:toHexColor];
     return [self generateGraColor:size fromColor:fromColor toColor:toColor startPoint:startPoint endPoint:endPoint];
 }
 

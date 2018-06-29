@@ -9,7 +9,7 @@
 #import "UIColor+GTTools.h"
 #import "CAGradientLayer+GTTools.h"
 @implementation UIColor (GTTools)
-+ (UIColor *)colorWithHexString:(NSString *)color Alpha:(CGFloat)alpha{
++ (UIColor *)gt_colorWithHexString:(NSString *)color Alpha:(CGFloat)alpha{
     NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
     
     // String should be 6 or 8 characters
@@ -50,11 +50,11 @@
     return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:alpha];
 }
 
-+ (UIColor *)colorWithHexString:(NSString *)color{
-    return [self colorWithHexString:color Alpha:1.0f];
++ (UIColor *)gt_colorWithHexString:(NSString *)color{
+    return [self gt_colorWithHexString:color Alpha:1.0f];
 }
 
-+ (UIColor *)gsColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha{
++ (UIColor *)gt_colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha{
     if (red >1 || green >1 || blue >1) {
         red = red/255.0f;
         green = green/255.0f;
@@ -63,14 +63,14 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
-+ (UIColor *)colorWithChar:(char)RGB{
++ (UIColor *)gt_colorWithChar:(char)RGB{
     unsigned long ulRGB = (unsigned long)RGB;
     long fRed = ( (((ulRGB >> 5) % 8) << 3) + ((ulRGB >> 5) % 8) - 4  ) * 4;
     long fGreen = ( (((ulRGB >> 2) % 8) << 3) + ((ulRGB >> 2) % 8) - 4  ) * 4;
     long fBlue = ( ((ulRGB % 4) << 4) + ((ulRGB % 4) << 2) + (ulRGB % 4)  - 10 ) * 4;
     return [UIColor colorWithRed: fRed / 255.f green: fGreen / 255.f blue: fBlue / 255.f alpha:1.0f];
 }
-+ (UIColor *)generateGraColorInSize:(CGSize)size fromHexColor:(NSString *)fromHexColor toHexColor:(NSString *)toHexColor {
++ (UIColor *)gt_generateGraColorInSize:(CGSize)size fromHexColor:(NSString *)fromHexColor toHexColor:(NSString *)toHexColor {
     
     CAGradientLayer *gradientLayer = [CAGradientLayer generateGraColor:size fromHexColor:fromHexColor toHexColor:toHexColor type:GradientTypeLeftToRight];
     UIGraphicsBeginImageContextWithOptions(gradientLayer.bounds.size,NO, [UIScreen mainScreen].scale);

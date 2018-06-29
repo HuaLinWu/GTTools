@@ -8,16 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Frame)
+@interface UIView (GTFrame)
 @property(nonatomic,assign)CGFloat x;
+@property(nonatomic,assign,readonly)CGFloat midx;
+@property(nonatomic,assign,readonly)CGFloat maxx;
 @property(nonatomic,assign)CGFloat y;
+@property(nonatomic,assign,readonly)CGFloat midy;
+@property(nonatomic,assign,readonly)CGFloat maxy;
 @property(nonatomic,assign)CGFloat width;
 @property(nonatomic,assign)CGFloat height;
 @property(nonatomic,assign)CGSize size;
 @property(nonatomic,assign)CGPoint origin;
 @end
 
-@interface UIView (Shape)
+@interface UIView (GTShape)
 
 /**
  设置圆角（按照UIView 高的比例）

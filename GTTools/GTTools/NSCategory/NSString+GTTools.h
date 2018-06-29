@@ -10,5 +10,41 @@
 
 
 @interface NSString (GTEncipherment)
-- (NSString *)md5String;
+
+/**
+ 32位的md5 加密
+
+ @return 加密过后的md5
+ */
+- (NSString *)gt_md5String;
+
+
+/**
+ url 加密
+ 常用的 NSCharacterSet
+ URLHostAllowedCharacterSet      "#%/<>?@\^`{|}
+ 
+ URLFragmentAllowedCharacterSet  "#%<>[\]^`{|}
+ 
+ URLPasswordAllowedCharacterSet  "#%/:<>?@[\]^`{|}
+ 
+ URLPathAllowedCharacterSet      "#%;<>?[\]^`{|}
+ 
+ URLQueryAllowedCharacterSet     "#%<>[\]^`{|}
+ 
+ URLUserAllowedCharacterSet      "#%/:<>?@[\]^`"
+ 
+ @param characters 加密忽略的字符集(默认的值[NSCharacterSet characterSetWithCharactersInString:@"#%^{}\"[]|\\<> ="])
+ @return url 加密过后的字符串
+ */
+- (NSString *)gt_urlEncodingAllowCharacters:(NSCharacterSet *)characters;
+
+/**
+ url 解密
+
+ @return 解密过后的字符串
+ */
+- (NSString *)gt_urlDecoding;
+
 @end
+

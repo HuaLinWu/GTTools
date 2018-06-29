@@ -1,18 +1,18 @@
 //
-//  DateFormatterManagerTest.m
+//  StringTest.m
 //  GTToolsTests
 //
-//  Created by 吴华林 on 2018/6/20.
+//  Created by 吴华林 on 2018/6/29.
 //  Copyright © 2018年 吴华林. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import "GTDateFormatterManager.h"
-@interface DateFormatterManagerTest : XCTestCase
+#import "NSString+GTTools.h"
+@interface StringTest : XCTestCase
 
 @end
 
-@implementation DateFormatterManagerTest
+@implementation StringTest
 
 - (void)setUp {
     [super setUp];
@@ -27,10 +27,15 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-   NSString *dateStr = [GTDateFormatterManager gt_stringFromDate:[NSDate date] dateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSLog(@"------%@",dateStr);
 }
-
+- (void)testEncoding {
+    NSString *sourceStr = @"https://www.baidu.com?a=1&b=2#iframe=1";
+    NSLog(@"---md5String--->%@",[sourceStr gt_md5String]);
+    NSString *urlEncodingStr = [sourceStr gt_urlEncodingAllowCharacters:nil];
+    NSLog(@"---defaultURLEncoding--->%@",urlEncodingStr);
+    NSString *decodingStr = [urlEncodingStr gt_urlDecoding];
+    NSLog(@"---decodingStr---->%@",decodingStr);
+}
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{

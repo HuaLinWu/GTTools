@@ -17,23 +17,23 @@
  *  十六进制生成颜色
  *  @param alpha 透明度
  */
-+ (UIColor *)colorWithHexString:(NSString *)color Alpha:(CGFloat) alpha;
++ (UIColor *)gt_colorWithHexString:(NSString *)color Alpha:(CGFloat) alpha;
 
 /*
  *  十六进制生成颜色
  */
-+ (UIColor *)colorWithHexString:(NSString *)color;
++ (UIColor *)gt_colorWithHexString:(NSString *)color;
 
 /*
  *  @param red|green|blue > 1 自动除以255.0f
  *  @param red&green&blue <=1 取当前值
  */
-+ (UIColor *)gsColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
++ (UIColor *)gt_colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 
 /**
  根据字节生成颜色
  */
-+ (UIColor *)colorWithChar:(char)RGB;
++ (UIColor *)gt_colorWithChar:(char)RGB;
 
 /**
  根据两个16进制颜色值来生成渐变色（个人建议少用，尽量用图片替代，这个方法很耗性能）
@@ -43,5 +43,5 @@
  @param toHexColor 结束色
  @return 一个颜色值
  */
-+ (UIColor *)generateGraColorInSize:(CGSize)size fromHexColor:(NSString *)fromHexColor toHexColor:(NSString *)toHexColor;
++ (UIColor *)gt_generateGraColorInSize:(CGSize)size fromHexColor:(NSString *)fromHexColor toHexColor:(NSString *)toHexColor;
 @end

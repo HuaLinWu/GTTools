@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #import "Aspects.h"
 
-@implementation UIView (Frame)
+@implementation UIView (GTFrame)
 
 - (void)setX:(CGFloat)x {
     if(CGRectGetMinX(self.frame) == x) {
@@ -59,8 +59,21 @@
 - (CGFloat)x {
     return CGRectGetMinX(self.frame);
 }
+- (CGFloat)midx {
+    return CGRectGetMinX(self.frame);
+}
+- (CGFloat)maxx {
+    return CGRectGetMaxX(self.frame);
+}
+
 - (CGFloat)y {
     return CGRectGetMinY(self.frame);
+}
+- (CGFloat)midy {
+    return CGRectGetMidY(self.frame);
+}
+- (CGFloat)maxy {
+    return CGRectGetMaxY(self.frame);
 }
 - (CGSize)size {
     return self.frame.size;
@@ -79,7 +92,7 @@
 @property(nonatomic,assign)BOOL needCornerRadius;
 @property(nonatomic,assign)NSString *cornerRadiusratioStr;
 @end
-@implementation UIView (Shape)
+@implementation UIView (GTShape)
 + (void)load {
     [self aspect_hookSelector:@selector(layoutSubviews) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
         [[aspectInfo instance] gt_uiview_shap_layoutSubviews];

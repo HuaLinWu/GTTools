@@ -9,7 +9,7 @@
 #import "NSString+GTTools.h"
 #import<CommonCrypto/CommonDigest.h>
 @implementation NSString (GTEncipherment)
-- (NSString *)md5String {
+- (NSString *)gt_md5String {
     const char *cStr = [self UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
     CC_MD5( cStr, (CC_LONG)strlen(cStr), digest );
@@ -18,4 +18,16 @@
         [output appendFormat:@"%02x", digest[i]];
     return  output;
 }
+- (NSString *)gt_urlEncodingAllowCharacters:(NSCharacterSet *)characters {
+    if(!characters) {
+        characters = [NSCharacterSet characterSetWithCharactersInString:@"#%^{}\"[]|\\<> ="];
+        return [self stringByAddingPercentEncodingWithAllowedCharacters:characters];
+    } else {
+         return [self stringByAddingPercentEncodingWithAllowedCharacters:characters];
+    }
+}
+- (NSString *)gt_urlDecoding {
+    return [self stringByRemovingPercentEncoding];
+}
+
 @end

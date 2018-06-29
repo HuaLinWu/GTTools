@@ -30,7 +30,7 @@
     self.testView.layer.masksToBounds = YES;
 }
 - (IBAction)jumpWKWebViewClick:(UIButton *)sender {
-
+    
     [self.testView gt_setCornerRadius:20 borderColor:nil borderWidth:0];
 //    [self.testView gt_setCornerRadiusRatioToHeight:0.5];
 }
