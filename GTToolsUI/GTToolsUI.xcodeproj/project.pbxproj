@@ -12,6 +12,7 @@
 		FE1E040520E1CD5B00FB080E /* UIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040320E1CD5B00FB080E /* UIWebViewController.m */; };
 		FE1E040620E1CD5B00FB080E /* UIWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE1E040420E1CD5B00FB080E /* UIWebViewController.xib */; };
 		FE1E041520E2476100FB080E /* GTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1E041420E2476100FB080E /* GTTools.framework */; };
+		FE3591C120E7446700D54269 /* textHtml.html in Resources */ = {isa = PBXBuildFile; fileRef = FE3591C020E7446700D54269 /* textHtml.html */; };
 		FE3A416420DB74C500F78947 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A416320DB74C500F78947 /* AppDelegate.m */; };
 		FE3A416720DB74C500F78947 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A416620DB74C500F78947 /* ViewController.m */; };
 		FE3A416A20DB74C500F78947 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE3A416820DB74C500F78947 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		FE1E040420E1CD5B00FB080E /* UIWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIWebViewController.xib; sourceTree = "<group>"; };
 		FE1E041220E2466F00FB080E /* GTTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1E041420E2476100FB080E /* GTTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE3591C020E7446700D54269 /* textHtml.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = textHtml.html; sourceTree = "<group>"; };
 		FE3A415F20DB74C500F78947 /* GTToolsUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTToolsUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3A416220DB74C500F78947 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE3A416320DB74C500F78947 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				FE1E040220E1CD5B00FB080E /* UIWebViewController.h */,
 				FE1E040320E1CD5B00FB080E /* UIWebViewController.m */,
 				FE1E040420E1CD5B00FB080E /* UIWebViewController.xib */,
+				FE3591C020E7446700D54269 /* textHtml.html */,
 				FE3A416B20DB74C800F78947 /* Assets.xcassets */,
 				FE3A416D20DB74C800F78947 /* LaunchScreen.storyboard */,
 				FE3A417020DB74C800F78947 /* Info.plist */,
@@ -269,6 +272,7 @@
 				FE3A416C20DB74C800F78947 /* Assets.xcassets in Resources */,
 				FE3A416A20DB74C500F78947 /* Main.storyboard in Resources */,
 				FE1E040620E1CD5B00FB080E /* UIWebViewController.xib in Resources */,
+				FE3591C120E7446700D54269 /* textHtml.html in Resources */,
 				FE1E040120E1CD4900FB080E /* WKWebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

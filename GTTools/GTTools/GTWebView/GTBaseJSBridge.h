@@ -14,9 +14,9 @@ extern  NSString *const kQueueHasMessage;
 /**
  回调方法的block
 
- @param data 需要回传的参数
+ @param responseData 需要回传的参数
  */
-typedef void (^WVJBResponseCallBack)(id data);
+typedef void (^WVJBResponseCallBack)(id responseData);
 
 /**
  带回调的方法block（注册OC 方法给JS使用时候调用）
@@ -29,7 +29,7 @@ typedef void(^WVJBHandler)(id data,WVJBResponseCallBack responseCallBack);
 typedef NSMutableDictionary WVJBMessgae;
 
 @protocol GTBaseJSBridgeDelegate
-- (void)evaluatingJavaScriptFromString:(NSString *)javaScriptStr;
+- (NSString *)evaluatingJavaScriptFromString:(NSString *)javaScriptStr;
 @end
 
 @interface GTBaseJSBridge : NSObject
@@ -48,4 +48,8 @@ typedef NSMutableDictionary WVJBMessgae;
  @param responseCallBack 回调的方法
  */
 - (void)sendData:(id)data handleName:(NSString *)handleName responseCallback:(WVJBResponseCallBack)responseCallBack;
+//获取h5 调用原生的消息队列
+- (NSString *)fetchH5MessageQueue;
+//处理从H5 调用的原生的消息队列
+- (void)flushH5MessageQueueString:(NSString *)messageQueueString;
 @end

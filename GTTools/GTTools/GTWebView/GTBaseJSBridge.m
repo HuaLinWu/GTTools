@@ -10,6 +10,16 @@
 NSString *const kJSBridgeScheme = @"https";
 NSString *const kBridgeLoaded = @"__bridge_loaded__";
 NSString *const kQueueHasMessage = @"__wvjb_queue_message__";
+
+NSString *const kFetchMessageQueueFunction = @"_fetchMessageQueue()";
+NSString *const kWindowJavascriptBridge = @"webViewJavascriptBridge";
+NSString *const kHandleMessageFromNavtive = @"_handleMessageFromNavtive";
+
+NSString *const kMessageHandleName = @"handleName";
+NSString *const kMessageCallBackId = @"callBackId";
+NSString *const kMessageData = @"data";
+//响应的方法
+NSString *const kMessageResponseID = @"responseID";
 @interface GTBaseJSBridge()
 {
     NSMutableDictionary *_registerHandlerMDcit;
@@ -40,18 +50,65 @@ NSString *const kQueueHasMessage = @"__wvjb_queue_message__";
 - (void)sendData:(id)data handleName:(NSString *)handleName responseCallback:(WVJBResponseCallBack)responseCallBack {
     WVJBMessgae *message = [WVJBMessgae new];
     if(handleName) {
-        message[@"handleName"] = handleName;
+        message[kMessageHandleName] = handleName;
     }
     if(data) {
-        message[@"data"] = data;
+        message[kMessageData] = data;
     }
     if(responseCallBack) {
         NSString *responseCallbackKey = [NSString stringWithFormat:@"GTBridgeResponseCallback_%li",responseCallbackID];
         responseCallbackID ++;
         self.responseCallbackMdict[responseCallbackKey] = responseCallBack;
-         message[@"responseID"] = responseCallbackKey;
+         message[kMessageCallBackId] = responseCallbackKey;
     }
-    [self _dispatchMessage:message];
+    [self _queueMessage:message];
+}
+- (NSString *)fetchH5MessageQueue {
+   return  [self _evaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.%@",kWindowJavascriptBridge,kFetchMessageQueueFunction]];
+}
+- (void)flushH5MessageQueueString:(NSString *)messageQueueString  {
+    if(!messageQueueString || messageQueueString.length == 0) {
+        NSLog(@"WebViewJavascriptBridge: WARNING: ObjC got nil while fetching the message queue JSON from webview. This can happen if the WebViewJavascriptBridge JS is not currently present in the webview, e.g if the webview just loaded a new page.");
+        return;
+    } else {
+        NSArray *queueMessages = [self _deserializeMessageJSON:messageQueueString];
+        if([queueMessages isKindOfClass:[NSArray class]]) {
+            for(WVJBMessgae *message in queueMessages) {
+                if([message isKindOfClass:[NSDictionary class]]) {
+                   NSString *responseID = message[kMessageResponseID];
+                    if(responseID) {
+                        //表示h5 的回调
+                        WVJBResponseCallBack responseCallBack = self.responseCallbackMdict[responseID];
+                         NSString *data = message[kMessageData];
+                        responseCallBack(data);
+                        [self.responseCallbackMdict removeObjectForKey:responseID];
+                    } else {
+                        //表示h5主动调用
+                        NSString *handleName = message[kMessageHandleName];
+                        NSString *data = message[kMessageData];
+                        NSString *callBackID = message[kMessageCallBackId];
+                        WVJBHandler handler = self.registerHandlerMDcit[handleName];
+                        if(handler) {
+                            WVJBResponseCallBack callBackBlock = ^(id responseData) {
+                                if(callBackID) {
+                                    WVJBMessgae *responseMessage = [[WVJBMessgae alloc] initWithObjectsAndKeys:callBackID,kMessageResponseID, nil];
+                                    
+                                    if(responseData) {
+                                        responseMessage[kMessageData] = responseData;
+                                    }
+                                    [self _queueMessage:responseMessage];
+                                }
+                            };
+                            handler(data,callBackBlock);
+                        }
+                    }
+                    
+                    
+                }
+                
+            }
+        }
+    }
 }
 #pragma mark private
 - (void)_queueMessage:(WVJBMessgae *)message {
@@ -77,13 +134,13 @@ NSString *const kQueueHasMessage = @"__wvjb_queue_message__";
             messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\f" withString:@"\\f"];
             messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\u2028" withString:@"\\u2028"];
             messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\u2029" withString:@"\\u2029"];
-            NSString *javaScriptStr = [NSString stringWithFormat:@"WebViewJavascriptBridge._handleMessageFromObjC(%@)",messageJSON];
+            NSString *javaScriptStr = [NSString stringWithFormat:@"%@.%@(%@)",kWindowJavascriptBridge,kHandleMessageFromNavtive,messageJSON];
             [self _evaluatingJavaScriptFromString:javaScriptStr];
         }
     }
 }
-- (void)_evaluatingJavaScriptFromString:(NSString *)javaScriptStr {
-    [self.delegate evaluatingJavaScriptFromString:javaScriptStr];
+- (NSString *)_evaluatingJavaScriptFromString:(NSString *)javaScriptStr {
+   return [self.delegate evaluatingJavaScriptFromString:javaScriptStr];
 }
 - (NSString *)_serializeMessage:(WVJBMessgae *)message {
     NSError *error;
@@ -99,6 +156,11 @@ NSString *const kQueueHasMessage = @"__wvjb_queue_message__";
     } else {
         return nil;
     }
+}
+- (id)_deserializeMessageJSON:(NSString *)messageQueueString {
+    NSData *data = [messageQueueString dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *dictAry = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    return dictAry;
 }
 #pragma mark set/get
 - (NSMutableDictionary *)registerHandlerMDcit {

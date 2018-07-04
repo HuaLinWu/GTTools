@@ -1,29 +1,32 @@
 function preprocessorJSCode(){
-    if(window.WebViewJavascriptBridge) {
+    if(window.webViewJavascriptBridge) {
         return;
     }
     if(!window.onerror) {
         window.onerror = function (message,url,line,column,error) {
-            console.log("WebViewJavascriptBridge: ERROR:" + msg + "@" + url + ":" + line);
+            console.log("webViewJavascriptBridge: ERROR:" + msg + "@" + url + ":" + line);
         }
     }
-    window.WebViewJavascriptBridge = {
-      registerHandler:registerHandler,
-        callHandler : callHandler,
-        _handleMessageFromObjC = _handleMessageFromObjC,
-        
+    window.webViewJavascriptBridge = {
+         registerHandler:registerHandler,
+         callHandler : callHandler,
+        _handleMessageFromNavtive:_handleMessageFromNavtive,
+        _fetchMessageQueue :_fetchMessageQueue
     }
-    
+    var registerHandlerDict ={};
+    var responseCallBackDict={};
     function registerHandler(handleName,handler) {
+        if(handleName && handler) {
+            registerHandlerDict[handleName] = handler;
+        }
+    }
+    function callHandler(data,handleName,responseCallBack) {
         
     }
-    function callHandler(data,responseCallBack) {
+    function _handleMessageFromNavtive(messageJSon) {
         
     }
-    function _handleMessageFromObjC(messageJSon) {
-        
-    }
-    function _doSendMessage(data,handleName,responseCallBack) {
+    function _fetchMessageQueue() {
         
     }
 }

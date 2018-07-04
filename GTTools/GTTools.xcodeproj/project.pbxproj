@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1E040720E1D4DF00FB080E /* GTUIWebViewJSBridge.h */; };
+		FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1E040720E1D4DF00FB080E /* GTUIWebViewJSBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */; };
 		FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */; };
 		FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */; };
 		FE1E041020E2065000FB080E /* GTHtmlJSBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = FE1E040F20E2065000FB080E /* GTHtmlJSBridge.js */; };
+		FE3591AA20E718B300D54269 /* GTBaseNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3591A820E718B300D54269 /* GTBaseNetwork.h */; };
+		FE3591AB20E718B300D54269 /* GTBaseNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3591A920E718B300D54269 /* GTBaseNetwork.m */; };
 		FE3A40D720D9E93100F78947 /* GTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3A40CD20D9E93100F78947 /* GTTools.framework */; };
 		FE3A40DC20D9E93100F78947 /* GTToolsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A40DB20D9E93100F78947 /* GTToolsTests.m */; };
 		FE3A40DE20D9E93100F78947 /* GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A40D020D9E93100F78947 /* GTTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,7 +72,7 @@
 		FE4E950220E628E700FEE678 /* NSData+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4E950020E628E700FEE678 /* NSData+GTTools.m */; };
 		FE4E950520E6338300FEE678 /* UIButton+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE4E950320E6338300FEE678 /* UIButton+GTTools.h */; };
 		FE4E950620E6338300FEE678 /* UIButton+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4E950420E6338300FEE678 /* UIButton+GTTools.m */; };
-		FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE62891420DCA50100AA27B5 /* GTBaseJSBridge.h */; };
+		FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE62891420DCA50100AA27B5 /* GTBaseJSBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891520DCA50100AA27B5 /* GTBaseJSBridge.m */; };
 		FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */; };
 		FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */; };
@@ -92,6 +94,8 @@
 		FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTWKWebViewJSBridge.h; sourceTree = "<group>"; };
 		FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWKWebViewJSBridge.m; sourceTree = "<group>"; };
 		FE1E040F20E2065000FB080E /* GTHtmlJSBridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GTHtmlJSBridge.js; sourceTree = "<group>"; };
+		FE3591A820E718B300D54269 /* GTBaseNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTBaseNetwork.h; sourceTree = "<group>"; };
+		FE3591A920E718B300D54269 /* GTBaseNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBaseNetwork.m; sourceTree = "<group>"; };
 		FE3A40CD20D9E93100F78947 /* GTTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3A40D020D9E93100F78947 /* GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTools.h; sourceTree = "<group>"; };
 		FE3A40D120D9E93100F78947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 		FE3A412F20DA77FE00F78947 /* GTNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				FE3591A820E718B300D54269 /* GTBaseNetwork.h */,
+				FE3591A920E718B300D54269 /* GTBaseNetwork.m */,
 			);
 			path = GTNetwork;
 			sourceTree = "<group>";
@@ -341,11 +347,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */,
+				FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */,
 				FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */,
 				FE3A412220DA4D5900F78947 /* GTDateFormatterManager.h in Headers */,
 				FE3A40F520DA00BE00F78947 /* GTNullFilter.h in Headers */,
-				FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */,
 				FE4E94FD20E6279B00FEE678 /* UIFont+GTTools.h in Headers */,
+				FE3591AA20E718B300D54269 /* GTBaseNetwork.h in Headers */,
 				FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */,
 				FE3A40F920DA0EC000F78947 /* GTModelManager.h in Headers */,
 				FE3A410320DA0F4100F78947 /* YYModel.h in Headers */,
@@ -360,7 +368,6 @@
 				FE4E950120E628E700FEE678 /* NSData+GTTools.h in Headers */,
 				FE3A419820DB786000F78947 /* Aspects.h in Headers */,
 				FE4E950520E6338300FEE678 /* UIButton+GTTools.h in Headers */,
-				FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */,
 				FE3A412D20DA767300F78947 /* UIResponder+GTTools.h in Headers */,
 				FE3A410820DA220700F78947 /* GTModelProtocol.h in Headers */,
 				FE3A414420DB3F2F00F78947 /* GTMemoryCache.h in Headers */,
@@ -485,6 +492,7 @@
 				FE3A414920DB3F5E00F78947 /* GTDiskCache.m in Sources */,
 				FE3A410D20DA28AE00F78947 /* NSArray+GTTools.m in Sources */,
 				FE3A412920DA62BC00F78947 /* GTSoftwareInfo.m in Sources */,
+				FE3591AB20E718B300D54269 /* GTBaseNetwork.m in Sources */,
 				FE4E94EE20E5CF4E00FEE678 /* UIImage+GTTools.m in Sources */,
 				FE4E94F620E61C2700FEE678 /* UIImageView+GTTools.m in Sources */,
 				FE4E94F220E6152B00FEE678 /* NSAttributedString+GTTools.m in Sources */,

@@ -22,12 +22,9 @@
 }
 
 - (IBAction)jumpWebViewBtnClick:(UIButton *)sender {
-//    UIWebViewController *webVC = [[UIWebViewController alloc] init];
-//    [self presentViewController:webVC animated:YES completion:nil];
-    self.testView.layer.borderColor = [UIColor redColor].CGColor;
-    self.testView.layer.cornerRadius = sender.height/2;
-    
-    self.testView.layer.masksToBounds = YES;
+    UIWebViewController *webVC = [[UIWebViewController alloc] initWithNibName:@"UIWebViewController" bundle:[NSBundle mainBundle]];
+    [self presentViewController:webVC animated:YES completion:nil];
+   
 }
 - (IBAction)jumpWKWebViewClick:(UIButton *)sender {
     

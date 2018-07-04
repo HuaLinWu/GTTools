@@ -13,11 +13,11 @@
 @end
 @implementation GTUIWebViewJSBridge
 + (instancetype)bridgeForWebView:(UIView *)webView {
-    if(!webView) {
+    if(webView) {
         if([webView isKindOfClass:[UIWebView class]]) {
             GTUIWebViewJSBridge *bridge = [GTUIWebViewJSBridge new];
-            ((UIWebView *)webView).delegate = bridge;
             bridge.webView = webView;
+            ((UIWebView *)webView).delegate = bridge;
             return bridge;
         } else {
             return nil;
@@ -27,13 +27,14 @@
     }
 }
 - (void)callHandler:(NSString *)handlerName data:(id)data responseCallback:(WVJBResponseCallBack)responseCallback {
-    
+    [self.baseJSBridge sendData:data handleName:handlerName responseCallback:responseCallback];
 }
 - (void)registerHandler:(NSString *)handlerName handler:(WVJBHandler)jbHandler {
     self.baseJSBridge.registerHandlerMDcit[handlerName] = [jbHandler copy];
 }
 #pragma mark UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
     if(self.webView!=webView) {
         return YES;
     } else if([self isMatchURL:request.URL]) {
@@ -41,7 +42,8 @@
             //刚开始记载方法执行
         } else if ([self isQueueMessage:request.URL]) {
             //执行方法队列的方法
-            
+           NSString *messageQueueString = [self.baseJSBridge fetchH5MessageQueue];
+            [self.baseJSBridge flushH5MessageQueueString:messageQueueString];
         } else {
             //未知的方法
             return YES;
@@ -53,7 +55,7 @@
     }
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    
+   
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
@@ -62,9 +64,11 @@
     
 }
 #pragma mark GTBaseJSBridgeDelegate
-- (void)evaluatingJavaScriptFromString:(NSString *)javaScriptStr {
+- (NSString *)evaluatingJavaScriptFromString:(NSString *)javaScriptStr {
     if([self.webView isKindOfClass:[UIWebView class]]) {
-        [(UIWebView *)self.webView stringByEvaluatingJavaScriptFromString:javaScriptStr];
+       return  [(UIWebView *)self.webView stringByEvaluatingJavaScriptFromString:javaScriptStr];
+    } else {
+        return @"";
     }
 }
 #pragma mark private_method
@@ -72,6 +76,7 @@
     if(!url) {
         return NO;
     } else {
+        
         if([[url.scheme lowercaseString] isEqualToString:kJSBridgeScheme]) {
             return YES;
         } else {

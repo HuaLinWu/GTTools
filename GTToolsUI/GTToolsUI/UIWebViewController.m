@@ -7,9 +7,10 @@
 //
 
 #import "UIWebViewController.h"
-
+#import <GTTools/GTTools.h>
 @interface UIWebViewController ()
-
+@property (weak, nonatomic) IBOutlet UIWebView *webview;
+@property (nonatomic, strong)GTUIWebViewJSBridge *uiWebviewJSBridge;
 @end
 
 @implementation UIWebViewController
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"textHtml.html" ofType:nil];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    self.uiWebviewJSBridge = [GTUIWebViewJSBridge bridgeForWebView:self.webview];
+    [self.webview loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning {
