@@ -15,10 +15,11 @@ NSString *const kFetchMessageQueueFunction = @"_fetchMessageQueue()";
 NSString *const kWindowJavascriptBridge = @"webViewJavascriptBridge";
 NSString *const kHandleMessageFromNavtive = @"_handleMessageFromNavtive";
 
+//调用的用到的key
 NSString *const kMessageHandleName = @"handleName";
 NSString *const kMessageCallBackId = @"callBackId";
 NSString *const kMessageData = @"data";
-//响应的方法
+//响应的方法key
 NSString *const kMessageResponseID = @"responseID";
 @interface GTBaseJSBridge()
 {
@@ -36,8 +37,6 @@ NSString *const kMessageResponseID = @"responseID";
 }
 #pragma mark public
 - (void)injectJavaScript {
-    //初始化
-    
     //将需要执行js执行一遍
     if(startUpMessageMarray) {
         NSMutableArray<WVJBMessgae *> *tempMessageMarray = startUpMessageMarray;
@@ -54,6 +53,8 @@ NSString *const kMessageResponseID = @"responseID";
     }
     if(data) {
         message[kMessageData] = data;
+    } else {
+        message[kMessageData] = @"";
     }
     if(responseCallBack) {
         NSString *responseCallbackKey = [NSString stringWithFormat:@"GTBridgeResponseCallback_%li",responseCallbackID];

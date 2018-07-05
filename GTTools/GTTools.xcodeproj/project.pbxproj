@@ -11,7 +11,8 @@
 		FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */; };
 		FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */; };
 		FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */; };
-		FE1E041020E2065000FB080E /* GTHtmlJSBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = FE1E040F20E2065000FB080E /* GTHtmlJSBridge.js */; };
+		FE212AB920EDFA570046520F /* GTWebViewJSBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = FE212AB820EDFA570046520F /* GTWebViewJSBridge_JS.m */; };
+		FE212ABB20EDFA660046520F /* GTWebViewJSBridge_JS.h in Headers */ = {isa = PBXBuildFile; fileRef = FE212ABA20EDFA660046520F /* GTWebViewJSBridge_JS.h */; };
 		FE3591AA20E718B300D54269 /* GTBaseNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3591A820E718B300D54269 /* GTBaseNetwork.h */; };
 		FE3591AB20E718B300D54269 /* GTBaseNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3591A920E718B300D54269 /* GTBaseNetwork.m */; };
 		FE3A40D720D9E93100F78947 /* GTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3A40CD20D9E93100F78947 /* GTTools.framework */; };
@@ -93,7 +94,8 @@
 		FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUIWebViewJSBridge.m; sourceTree = "<group>"; };
 		FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTWKWebViewJSBridge.h; sourceTree = "<group>"; };
 		FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWKWebViewJSBridge.m; sourceTree = "<group>"; };
-		FE1E040F20E2065000FB080E /* GTHtmlJSBridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GTHtmlJSBridge.js; sourceTree = "<group>"; };
+		FE212AB820EDFA570046520F /* GTWebViewJSBridge_JS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWebViewJSBridge_JS.m; sourceTree = "<group>"; };
+		FE212ABA20EDFA660046520F /* GTWebViewJSBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTWebViewJSBridge_JS.h; sourceTree = "<group>"; };
 		FE3591A820E718B300D54269 /* GTBaseNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTBaseNetwork.h; sourceTree = "<group>"; };
 		FE3591A920E718B300D54269 /* GTBaseNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBaseNetwork.m; sourceTree = "<group>"; };
 		FE3A40CD20D9E93100F78947 /* GTTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,7 +322,8 @@
 			children = (
 				FE3A414A20DB3FF500F78947 /* GTWebView.h */,
 				FE3A414B20DB3FF500F78947 /* GTWebView.m */,
-				FE1E040F20E2065000FB080E /* GTHtmlJSBridge.js */,
+				FE212ABA20EDFA660046520F /* GTWebViewJSBridge_JS.h */,
+				FE212AB820EDFA570046520F /* GTWebViewJSBridge_JS.m */,
 				FE1E040720E1D4DF00FB080E /* GTUIWebViewJSBridge.h */,
 				FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */,
 				FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */,
@@ -355,6 +358,7 @@
 				FE4E94FD20E6279B00FEE678 /* UIFont+GTTools.h in Headers */,
 				FE3591AA20E718B300D54269 /* GTBaseNetwork.h in Headers */,
 				FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */,
+				FE212ABB20EDFA660046520F /* GTWebViewJSBridge_JS.h in Headers */,
 				FE3A40F920DA0EC000F78947 /* GTModelManager.h in Headers */,
 				FE3A410320DA0F4100F78947 /* YYModel.h in Headers */,
 				FE4E94ED20E5CF4E00FEE678 /* UIImage+GTTools.h in Headers */,
@@ -461,7 +465,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE1E041020E2065000FB080E /* GTHtmlJSBridge.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +503,7 @@
 				FE3A414520DB3F2F00F78947 /* GTMemoryCache.m in Sources */,
 				FE3A414D20DB3FF500F78947 /* GTWebView.m in Sources */,
 				FE3A413D20DB361700F78947 /* UIView+GTTools.m in Sources */,
+				FE212AB920EDFA570046520F /* GTWebViewJSBridge_JS.m in Sources */,
 				FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */,
 				FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */,
 				FE3A419720DB786000F78947 /* Aspects.m in Sources */,

@@ -1,102 +1,10 @@
 <html>
     </head>
     <script language="javascript">
-        var iframe;
-        const kJSBridgeScheme = "https";
-        const kBridgeLoaded = "__bridge_loaded__";
-        const kQueueHasMessage = "__wvjb_queue_message__";
         function buttonClick(){
             alert("123");
-            var message = {"a":1,"b":2};
-            callHandle("readString",message,function(response){
-                       alert(response);
-                       })
+           
         }
-     function getGTJSBrigeIframe (){
-       if(!iframe) {
-           try{
-               iframe = document.createElement('<iframe></iframe>');
-           }catch(e){
-               iframe = document.createElement('iframe');
-           }
-           document.documentElement.appendChild(iframe);
-       }
-       return iframe;
-    }
-    if(!window.webViewJavascriptBridge) {
-        window.webViewJavascriptBridge = {
-            callHandle:callHandle,
-            registerHandler:registerHandler,
-            _fetchMessageQueue:_fetchMessageQueue,
-            _handleMessageFromNavtive:_handleMessageFromNavtive
-        }
-    }
-    var messageQueue = [];
-    var responseCallBacks = {};
-    var uniqueId =1;
-    function _handleMessageFromNavtive(messageJson){
-        
-    }
-    /**
-     注册方法给原生使用
-     */
-    function registerHandler(handleName,handle) {
-        
-    }
-    /**
-      调用客户端的方法
-     @param handleName 客户端的方法名
-     @param data  需要传递给客户端的参数
-     @param responseCallBack 回调方法
-     */
-    function callHandle(handleName,data,responseCallBack) {
-         var message = {};
-         if(typeof(handleName) !='string') {
-             console.log("handleName 不是string 类型")
-         } else {
-              message["handleName"]=handleName;
-              if(arguments.length ==2) {
-                  //传入的只有两个参数的时候
-                  if(typeof(data) == 'function') {
-                      //传入的是function 的时候
-                      responseCallBack = data;
-                      message["data"] = null;
-                      _send(message,responseCallBack);
-                  } else {
-                      message["data"] = data;
-                      _send(message);
-                  }
-              } else {
-                  //传入的参数是三个的时候
-                  message["data"] = data;
-                  _send(message,responseCallBack);
-              }
-         }
-    
-    }
-    /**
-     将需要发送的message 放入到messageQueue 等待客户端来取
-     */
-    function _send(message,responseCallBack) {
-        if(responseCallBack) {
-            var time = new Date().getTime();
-            var callbackID = 'gt_'+(uniqueId++)+time;
-            responseCallBacks[callbackID] = responseCallBack;
-            message["callBackId"] = callbackID;
-        }
-        messageQueue.push(message);
-       var tempIframe = getGTJSBrigeIframe ();
-       tempIframe.src = kJSBridgeScheme+"://"+kQueueHasMessage
-    }
-    /**
-     读出所有的消息队列的信息
-     */
-    function _fetchMessageQueue (){
-        var jsonStr = JSON.stringify(messageQueue);
-        messageQueue = [];
-        alert(jsonStr);
-        return jsonStr;
-    }
     </script>
     </head>
     <body>

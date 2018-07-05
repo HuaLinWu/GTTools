@@ -7,6 +7,7 @@
 //
 
 #import "GTUIWebViewJSBridge.h"
+#import "GTWebViewJSBridge_JS.h"
 @interface GTUIWebViewJSBridge()<GTBaseJSBridgeDelegate>
 @property(nonatomic, strong)GTBaseJSBridge *baseJSBridge;
 @property(nonatomic, weak)UIView *webView;
@@ -40,6 +41,7 @@
     } else if([self isMatchURL:request.URL]) {
         if([self isLoadMessage:request.URL]) {
             //刚开始记载方法执行
+            [self.baseJSBridge injectJavaScript];
         } else if ([self isQueueMessage:request.URL]) {
             //执行方法队列的方法
            NSString *messageQueueString = [self.baseJSBridge fetchH5MessageQueue];
@@ -51,6 +53,7 @@
         
         return NO;
     } else {
+          [self evaluatingJavaScriptFromString:webViewJavascriptBridge_js()];
          return YES;
     }
 }
@@ -58,7 +61,7 @@
    
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
+   
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     
