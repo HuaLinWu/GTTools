@@ -7,7 +7,6 @@
 //
 
 #import "GTUIWebViewJSBridge.h"
-#import "GTWebViewJSBridge_JS.h"
 @interface GTUIWebViewJSBridge()<GTBaseJSBridgeDelegate>
 @property(nonatomic, strong)GTBaseJSBridge *baseJSBridge;
 @property(nonatomic, weak)UIView *webView;
@@ -53,7 +52,6 @@
         
         return NO;
     } else {
-          [self evaluatingJavaScriptFromString:webViewJavascriptBridge_js()];
          return YES;
     }
 }

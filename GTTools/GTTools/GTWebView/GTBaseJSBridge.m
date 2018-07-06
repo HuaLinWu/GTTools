@@ -7,6 +7,7 @@
 //
 
 #import "GTBaseJSBridge.h"
+#import "GTWebViewJSBridge_JS.h"
 NSString *const kJSBridgeScheme = @"https";
 NSString *const kBridgeLoaded = @"__bridge_loaded__";
 NSString *const kQueueHasMessage = @"__wvjb_queue_message__";
@@ -38,6 +39,7 @@ NSString *const kMessageResponseID = @"responseID";
 #pragma mark public
 - (void)injectJavaScript {
     //将需要执行js执行一遍
+    [self _evaluatingJavaScriptFromString:webViewJavascriptBridge_js()];
     if(startUpMessageMarray) {
         NSMutableArray<WVJBMessgae *> *tempMessageMarray = startUpMessageMarray;
         startUpMessageMarray = nil;
@@ -126,6 +128,7 @@ NSString *const kMessageResponseID = @"responseID";
         return;
     } else {
         NSString *messageJSON = [self _serializeMessage:message];
+        
         if(messageJSON) {
             messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
             messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
@@ -135,8 +138,15 @@ NSString *const kMessageResponseID = @"responseID";
             messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\f" withString:@"\\f"];
             messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\u2028" withString:@"\\u2028"];
             messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\u2029" withString:@"\\u2029"];
-            NSString *javaScriptStr = [NSString stringWithFormat:@"%@.%@(%@)",kWindowJavascriptBridge,kHandleMessageFromNavtive,messageJSON];
-            [self _evaluatingJavaScriptFromString:javaScriptStr];
+            NSString *javaScriptStr = [NSString stringWithFormat:@"%@.%@('%@')",kWindowJavascriptBridge,kHandleMessageFromNavtive,messageJSON];
+            if ([[NSThread currentThread] isMainThread]) {
+                [self _evaluatingJavaScriptFromString:javaScriptStr];
+                
+            } else {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self _evaluatingJavaScriptFromString:javaScriptStr];
+                });
+            }
         }
     }
 }

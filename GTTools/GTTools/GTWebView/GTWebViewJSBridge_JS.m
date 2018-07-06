@@ -9,47 +9,48 @@
 #import "GTWebViewJSBridge_JS.h"
 NSString * webViewJavascriptBridge_js(void) {
 #define __wvjb_js_func__(x) #x
-static NSString *preprocessorJSCode = @__wvjb_js_func__(
-;(function(){
-
+static NSString *preprocessorJSCode = @__wvjb_js_func__((function(){
+    
         if(window.webViewJavascriptBridge) {
             return;
         }
+    
         if(!window.onerror) {
             window.onerror = function (message,url,line,column,error) {
                 console.log("webViewJavascriptBridge: ERROR:" + msg + "@" + url + ":" + line);
             }
         }
-    
             //调用的用到的key
             const kMessageHandleName = "handleName";
             const kMessageCallBackId = "callBackId";
             const kMessageData = "data";
             //响应的方法key
             const kMessageResponseID = "responseID";
-            
+    
             const kJSBridgeScheme = "https";
             const kBridgeLoaded = "__bridge_loaded__";
             const kQueueHasMessage = "__wvjb_queue_message__";
             var messagingIframe;
             var uniqueId =1;
-            
+    
             window.webViewJavascriptBridge = {
             registerHandler:registerHandler,
                 callHandler : callHandler,
             _handleMessageFromNavtive:_handleMessageFromNavtive,
                 _fetchMessageQueue :_fetchMessageQueue
-            }
-            
+            };
+    
             var registerHandlerDict ={};
             var responseCallBackDict={};
             var messageQueue = [];
             function registerHandler(handleName,handler) {
                 if(handleName && handler) {
+                   
                     registerHandlerDict[handleName] = handler;
                 }
             }
             function callHandler(handleName,data,responseCallBack) {
+                
                 var message = {};
                 if(typeof(handleName) !='string') {
                     console.log("handleName 不是string 类型")
@@ -75,14 +76,16 @@ static NSString *preprocessorJSCode = @__wvjb_js_func__(
                 }
             }
             function _handleMessageFromNavtive(messageJSon) {
+                
                 if(messageJSon) {
                     var dict = JSON.parse(messageJSon);
-                    if(typeof(dict) == 'Object'){
+                    
+                    if(typeof(dict) == 'object'){
                         var responseID = dict[kMessageResponseID];
                         var data = dict[kMessageData];
-                        
                         if(responseID) {
                             //表示原生的回调
+                           
                             var responseCallBack = responseCallBackDict[responseID];
                             if(responseCallBack) {
                                 responseCallBack(data);
@@ -90,13 +93,15 @@ static NSString *preprocessorJSCode = @__wvjb_js_func__(
                             delete responseCallBackDict[responseID];
                             return;
                         } else {
+                            
                             //表示原生直接调用H5的方法
                             var handleName = dict[kMessageHandleName];
                             if(handleName){
                                 var handler = registerHandlerDict[handleName];
                                 if(handler) {
+                                   
                                     handler(data,function(responseData){
-                                        var message = {}
+                                        var message = {};
                                         message[kMessageResponseID] = dict[kMessageCallBackId];
                                         if(responseData) {
                                             message[kMessageData] = responseData;
@@ -112,7 +117,9 @@ static NSString *preprocessorJSCode = @__wvjb_js_func__(
                 }
             }
             function _fetchMessageQueue() {
-                return JSON.stringify(messageQueue);
+                var messagesJson = JSON.stringify(messageQueue);
+                messageQueue = [];
+                return messagesJson;
             }
             function _doSendMessage(message,responseCallBack) {
                 if(responseCallBack) {
@@ -124,12 +131,10 @@ static NSString *preprocessorJSCode = @__wvjb_js_func__(
                 }
                 messageQueue.push(message);
             }
-    widow.load = function() {
-        messagingIframe = document.createElement('iframe');
-        messagingIframe.style.display = 'none';
-        document.documentElement.appendChild(messagingIframe);
-        messagingIframe.src = kJSBridgeScheme+"://"+kQueueHasMessage;
-    }
+    messagingIframe = document.createElement('iframe');
+    messagingIframe.style.display = 'none';
+    document.documentElement.appendChild(messagingIframe);
+    messagingIframe.src = kJSBridgeScheme+"://"+kQueueHasMessage;
     })();
         );
 #undef __wvjb_js_func__

@@ -1,10 +1,40 @@
 <html>
     </head>
     <script language="javascript">
+     
+        window.onload = function(){
+            var messagingIframe;
+            messagingIframe = document.createElement('iframe');
+            messagingIframe.style.display = 'none';
+            document.documentElement.appendChild(messagingIframe);
+            messagingIframe.src = "https://__bridge_loaded__";
+            
+            
+        };
+    
         function buttonClick(){
-            alert("123");
+           
+            bridge.registerHandler("login",login);
+            if(bridge) {
+                //h5 调用原生成功
+                //var dict = {"a":1,"b":2};
+                //bridge.callHandler("readImage",dict,function(reaponseData){
+                                   
+                                    // alert(reaponseData);
+                                     //});
+                //原声调用H5
+            }
            
         }
+    function login(data,callback) {
+        alert("21111111");
+        var dict = {"login":1};
+        callback(dict);
+    }
+    
+   
+    
+   
     </script>
     </head>
     <body>
