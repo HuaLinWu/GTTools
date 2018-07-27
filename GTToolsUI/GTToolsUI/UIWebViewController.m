@@ -35,6 +35,11 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)nativeCallJSAction:(UIButton *)sender {
+    UIResponder *responder = self;
+    while (responder) {
+        NSLog(@"-----22222--->%@",responder);
+        responder = responder.nextResponder;
+    }
     [self.uiWebviewJSBridge callHandler:@"login" data:@{@"a":@"1",@"b":@"2"} responseCallback:^(id responseData) {
         NSLog(@"----responseData--->%@",responseData);
     }];

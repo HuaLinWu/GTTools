@@ -23,8 +23,10 @@
 
 - (IBAction)jumpWebViewBtnClick:(UIButton *)sender {
     UIWebViewController *webVC = [[UIWebViewController alloc] initWithNibName:@"UIWebViewController" bundle:[NSBundle mainBundle]];
-    [self presentViewController:webVC animated:YES completion:nil];
-   
+    [self.navigationController pushViewController:webVC animated:YES];
+//    [self presentViewController:webVC animated:YES completion:nil];
+//    [self showViewController:webVC sender:nil];
+//    [self showDetailViewController:webVC sender:nil];
 }
 - (IBAction)jumpWKWebViewClick:(UIButton *)sender {
     

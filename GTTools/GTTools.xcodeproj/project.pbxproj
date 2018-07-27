@@ -13,6 +13,10 @@
 		FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */; };
 		FE212AB920EDFA570046520F /* GTWebViewJSBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = FE212AB820EDFA570046520F /* GTWebViewJSBridge_JS.m */; };
 		FE212ABB20EDFA660046520F /* GTWebViewJSBridge_JS.h in Headers */ = {isa = PBXBuildFile; fileRef = FE212ABA20EDFA660046520F /* GTWebViewJSBridge_JS.h */; };
+		FE212AD420F30BB80046520F /* GTRouterViewControllerStack.h in Headers */ = {isa = PBXBuildFile; fileRef = FE212AD220F30BB80046520F /* GTRouterViewControllerStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE212AD520F30BB80046520F /* GTRouterViewControllerStack.m in Sources */ = {isa = PBXBuildFile; fileRef = FE212AD320F30BB80046520F /* GTRouterViewControllerStack.m */; };
+		FE212AF020F441000046520F /* UIViewController+GTRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = FE212AEE20F441000046520F /* UIViewController+GTRouter.h */; };
+		FE212AF120F441000046520F /* UIViewController+GTRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE212AEF20F441000046520F /* UIViewController+GTRouter.m */; };
 		FE3591AA20E718B300D54269 /* GTBaseNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3591A820E718B300D54269 /* GTBaseNetwork.h */; };
 		FE3591AB20E718B300D54269 /* GTBaseNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3591A920E718B300D54269 /* GTBaseNetwork.m */; };
 		FE3A40D720D9E93100F78947 /* GTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3A40CD20D9E93100F78947 /* GTTools.framework */; };
@@ -58,6 +62,20 @@
 		FE3A414D20DB3FF500F78947 /* GTWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A414B20DB3FF500F78947 /* GTWebView.m */; };
 		FE3A419720DB786000F78947 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A419520DB786000F78947 /* Aspects.m */; };
 		FE3A419820DB786000F78947 /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A419620DB786000F78947 /* Aspects.h */; };
+		FE3E0BA5210AAC1C0050CB00 /* NSObject+GTRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3E0BA3210AAC1C0050CB00 /* NSObject+GTRouter.h */; };
+		FE3E0BA6210AAC1C0050CB00 /* NSObject+GTRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BA4210AAC1C0050CB00 /* NSObject+GTRouter.m */; };
+		FE3E0BAA210B07F00050CB00 /* AObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BA9210B07F00050CB00 /* AObject.m */; };
+		FE3E0BAD210B07F90050CB00 /* BObjec.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BAB210B07F90050CB00 /* BObjec.m */; };
+		FE3E0BAF210B07FD0050CB00 /* CObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BAE210B07FD0050CB00 /* CObject.m */; };
+		FE3E0BB3210B08A70050CB00 /* DObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BB2210B08A70050CB00 /* DObject.m */; };
+		FE3E0BB6210B08B50050CB00 /* EObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BB5210B08B50050CB00 /* EObject.m */; };
+		FE3E0BB9210B08CB0050CB00 /* IObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BB8210B08CB0050CB00 /* IObject.m */; };
+		FE3E0BBC210B08DC0050CB00 /* FObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BBB210B08DC0050CB00 /* FObject.m */; };
+		FE3E0BBF210B09010050CB00 /* GObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BBE210B09010050CB00 /* GObject.m */; };
+		FE3E0BC2210B09120050CB00 /* HObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BC1210B09120050CB00 /* HObject.m */; };
+		FE3E0BC4210B0B8C0050CB00 /* RouterObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BC3210B0B8C0050CB00 /* RouterObjectTest.m */; };
+		FE3E0BCA210B233C0050CB00 /* UIView+GTRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3E0BC8210B233C0050CB00 /* UIView+GTRouter.h */; };
+		FE3E0BCB210B233C0050CB00 /* UIView+GTRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BC9210B233C0050CB00 /* UIView+GTRouter.m */; };
 		FE4E94EA20E5C8BA00FEE678 /* StringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4E94E920E5C8BA00FEE678 /* StringTest.m */; };
 		FE4E94ED20E5CF4E00FEE678 /* UIImage+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE4E94EB20E5CF4E00FEE678 /* UIImage+GTTools.h */; };
 		FE4E94EE20E5CF4E00FEE678 /* UIImage+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4E94EC20E5CF4E00FEE678 /* UIImage+GTTools.m */; };
@@ -96,6 +114,10 @@
 		FE1E040C20E1D4F900FB080E /* GTWKWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWKWebViewJSBridge.m; sourceTree = "<group>"; };
 		FE212AB820EDFA570046520F /* GTWebViewJSBridge_JS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWebViewJSBridge_JS.m; sourceTree = "<group>"; };
 		FE212ABA20EDFA660046520F /* GTWebViewJSBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTWebViewJSBridge_JS.h; sourceTree = "<group>"; };
+		FE212AD220F30BB80046520F /* GTRouterViewControllerStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTRouterViewControllerStack.h; sourceTree = "<group>"; };
+		FE212AD320F30BB80046520F /* GTRouterViewControllerStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTRouterViewControllerStack.m; sourceTree = "<group>"; };
+		FE212AEE20F441000046520F /* UIViewController+GTRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+GTRouter.h"; sourceTree = "<group>"; };
+		FE212AEF20F441000046520F /* UIViewController+GTRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+GTRouter.m"; sourceTree = "<group>"; };
 		FE3591A820E718B300D54269 /* GTBaseNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTBaseNetwork.h; sourceTree = "<group>"; };
 		FE3591A920E718B300D54269 /* GTBaseNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBaseNetwork.m; sourceTree = "<group>"; };
 		FE3A40CD20D9E93100F78947 /* GTTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +166,29 @@
 		FE3A414B20DB3FF500F78947 /* GTWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWebView.m; sourceTree = "<group>"; };
 		FE3A419520DB786000F78947 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		FE3A419620DB786000F78947 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		FE3E0BA3210AAC1C0050CB00 /* NSObject+GTRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+GTRouter.h"; sourceTree = "<group>"; };
+		FE3E0BA4210AAC1C0050CB00 /* NSObject+GTRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GTRouter.m"; sourceTree = "<group>"; };
+		FE3E0BA8210B07F00050CB00 /* AObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AObject.h; sourceTree = "<group>"; };
+		FE3E0BA9210B07F00050CB00 /* AObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AObject.m; sourceTree = "<group>"; };
+		FE3E0BAB210B07F90050CB00 /* BObjec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BObjec.m; sourceTree = "<group>"; };
+		FE3E0BAC210B07F90050CB00 /* BObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BObject.h; sourceTree = "<group>"; };
+		FE3E0BAE210B07FD0050CB00 /* CObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CObject.m; sourceTree = "<group>"; };
+		FE3E0BB0210B080A0050CB00 /* CObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CObject.h; sourceTree = "<group>"; };
+		FE3E0BB1210B08A70050CB00 /* DObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DObject.h; sourceTree = "<group>"; };
+		FE3E0BB2210B08A70050CB00 /* DObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DObject.m; sourceTree = "<group>"; };
+		FE3E0BB4210B08B50050CB00 /* EObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EObject.h; sourceTree = "<group>"; };
+		FE3E0BB5210B08B50050CB00 /* EObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EObject.m; sourceTree = "<group>"; };
+		FE3E0BB7210B08CB0050CB00 /* IObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IObject.h; sourceTree = "<group>"; };
+		FE3E0BB8210B08CB0050CB00 /* IObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IObject.m; sourceTree = "<group>"; };
+		FE3E0BBA210B08DC0050CB00 /* FObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FObject.h; sourceTree = "<group>"; };
+		FE3E0BBB210B08DC0050CB00 /* FObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FObject.m; sourceTree = "<group>"; };
+		FE3E0BBD210B09010050CB00 /* GObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GObject.h; sourceTree = "<group>"; };
+		FE3E0BBE210B09010050CB00 /* GObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GObject.m; sourceTree = "<group>"; };
+		FE3E0BC0210B09120050CB00 /* HObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HObject.h; sourceTree = "<group>"; };
+		FE3E0BC1210B09120050CB00 /* HObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HObject.m; sourceTree = "<group>"; };
+		FE3E0BC3210B0B8C0050CB00 /* RouterObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RouterObjectTest.m; sourceTree = "<group>"; };
+		FE3E0BC8210B233C0050CB00 /* UIView+GTRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+GTRouter.h"; sourceTree = "<group>"; };
+		FE3E0BC9210B233C0050CB00 /* UIView+GTRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+GTRouter.m"; sourceTree = "<group>"; };
 		FE4E94E920E5C8BA00FEE678 /* StringTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringTest.m; sourceTree = "<group>"; };
 		FE4E94EB20E5CF4E00FEE678 /* UIImage+GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GTTools.h"; sourceTree = "<group>"; };
 		FE4E94EC20E5CF4E00FEE678 /* UIImage+GTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GTTools.m"; sourceTree = "<group>"; };
@@ -184,6 +229,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE212ABC20EF6EE40046520F /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		FE212AC120F2F7CF0046520F /* GTRouter */ = {
+			isa = PBXGroup;
+			children = (
+				FE212AD220F30BB80046520F /* GTRouterViewControllerStack.h */,
+				FE212AD320F30BB80046520F /* GTRouterViewControllerStack.m */,
+				FE212AEE20F441000046520F /* UIViewController+GTRouter.h */,
+				FE212AEF20F441000046520F /* UIViewController+GTRouter.m */,
+				FE3E0BC8210B233C0050CB00 /* UIView+GTRouter.h */,
+				FE3E0BC9210B233C0050CB00 /* UIView+GTRouter.m */,
+				FE3E0BA3210AAC1C0050CB00 /* NSObject+GTRouter.h */,
+				FE3E0BA4210AAC1C0050CB00 /* NSObject+GTRouter.m */,
+			);
+			path = GTRouter;
+			sourceTree = "<group>";
+		};
 		FE3A40C320D9E93100F78947 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +280,8 @@
 				FE3A412120DA4D5900F78947 /* GTDateFormatterManager.m */,
 				FE3A412620DA62BC00F78947 /* GTSoftwareInfo.h */,
 				FE3A412720DA62BC00F78947 /* GTSoftwareInfo.m */,
+				FE212AC120F2F7CF0046520F /* GTRouter */,
+				FE212ABC20EF6EE40046520F /* MVVM */,
 				FE3A419420DB756B00F78947 /* GTSwizzle */,
 				FE3A413020DA781100F78947 /* GTWebView */,
 				FE3A412F20DA77FE00F78947 /* GTNetwork */,
@@ -232,6 +301,7 @@
 				FE3A411220DA3E2300F78947 /* GTModelTest.m */,
 				FE3A412420DA55B800F78947 /* DateFormatterManagerTest.m */,
 				FE4E94E920E5C8BA00FEE678 /* StringTest.m */,
+				FE3E0BA7210B071B0050CB00 /* NSObject+GTRouter */,
 				FE3A40DD20D9E93100F78947 /* Info.plist */,
 			);
 			path = GTToolsTests;
@@ -343,6 +413,32 @@
 			path = GTSwizzle;
 			sourceTree = "<group>";
 		};
+		FE3E0BA7210B071B0050CB00 /* NSObject+GTRouter */ = {
+			isa = PBXGroup;
+			children = (
+				FE3E0BC3210B0B8C0050CB00 /* RouterObjectTest.m */,
+				FE3E0BA8210B07F00050CB00 /* AObject.h */,
+				FE3E0BA9210B07F00050CB00 /* AObject.m */,
+				FE3E0BAC210B07F90050CB00 /* BObject.h */,
+				FE3E0BAB210B07F90050CB00 /* BObjec.m */,
+				FE3E0BB0210B080A0050CB00 /* CObject.h */,
+				FE3E0BAE210B07FD0050CB00 /* CObject.m */,
+				FE3E0BB1210B08A70050CB00 /* DObject.h */,
+				FE3E0BB2210B08A70050CB00 /* DObject.m */,
+				FE3E0BB4210B08B50050CB00 /* EObject.h */,
+				FE3E0BB5210B08B50050CB00 /* EObject.m */,
+				FE3E0BB7210B08CB0050CB00 /* IObject.h */,
+				FE3E0BB8210B08CB0050CB00 /* IObject.m */,
+				FE3E0BBA210B08DC0050CB00 /* FObject.h */,
+				FE3E0BBB210B08DC0050CB00 /* FObject.m */,
+				FE3E0BBD210B09010050CB00 /* GObject.h */,
+				FE3E0BBE210B09010050CB00 /* GObject.m */,
+				FE3E0BC0210B09120050CB00 /* HObject.h */,
+				FE3E0BC1210B09120050CB00 /* HObject.m */,
+			);
+			path = "NSObject+GTRouter";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -350,6 +446,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE212AD420F30BB80046520F /* GTRouterViewControllerStack.h in Headers */,
 				FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */,
 				FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */,
 				FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */,
@@ -374,14 +471,17 @@
 				FE4E950520E6338300FEE678 /* UIButton+GTTools.h in Headers */,
 				FE3A412D20DA767300F78947 /* UIResponder+GTTools.h in Headers */,
 				FE3A410820DA220700F78947 /* GTModelProtocol.h in Headers */,
+				FE212AF020F441000046520F /* UIViewController+GTRouter.h in Headers */,
 				FE3A414420DB3F2F00F78947 /* GTMemoryCache.h in Headers */,
 				FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */,
 				FE3A410C20DA28AE00F78947 /* NSArray+GTTools.h in Headers */,
 				FE3A40DE20D9E93100F78947 /* GTTools.h in Headers */,
 				FE3A413420DA790E00F78947 /* UICKeyChainStore.h in Headers */,
 				FE3A410620DA0F4100F78947 /* NSObject+YYModel.h in Headers */,
+				FE3E0BA5210AAC1C0050CB00 /* NSObject+GTRouter.h in Headers */,
 				FE4E94F120E6152B00FEE678 /* NSAttributedString+GTTools.h in Headers */,
 				FE3A414820DB3F5E00F78947 /* GTDiskCache.h in Headers */,
+				FE3E0BCA210B233C0050CB00 /* UIView+GTRouter.h in Headers */,
 				FE3A414C20DB3FF500F78947 /* GTWebView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,7 +588,9 @@
 				FE3A40EA20D9F0EC00F78947 /* NSDictionary+GTTools.m in Sources */,
 				FE3A40FA20DA0EC000F78947 /* GTModelManager.m in Sources */,
 				FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */,
+				FE3E0BCB210B233C0050CB00 /* UIView+GTRouter.m in Sources */,
 				FE4E950620E6338300FEE678 /* UIButton+GTTools.m in Sources */,
+				FE212AD520F30BB80046520F /* GTRouterViewControllerStack.m in Sources */,
 				FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */,
 				FE3A411B20DA45AA00F78947 /* CAGradientLayer+GTTools.m in Sources */,
 				FE3A40F620DA00BE00F78947 /* GTNullFilter.m in Sources */,
@@ -507,11 +609,13 @@
 				FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */,
 				FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */,
 				FE3A419720DB786000F78947 /* Aspects.m in Sources */,
+				FE212AF120F441000046520F /* UIViewController+GTRouter.m in Sources */,
 				FE3A412320DA4D5900F78947 /* GTDateFormatterManager.m in Sources */,
 				FE3A410420DA0F4100F78947 /* NSObject+YYModel.m in Sources */,
 				FE3A412C20DA767300F78947 /* UIResponder+GTTools.m in Sources */,
 				FE3A413520DA790E00F78947 /* UICKeyChainStore.m in Sources */,
 				FE4E950220E628E700FEE678 /* NSData+GTTools.m in Sources */,
+				FE3E0BA6210AAC1C0050CB00 /* NSObject+GTRouter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,10 +623,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE3E0BAA210B07F00050CB00 /* AObject.m in Sources */,
+				FE3E0BBC210B08DC0050CB00 /* FObject.m in Sources */,
 				FE3A411320DA3E2300F78947 /* GTModelTest.m in Sources */,
 				FE3A412520DA55B800F78947 /* DateFormatterManagerTest.m in Sources */,
+				FE3E0BAF210B07FD0050CB00 /* CObject.m in Sources */,
+				FE3E0BC4210B0B8C0050CB00 /* RouterObjectTest.m in Sources */,
+				FE3E0BB9210B08CB0050CB00 /* IObject.m in Sources */,
+				FE3E0BBF210B09010050CB00 /* GObject.m in Sources */,
 				FE4E94EA20E5C8BA00FEE678 /* StringTest.m in Sources */,
+				FE3E0BAD210B07F90050CB00 /* BObjec.m in Sources */,
+				FE3E0BC2210B09120050CB00 /* HObject.m in Sources */,
+				FE3E0BB6210B08B50050CB00 /* EObject.m in Sources */,
 				FE3A40DC20D9E93100F78947 /* GTToolsTests.m in Sources */,
+				FE3E0BB3210B08A70050CB00 /* DObject.m in Sources */,
 				FE3A410F20DA3DF900F78947 /* NSArratTest.m in Sources */,
 				FE3A411120DA3E1000F78947 /* NSDictionaryTest.m in Sources */,
 			);
