@@ -29,12 +29,41 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 - (void)testEncoding {
-    NSString *sourceStr = @"https://www.baidu.com?a=1&b=2#iframe=1";
-    NSLog(@"---md5String--->%@",[sourceStr gt_md5String]);
-    NSString *urlEncodingStr = [sourceStr gt_urlEncodingAllowCharacters:nil];
-    NSLog(@"---defaultURLEncoding--->%@",urlEncodingStr);
-    NSString *decodingStr = [urlEncodingStr gt_urlDecoding];
-    NSLog(@"---decodingStr---->%@",decodingStr);
+    {
+         NSString *sourceStr = @"https://www.baidu.com?a=1&b=2#iframe=1";
+        NSLog(@"------>%@",[sourceStr gt_urlEncoding:NO]);
+    }
+    {
+        NSString *sourceStr = @"https://www.baidu.com?a=1&b=2&c=吴华林#iframe=1";
+        NSLog(@"------>%@",[sourceStr gt_urlEncodingAllowCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]);
+    }
+    {
+        NSString *sourceStr = @"https://www.baidu.com?a=1&b=2&c=吴华林#iframe=1";
+        NSLog(@"------>%@",[sourceStr gt_urlEncodingAllowCharacters:nil]);
+    }
+    {
+        NSString *sourceStr = @"https://www.baidu.com?a=1&b=2&c=吴华林#iframe=1";
+        NSLog(@"------>%@",[sourceStr gt_urlEncodingAllowCharacters:[NSCharacterSet URLPathAllowedCharacterSet]]);
+    }
+    {
+        NSString *sourceStr = @"https://www.baidu.com?a=1&b=2&c=吴华林#iframe=1";
+        NSLog(@"------>%@",[sourceStr gt_urlEncoding:NO]);
+    }
+   
+    
+}
+- (void)testDecoding {
+    {
+        NSString *sourceStr = @"https://www.baidu.com?a=1&b=2&c=吴华林#iframe=1";
+        sourceStr= [sourceStr gt_urlEncoding:YES];
+         NSLog(@"---encoding--->%@",sourceStr);
+        sourceStr= [sourceStr gt_urlEncoding:YES];
+        NSLog(@"---encoding--->%@",sourceStr);
+        sourceStr= [sourceStr gt_urlEncoding:YES];
+        NSLog(@"---encoding--->%@",sourceStr);
+        sourceStr= [sourceStr gt_urlEncoding:YES];
+        NSLog(@"---urlDecoding--->%@",[sourceStr gt_urlDecoding:YES]);
+    }
 }
 - (void)testPerformanceExample {
     // This is an example of a performance test case.

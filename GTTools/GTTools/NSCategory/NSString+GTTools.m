@@ -26,8 +26,26 @@
          return [self stringByAddingPercentEncodingWithAllowedCharacters:characters];
     }
 }
-- (NSString *)gt_urlDecoding {
-    return [self stringByRemovingPercentEncoding];
+- (NSString *)gt_urlEncoding:(BOOL)flag {
+    if(flag) {
+       NSString *decodingStr = [self gt_urlDecoding:flag];
+       return [decodingStr gt_urlEncodingAllowCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    } else {
+        return [self gt_urlEncodingAllowCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    }
 }
 
+- (NSString *)gt_urlDecoding:(BOOL)cyclic {
+    if(cyclic) {
+        NSString *tempStr = self;
+        NSString *decodeStr = [self stringByRemovingPercentEncoding];
+        while (![tempStr isEqualToString:decodeStr]) {
+            tempStr = decodeStr;
+            decodeStr = [decodeStr stringByRemovingPercentEncoding];
+        }
+        return tempStr;
+    } else {
+       return [self stringByRemovingPercentEncoding];
+    }
+}
 @end

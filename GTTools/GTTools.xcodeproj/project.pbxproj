@@ -9,6 +9,30 @@
 /* Begin PBXBuildFile section */
 		FE0F8D53210EE9B80026355D /* GTEventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D51210EE9B80026355D /* GTEventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE0F8D54210EE9B80026355D /* GTEventBus.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D52210EE9B80026355D /* GTEventBus.m */; };
+		FE0F8D68210FFA5A0026355D /* GTRoute+OpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D5F210FFA590026355D /* GTRoute+OpenURL.m */; };
+		FE0F8D69210FFA5A0026355D /* GTRouteGlobalConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D60210FFA590026355D /* GTRouteGlobalConstant.m */; };
+		FE0F8D6A210FFA5A0026355D /* GTRoute+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D61210FFA590026355D /* GTRoute+PresentViewController.m */; };
+		FE0F8D6B210FFA5A0026355D /* UIViewControllerRouteProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D62210FFA590026355D /* UIViewControllerRouteProtocol.h */; };
+		FE0F8D6C210FFA5A0026355D /* GTRoute+PresentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D63210FFA590026355D /* GTRoute+PresentViewController.h */; };
+		FE0F8D6D210FFA5A0026355D /* GTRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D64210FFA590026355D /* GTRoute.m */; };
+		FE0F8D6E210FFA5A0026355D /* GTRoute+OpenURL.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D65210FFA590026355D /* GTRoute+OpenURL.h */; };
+		FE0F8D6F210FFA5A0026355D /* GTRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D66210FFA590026355D /* GTRoute.h */; };
+		FE0F8D70210FFA5A0026355D /* GTRouteGlobalConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D67210FFA590026355D /* GTRouteGlobalConstant.h */; };
+		FE0F8D7A2110442F0026355D /* NSURL+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D782110442F0026355D /* NSURL+GTTools.h */; };
+		FE0F8D7B2110442F0026355D /* NSURL+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D792110442F0026355D /* NSURL+GTTools.m */; };
+		FE0F8D7D211055070026355D /* NSURLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D7C211055070026355D /* NSURLTest.m */; };
+		FE0F8D8B21106E700026355D /* UITableViewCell+GTTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D7F21106E700026355D /* UITableViewCell+GTTableViewAdapter.m */; };
+		FE0F8D8C21106E700026355D /* UITableViewAdapterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D8021106E700026355D /* UITableViewAdapterDelegate.h */; };
+		FE0F8D8D21106E700026355D /* UITableViewMultipleSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D8121106E700026355D /* UITableViewMultipleSectionAdapter.m */; };
+		FE0F8D8E21106E700026355D /* UITableViewSingleSctionBaseCelIItem.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D8221106E700026355D /* UITableViewSingleSctionBaseCelIItem.h */; };
+		FE0F8D8F21106E700026355D /* UITableViewSingleSctionAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D8321106E700026355D /* UITableViewSingleSctionAdapter.h */; };
+		FE0F8D9021106E700026355D /* UITableViewCell+Line.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D8421106E700026355D /* UITableViewCell+Line.m */; };
+		FE0F8D9121106E700026355D /* UITableViewCell+GTTableViewAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D8521106E700026355D /* UITableViewCell+GTTableViewAdapter.h */; };
+		FE0F8D9221106E700026355D /* UITableViewMultipleSectionAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D8621106E700026355D /* UITableViewMultipleSectionAdapter.h */; };
+		FE0F8D9321106E700026355D /* UITableViewSingleSctionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D8721106E700026355D /* UITableViewSingleSctionAdapter.m */; };
+		FE0F8D9421106E700026355D /* UITableViewSingleSctionBaseCelIItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D8821106E700026355D /* UITableViewSingleSctionBaseCelIItem.m */; };
+		FE0F8D9521106E700026355D /* UITableViewCellProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D8921106E700026355D /* UITableViewCellProtocol.h */; };
+		FE0F8D9621106E700026355D /* UITableViewCell+Line.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D8A21106E700026355D /* UITableViewCell+Line.h */; };
 		FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1E040720E1D4DF00FB080E /* GTUIWebViewJSBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */; };
 		FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */; };
@@ -20,7 +44,7 @@
 		FE3A40D720D9E93100F78947 /* GTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3A40CD20D9E93100F78947 /* GTTools.framework */; };
 		FE3A40DC20D9E93100F78947 /* GTToolsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A40DB20D9E93100F78947 /* GTToolsTests.m */; };
 		FE3A40DE20D9E93100F78947 /* GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A40D020D9E93100F78947 /* GTTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FE3A40E920D9F0EC00F78947 /* NSDictionary+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A40E720D9F0EC00F78947 /* NSDictionary+GTTools.h */; };
+		FE3A40E920D9F0EC00F78947 /* NSDictionary+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A40E720D9F0EC00F78947 /* NSDictionary+GTTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE3A40EA20D9F0EC00F78947 /* NSDictionary+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A40E820D9F0EC00F78947 /* NSDictionary+GTTools.m */; };
 		FE3A40F520DA00BE00F78947 /* GTNullFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A40F320DA00BE00F78947 /* GTNullFilter.h */; };
 		FE3A40F620DA00BE00F78947 /* GTNullFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A40F420DA00BE00F78947 /* GTNullFilter.m */; };
@@ -46,8 +70,6 @@
 		FE3A412520DA55B800F78947 /* DateFormatterManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A412420DA55B800F78947 /* DateFormatterManagerTest.m */; };
 		FE3A412820DA62BC00F78947 /* GTSoftwareInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A412620DA62BC00F78947 /* GTSoftwareInfo.h */; };
 		FE3A412920DA62BC00F78947 /* GTSoftwareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A412720DA62BC00F78947 /* GTSoftwareInfo.m */; };
-		FE3A412C20DA767300F78947 /* UIResponder+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A412A20DA767200F78947 /* UIResponder+GTTools.m */; };
-		FE3A412D20DA767300F78947 /* UIResponder+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A412B20DA767200F78947 /* UIResponder+GTTools.h */; };
 		FE3A413420DA790E00F78947 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A413220DA790E00F78947 /* UICKeyChainStore.h */; };
 		FE3A413520DA790E00F78947 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A413320DA790E00F78947 /* UICKeyChainStore.m */; };
 		FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A413A20DB361700F78947 /* UIView+GTTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,16 +82,6 @@
 		FE3A414D20DB3FF500F78947 /* GTWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A414B20DB3FF500F78947 /* GTWebView.m */; };
 		FE3A419720DB786000F78947 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A419520DB786000F78947 /* Aspects.m */; };
 		FE3A419820DB786000F78947 /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3A419620DB786000F78947 /* Aspects.h */; };
-		FE3E0BAA210B07F00050CB00 /* AObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BA9210B07F00050CB00 /* AObject.m */; };
-		FE3E0BAD210B07F90050CB00 /* BObjec.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BAB210B07F90050CB00 /* BObjec.m */; };
-		FE3E0BAF210B07FD0050CB00 /* CObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BAE210B07FD0050CB00 /* CObject.m */; };
-		FE3E0BB3210B08A70050CB00 /* DObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BB2210B08A70050CB00 /* DObject.m */; };
-		FE3E0BB6210B08B50050CB00 /* EObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BB5210B08B50050CB00 /* EObject.m */; };
-		FE3E0BB9210B08CB0050CB00 /* IObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BB8210B08CB0050CB00 /* IObject.m */; };
-		FE3E0BBC210B08DC0050CB00 /* FObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BBB210B08DC0050CB00 /* FObject.m */; };
-		FE3E0BBF210B09010050CB00 /* GObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BBE210B09010050CB00 /* GObject.m */; };
-		FE3E0BC2210B09120050CB00 /* HObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BC1210B09120050CB00 /* HObject.m */; };
-		FE3E0BC4210B0B8C0050CB00 /* RouterObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BC3210B0B8C0050CB00 /* RouterObjectTest.m */; };
 		FE4E94EA20E5C8BA00FEE678 /* StringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4E94E920E5C8BA00FEE678 /* StringTest.m */; };
 		FE4E94ED20E5CF4E00FEE678 /* UIImage+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE4E94EB20E5CF4E00FEE678 /* UIImage+GTTools.h */; };
 		FE4E94EE20E5CF4E00FEE678 /* UIImage+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4E94EC20E5CF4E00FEE678 /* UIImage+GTTools.m */; };
@@ -104,6 +116,30 @@
 /* Begin PBXFileReference section */
 		FE0F8D51210EE9B80026355D /* GTEventBus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTEventBus.h; sourceTree = "<group>"; };
 		FE0F8D52210EE9B80026355D /* GTEventBus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEventBus.m; sourceTree = "<group>"; };
+		FE0F8D5F210FFA590026355D /* GTRoute+OpenURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRoute+OpenURL.m"; sourceTree = "<group>"; };
+		FE0F8D60210FFA590026355D /* GTRouteGlobalConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTRouteGlobalConstant.m; sourceTree = "<group>"; };
+		FE0F8D61210FFA590026355D /* GTRoute+PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRoute+PresentViewController.m"; sourceTree = "<group>"; };
+		FE0F8D62210FFA590026355D /* UIViewControllerRouteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewControllerRouteProtocol.h; sourceTree = "<group>"; };
+		FE0F8D63210FFA590026355D /* GTRoute+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRoute+PresentViewController.h"; sourceTree = "<group>"; };
+		FE0F8D64210FFA590026355D /* GTRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTRoute.m; sourceTree = "<group>"; };
+		FE0F8D65210FFA590026355D /* GTRoute+OpenURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRoute+OpenURL.h"; sourceTree = "<group>"; };
+		FE0F8D66210FFA590026355D /* GTRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTRoute.h; sourceTree = "<group>"; };
+		FE0F8D67210FFA590026355D /* GTRouteGlobalConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTRouteGlobalConstant.h; sourceTree = "<group>"; };
+		FE0F8D782110442F0026355D /* NSURL+GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+GTTools.h"; sourceTree = "<group>"; };
+		FE0F8D792110442F0026355D /* NSURL+GTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+GTTools.m"; sourceTree = "<group>"; };
+		FE0F8D7C211055070026355D /* NSURLTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSURLTest.m; sourceTree = "<group>"; };
+		FE0F8D7F21106E700026355D /* UITableViewCell+GTTableViewAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+GTTableViewAdapter.m"; sourceTree = "<group>"; };
+		FE0F8D8021106E700026355D /* UITableViewAdapterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewAdapterDelegate.h; sourceTree = "<group>"; };
+		FE0F8D8121106E700026355D /* UITableViewMultipleSectionAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewMultipleSectionAdapter.m; sourceTree = "<group>"; };
+		FE0F8D8221106E700026355D /* UITableViewSingleSctionBaseCelIItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewSingleSctionBaseCelIItem.h; sourceTree = "<group>"; };
+		FE0F8D8321106E700026355D /* UITableViewSingleSctionAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewSingleSctionAdapter.h; sourceTree = "<group>"; };
+		FE0F8D8421106E700026355D /* UITableViewCell+Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Line.m"; sourceTree = "<group>"; };
+		FE0F8D8521106E700026355D /* UITableViewCell+GTTableViewAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+GTTableViewAdapter.h"; sourceTree = "<group>"; };
+		FE0F8D8621106E700026355D /* UITableViewMultipleSectionAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewMultipleSectionAdapter.h; sourceTree = "<group>"; };
+		FE0F8D8721106E700026355D /* UITableViewSingleSctionAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewSingleSctionAdapter.m; sourceTree = "<group>"; };
+		FE0F8D8821106E700026355D /* UITableViewSingleSctionBaseCelIItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewSingleSctionBaseCelIItem.m; sourceTree = "<group>"; };
+		FE0F8D8921106E700026355D /* UITableViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewCellProtocol.h; sourceTree = "<group>"; };
+		FE0F8D8A21106E700026355D /* UITableViewCell+Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Line.h"; sourceTree = "<group>"; };
 		FE1E040720E1D4DF00FB080E /* GTUIWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUIWebViewJSBridge.h; sourceTree = "<group>"; };
 		FE1E040820E1D4DF00FB080E /* GTUIWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUIWebViewJSBridge.m; sourceTree = "<group>"; };
 		FE1E040B20E1D4F900FB080E /* GTWKWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTWKWebViewJSBridge.h; sourceTree = "<group>"; };
@@ -144,8 +180,6 @@
 		FE3A412420DA55B800F78947 /* DateFormatterManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateFormatterManagerTest.m; sourceTree = "<group>"; };
 		FE3A412620DA62BC00F78947 /* GTSoftwareInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTSoftwareInfo.h; sourceTree = "<group>"; };
 		FE3A412720DA62BC00F78947 /* GTSoftwareInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTSoftwareInfo.m; sourceTree = "<group>"; };
-		FE3A412A20DA767200F78947 /* UIResponder+GTTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+GTTools.m"; sourceTree = "<group>"; };
-		FE3A412B20DA767200F78947 /* UIResponder+GTTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+GTTools.h"; sourceTree = "<group>"; };
 		FE3A413220DA790E00F78947 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
 		FE3A413320DA790E00F78947 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
 		FE3A413A20DB361700F78947 /* UIView+GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+GTTools.h"; sourceTree = "<group>"; };
@@ -158,25 +192,6 @@
 		FE3A414B20DB3FF500F78947 /* GTWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWebView.m; sourceTree = "<group>"; };
 		FE3A419520DB786000F78947 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		FE3A419620DB786000F78947 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
-		FE3E0BA8210B07F00050CB00 /* AObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AObject.h; sourceTree = "<group>"; };
-		FE3E0BA9210B07F00050CB00 /* AObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AObject.m; sourceTree = "<group>"; };
-		FE3E0BAB210B07F90050CB00 /* BObjec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BObjec.m; sourceTree = "<group>"; };
-		FE3E0BAC210B07F90050CB00 /* BObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BObject.h; sourceTree = "<group>"; };
-		FE3E0BAE210B07FD0050CB00 /* CObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CObject.m; sourceTree = "<group>"; };
-		FE3E0BB0210B080A0050CB00 /* CObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CObject.h; sourceTree = "<group>"; };
-		FE3E0BB1210B08A70050CB00 /* DObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DObject.h; sourceTree = "<group>"; };
-		FE3E0BB2210B08A70050CB00 /* DObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DObject.m; sourceTree = "<group>"; };
-		FE3E0BB4210B08B50050CB00 /* EObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EObject.h; sourceTree = "<group>"; };
-		FE3E0BB5210B08B50050CB00 /* EObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EObject.m; sourceTree = "<group>"; };
-		FE3E0BB7210B08CB0050CB00 /* IObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IObject.h; sourceTree = "<group>"; };
-		FE3E0BB8210B08CB0050CB00 /* IObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IObject.m; sourceTree = "<group>"; };
-		FE3E0BBA210B08DC0050CB00 /* FObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FObject.h; sourceTree = "<group>"; };
-		FE3E0BBB210B08DC0050CB00 /* FObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FObject.m; sourceTree = "<group>"; };
-		FE3E0BBD210B09010050CB00 /* GObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GObject.h; sourceTree = "<group>"; };
-		FE3E0BBE210B09010050CB00 /* GObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GObject.m; sourceTree = "<group>"; };
-		FE3E0BC0210B09120050CB00 /* HObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HObject.h; sourceTree = "<group>"; };
-		FE3E0BC1210B09120050CB00 /* HObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HObject.m; sourceTree = "<group>"; };
-		FE3E0BC3210B0B8C0050CB00 /* RouterObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RouterObjectTest.m; sourceTree = "<group>"; };
 		FE4E94E920E5C8BA00FEE678 /* StringTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringTest.m; sourceTree = "<group>"; };
 		FE4E94EB20E5CF4E00FEE678 /* UIImage+GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GTTools.h"; sourceTree = "<group>"; };
 		FE4E94EC20E5CF4E00FEE678 /* UIImage+GTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GTTools.m"; sourceTree = "<group>"; };
@@ -217,6 +232,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE0F8D7E21106E700026355D /* UITableViewAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F8D7F21106E700026355D /* UITableViewCell+GTTableViewAdapter.m */,
+				FE0F8D8021106E700026355D /* UITableViewAdapterDelegate.h */,
+				FE0F8D8121106E700026355D /* UITableViewMultipleSectionAdapter.m */,
+				FE0F8D8221106E700026355D /* UITableViewSingleSctionBaseCelIItem.h */,
+				FE0F8D8321106E700026355D /* UITableViewSingleSctionAdapter.h */,
+				FE0F8D8A21106E700026355D /* UITableViewCell+Line.h */,
+				FE0F8D8421106E700026355D /* UITableViewCell+Line.m */,
+				FE0F8D8521106E700026355D /* UITableViewCell+GTTableViewAdapter.h */,
+				FE0F8D8621106E700026355D /* UITableViewMultipleSectionAdapter.h */,
+				FE0F8D8721106E700026355D /* UITableViewSingleSctionAdapter.m */,
+				FE0F8D8821106E700026355D /* UITableViewSingleSctionBaseCelIItem.m */,
+				FE0F8D8921106E700026355D /* UITableViewCellProtocol.h */,
+			);
+			path = UITableViewAdapter;
+			sourceTree = "<group>";
+		};
 		FE212ABC20EF6EE40046520F /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +263,15 @@
 			children = (
 				FE0F8D51210EE9B80026355D /* GTEventBus.h */,
 				FE0F8D52210EE9B80026355D /* GTEventBus.m */,
+				FE0F8D66210FFA590026355D /* GTRoute.h */,
+				FE0F8D64210FFA590026355D /* GTRoute.m */,
+				FE0F8D65210FFA590026355D /* GTRoute+OpenURL.h */,
+				FE0F8D5F210FFA590026355D /* GTRoute+OpenURL.m */,
+				FE0F8D63210FFA590026355D /* GTRoute+PresentViewController.h */,
+				FE0F8D61210FFA590026355D /* GTRoute+PresentViewController.m */,
+				FE0F8D67210FFA590026355D /* GTRouteGlobalConstant.h */,
+				FE0F8D60210FFA590026355D /* GTRouteGlobalConstant.m */,
+				FE0F8D62210FFA590026355D /* UIViewControllerRouteProtocol.h */,
 			);
 			path = GTRouter;
 			sourceTree = "<group>";
@@ -262,6 +305,7 @@
 				FE3A412120DA4D5900F78947 /* GTDateFormatterManager.m */,
 				FE3A412620DA62BC00F78947 /* GTSoftwareInfo.h */,
 				FE3A412720DA62BC00F78947 /* GTSoftwareInfo.m */,
+				FE0F8D7E21106E700026355D /* UITableViewAdapter */,
 				FE212AC120F2F7CF0046520F /* GTRouter */,
 				FE212ABC20EF6EE40046520F /* MVVM */,
 				FE3A419420DB756B00F78947 /* GTSwizzle */,
@@ -283,7 +327,7 @@
 				FE3A411220DA3E2300F78947 /* GTModelTest.m */,
 				FE3A412420DA55B800F78947 /* DateFormatterManagerTest.m */,
 				FE4E94E920E5C8BA00FEE678 /* StringTest.m */,
-				FE3E0BA7210B071B0050CB00 /* NSObject+GTRouter */,
+				FE0F8D7C211055070026355D /* NSURLTest.m */,
 				FE3A40DD20D9E93100F78947 /* Info.plist */,
 			);
 			path = GTToolsTests;
@@ -323,12 +367,12 @@
 				FE3A411C20DA49F000F78947 /* UIColor+GTTools.m */,
 				FE3A411820DA45AA00F78947 /* CAGradientLayer+GTTools.h */,
 				FE3A411920DA45AA00F78947 /* CAGradientLayer+GTTools.m */,
-				FE3A412B20DA767200F78947 /* UIResponder+GTTools.h */,
-				FE3A412A20DA767200F78947 /* UIResponder+GTTools.m */,
 				FE3A413A20DB361700F78947 /* UIView+GTTools.h */,
 				FE3A413B20DB361700F78947 /* UIView+GTTools.m */,
 				FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */,
 				FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */,
+				FE0F8D782110442F0026355D /* NSURL+GTTools.h */,
+				FE0F8D792110442F0026355D /* NSURL+GTTools.m */,
 				FE4E94EF20E6152A00FEE678 /* NSAttributedString+GTTools.h */,
 				FE4E94F020E6152B00FEE678 /* NSAttributedString+GTTools.m */,
 				FE4E94F720E61F6F00FEE678 /* UILabel+GTTools.h */,
@@ -395,32 +439,6 @@
 			path = GTSwizzle;
 			sourceTree = "<group>";
 		};
-		FE3E0BA7210B071B0050CB00 /* NSObject+GTRouter */ = {
-			isa = PBXGroup;
-			children = (
-				FE3E0BC3210B0B8C0050CB00 /* RouterObjectTest.m */,
-				FE3E0BA8210B07F00050CB00 /* AObject.h */,
-				FE3E0BA9210B07F00050CB00 /* AObject.m */,
-				FE3E0BAC210B07F90050CB00 /* BObject.h */,
-				FE3E0BAB210B07F90050CB00 /* BObjec.m */,
-				FE3E0BB0210B080A0050CB00 /* CObject.h */,
-				FE3E0BAE210B07FD0050CB00 /* CObject.m */,
-				FE3E0BB1210B08A70050CB00 /* DObject.h */,
-				FE3E0BB2210B08A70050CB00 /* DObject.m */,
-				FE3E0BB4210B08B50050CB00 /* EObject.h */,
-				FE3E0BB5210B08B50050CB00 /* EObject.m */,
-				FE3E0BB7210B08CB0050CB00 /* IObject.h */,
-				FE3E0BB8210B08CB0050CB00 /* IObject.m */,
-				FE3E0BBA210B08DC0050CB00 /* FObject.h */,
-				FE3E0BBB210B08DC0050CB00 /* FObject.m */,
-				FE3E0BBD210B09010050CB00 /* GObject.h */,
-				FE3E0BBE210B09010050CB00 /* GObject.m */,
-				FE3E0BC0210B09120050CB00 /* HObject.h */,
-				FE3E0BC1210B09120050CB00 /* HObject.m */,
-			);
-			path = "NSObject+GTRouter";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -428,39 +446,51 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE3A40E920D9F0EC00F78947 /* NSDictionary+GTTools.h in Headers */,
 				FE0F8D53210EE9B80026355D /* GTEventBus.h in Headers */,
 				FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */,
 				FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */,
 				FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */,
 				FE3A412220DA4D5900F78947 /* GTDateFormatterManager.h in Headers */,
+				FE0F8D6E210FFA5A0026355D /* GTRoute+OpenURL.h in Headers */,
+				FE0F8D9121106E700026355D /* UITableViewCell+GTTableViewAdapter.h in Headers */,
 				FE3A40F520DA00BE00F78947 /* GTNullFilter.h in Headers */,
 				FE4E94FD20E6279B00FEE678 /* UIFont+GTTools.h in Headers */,
 				FE3591AA20E718B300D54269 /* GTBaseNetwork.h in Headers */,
 				FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */,
 				FE212ABB20EDFA660046520F /* GTWebViewJSBridge_JS.h in Headers */,
+				FE0F8D70210FFA5A0026355D /* GTRouteGlobalConstant.h in Headers */,
 				FE3A40F920DA0EC000F78947 /* GTModelManager.h in Headers */,
 				FE3A410320DA0F4100F78947 /* YYModel.h in Headers */,
 				FE4E94ED20E5CF4E00FEE678 /* UIImage+GTTools.h in Headers */,
 				FE4E94F520E61C2700FEE678 /* UIImageView+GTTools.h in Headers */,
+				FE0F8D7A2110442F0026355D /* NSURL+GTTools.h in Headers */,
 				FE3A411F20DA49F000F78947 /* UIColor+GTTools.h in Headers */,
-				FE3A40E920D9F0EC00F78947 /* NSDictionary+GTTools.h in Headers */,
 				FE3A412820DA62BC00F78947 /* GTSoftwareInfo.h in Headers */,
 				FE4E94F920E61F6F00FEE678 /* UILabel+GTTools.h in Headers */,
 				FE3A411A20DA45AA00F78947 /* CAGradientLayer+GTTools.h in Headers */,
+				FE0F8D8F21106E700026355D /* UITableViewSingleSctionAdapter.h in Headers */,
+				FE0F8D9221106E700026355D /* UITableViewMultipleSectionAdapter.h in Headers */,
 				FE3A410220DA0F4100F78947 /* YYClassInfo.h in Headers */,
+				FE0F8D8C21106E700026355D /* UITableViewAdapterDelegate.h in Headers */,
 				FE4E950120E628E700FEE678 /* NSData+GTTools.h in Headers */,
+				FE0F8D6F210FFA5A0026355D /* GTRoute.h in Headers */,
 				FE3A419820DB786000F78947 /* Aspects.h in Headers */,
 				FE4E950520E6338300FEE678 /* UIButton+GTTools.h in Headers */,
-				FE3A412D20DA767300F78947 /* UIResponder+GTTools.h in Headers */,
+				FE0F8D6B210FFA5A0026355D /* UIViewControllerRouteProtocol.h in Headers */,
 				FE3A410820DA220700F78947 /* GTModelProtocol.h in Headers */,
 				FE3A414420DB3F2F00F78947 /* GTMemoryCache.h in Headers */,
 				FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */,
+				FE0F8D8E21106E700026355D /* UITableViewSingleSctionBaseCelIItem.h in Headers */,
 				FE3A410C20DA28AE00F78947 /* NSArray+GTTools.h in Headers */,
 				FE3A40DE20D9E93100F78947 /* GTTools.h in Headers */,
+				FE0F8D9521106E700026355D /* UITableViewCellProtocol.h in Headers */,
 				FE3A413420DA790E00F78947 /* UICKeyChainStore.h in Headers */,
 				FE3A410620DA0F4100F78947 /* NSObject+YYModel.h in Headers */,
 				FE4E94F120E6152B00FEE678 /* NSAttributedString+GTTools.h in Headers */,
+				FE0F8D6C210FFA5A0026355D /* GTRoute+PresentViewController.h in Headers */,
 				FE3A414820DB3F5E00F78947 /* GTDiskCache.h in Headers */,
+				FE0F8D9621106E700026355D /* UITableViewCell+Line.h in Headers */,
 				FE3A414C20DB3FF500F78947 /* GTWebView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,19 +594,27 @@
 				FE4E94FA20E61F6F00FEE678 /* UILabel+GTTools.m in Sources */,
 				FE4E94FE20E6279B00FEE678 /* UIFont+GTTools.m in Sources */,
 				FE3A411E20DA49F000F78947 /* UIColor+GTTools.m in Sources */,
+				FE0F8D9021106E700026355D /* UITableViewCell+Line.m in Sources */,
 				FE3A40EA20D9F0EC00F78947 /* NSDictionary+GTTools.m in Sources */,
 				FE3A40FA20DA0EC000F78947 /* GTModelManager.m in Sources */,
+				FE0F8D7B2110442F0026355D /* NSURL+GTTools.m in Sources */,
 				FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */,
 				FE4E950620E6338300FEE678 /* UIButton+GTTools.m in Sources */,
 				FE0F8D54210EE9B80026355D /* GTEventBus.m in Sources */,
 				FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */,
+				FE0F8D9321106E700026355D /* UITableViewSingleSctionAdapter.m in Sources */,
 				FE3A411B20DA45AA00F78947 /* CAGradientLayer+GTTools.m in Sources */,
 				FE3A40F620DA00BE00F78947 /* GTNullFilter.m in Sources */,
 				FE3A414920DB3F5E00F78947 /* GTDiskCache.m in Sources */,
 				FE3A410D20DA28AE00F78947 /* NSArray+GTTools.m in Sources */,
+				FE0F8D68210FFA5A0026355D /* GTRoute+OpenURL.m in Sources */,
+				FE0F8D8D21106E700026355D /* UITableViewMultipleSectionAdapter.m in Sources */,
 				FE3A412920DA62BC00F78947 /* GTSoftwareInfo.m in Sources */,
+				FE0F8D6D210FFA5A0026355D /* GTRoute.m in Sources */,
 				FE3591AB20E718B300D54269 /* GTBaseNetwork.m in Sources */,
+				FE0F8D6A210FFA5A0026355D /* GTRoute+PresentViewController.m in Sources */,
 				FE4E94EE20E5CF4E00FEE678 /* UIImage+GTTools.m in Sources */,
+				FE0F8D69210FFA5A0026355D /* GTRouteGlobalConstant.m in Sources */,
 				FE4E94F620E61C2700FEE678 /* UIImageView+GTTools.m in Sources */,
 				FE4E94F220E6152B00FEE678 /* NSAttributedString+GTTools.m in Sources */,
 				FE3A410520DA0F4100F78947 /* YYClassInfo.m in Sources */,
@@ -587,10 +625,11 @@
 				FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */,
 				FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */,
 				FE3A419720DB786000F78947 /* Aspects.m in Sources */,
+				FE0F8D9421106E700026355D /* UITableViewSingleSctionBaseCelIItem.m in Sources */,
 				FE3A412320DA4D5900F78947 /* GTDateFormatterManager.m in Sources */,
 				FE3A410420DA0F4100F78947 /* NSObject+YYModel.m in Sources */,
-				FE3A412C20DA767300F78947 /* UIResponder+GTTools.m in Sources */,
 				FE3A413520DA790E00F78947 /* UICKeyChainStore.m in Sources */,
+				FE0F8D8B21106E700026355D /* UITableViewCell+GTTableViewAdapter.m in Sources */,
 				FE4E950220E628E700FEE678 /* NSData+GTTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,20 +638,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3E0BAA210B07F00050CB00 /* AObject.m in Sources */,
-				FE3E0BBC210B08DC0050CB00 /* FObject.m in Sources */,
 				FE3A411320DA3E2300F78947 /* GTModelTest.m in Sources */,
 				FE3A412520DA55B800F78947 /* DateFormatterManagerTest.m in Sources */,
-				FE3E0BAF210B07FD0050CB00 /* CObject.m in Sources */,
-				FE3E0BC4210B0B8C0050CB00 /* RouterObjectTest.m in Sources */,
-				FE3E0BB9210B08CB0050CB00 /* IObject.m in Sources */,
-				FE3E0BBF210B09010050CB00 /* GObject.m in Sources */,
+				FE0F8D7D211055070026355D /* NSURLTest.m in Sources */,
 				FE4E94EA20E5C8BA00FEE678 /* StringTest.m in Sources */,
-				FE3E0BAD210B07F90050CB00 /* BObjec.m in Sources */,
-				FE3E0BC2210B09120050CB00 /* HObject.m in Sources */,
-				FE3E0BB6210B08B50050CB00 /* EObject.m in Sources */,
 				FE3A40DC20D9E93100F78947 /* GTToolsTests.m in Sources */,
-				FE3E0BB3210B08A70050CB00 /* DObject.m in Sources */,
 				FE3A410F20DA3DF900F78947 /* NSArratTest.m in Sources */,
 				FE3A411120DA3E1000F78947 /* NSDictionaryTest.m in Sources */,
 			);

@@ -40,11 +40,19 @@
 - (NSString *)gt_urlEncodingAllowCharacters:(NSCharacterSet *)characters;
 
 /**
- url 解密
-
- @return 解密过后的字符串
+ 对字符串进行URL加密（本方法会调用@link gt_urlEncodingAllowCharacters: 参数是URLQueryAllowedCharacterSet）
+ @param flag YES 表示对本URL只加密一次，不循环加密，NO 表示多次调用了会对同一个URL多次加密
+ @return 返回加密过后的URL字符串
  */
-- (NSString *)gt_urlDecoding;
+- (NSString *)gt_urlEncoding:(BOOL)flag;
+
+/**
+ 解密URL字符串
+
+ @param cyclic YES表示循环解密字符串，直到不再变化，NO，只解密一次
+ @return 解密过后url
+ */
+- (NSString *)gt_urlDecoding:(BOOL)cyclic;
 
 @end
 

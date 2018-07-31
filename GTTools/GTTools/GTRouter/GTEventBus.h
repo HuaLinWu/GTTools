@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger,GTEventMessageType) {
 @property(nonatomic,strong)id messageBody;
 @end
 
-typedef void(^GTCallBackBlock)(GTEventMessage *callBackEventMessage);
+typedef void(^GTCallBackBlock)(id data);
 
 
 @protocol GTMessageSubscriberProtocol
