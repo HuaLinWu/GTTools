@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImageView (GTTools)
+- (void)gt_setImageWithURL:(NSString *)url placeholderImage:(UIImage *)image;
 
 @end
