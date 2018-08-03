@@ -89,6 +89,7 @@
 		FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891520DCA50100AA27B5 /* GTBaseJSBridge.m */; };
 		FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */; };
 		FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */; };
+		FE7E09762113E6B7002E109F /* GTEventBusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7E09752113E6B7002E109F /* GTEventBusTest.m */; };
 		FEDD154921118444007A6F7F /* GTFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FEDD154721118444007A6F7F /* GTFileManager.h */; };
 		FEDD154A21118444007A6F7F /* GTFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD154821118444007A6F7F /* GTFileManager.m */; };
 		FEDD15792112FF8C007A6F7F /* GTDiskCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */; };
@@ -190,6 +191,7 @@
 		FE62891520DCA50100AA27B5 /* GTBaseJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBaseJSBridge.m; sourceTree = "<group>"; };
 		FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+GTTools.h"; sourceTree = "<group>"; };
 		FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GTTools.m"; sourceTree = "<group>"; };
+		FE7E09752113E6B7002E109F /* GTEventBusTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEventBusTest.m; sourceTree = "<group>"; };
 		FEDD154721118444007A6F7F /* GTFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTFileManager.h; sourceTree = "<group>"; };
 		FEDD154821118444007A6F7F /* GTFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTFileManager.m; sourceTree = "<group>"; };
 		FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTDiskCacheTest.m; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				FE4E94E920E5C8BA00FEE678 /* StringTest.m */,
 				FE0F8D7C211055070026355D /* NSURLTest.m */,
 				FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */,
+				FE7E09752113E6B7002E109F /* GTEventBusTest.m */,
 				FE3A40DD20D9E93100F78947 /* Info.plist */,
 			);
 			path = GTToolsTests;
@@ -600,6 +603,7 @@
 				FE3A40DC20D9E93100F78947 /* GTToolsTests.m in Sources */,
 				FE3A410F20DA3DF900F78947 /* NSArratTest.m in Sources */,
 				FEDD15792112FF8C007A6F7F /* GTDiskCacheTest.m in Sources */,
+				FE7E09762113E6B7002E109F /* GTEventBusTest.m in Sources */,
 				FE3A411120DA3E1000F78947 /* NSDictionaryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

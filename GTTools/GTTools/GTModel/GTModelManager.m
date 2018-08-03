@@ -25,7 +25,7 @@
                 Class class = objc_getClass(modelClassStr.UTF8String);
                 return [class yy_modelWithJSON:jsonObject];
             } else {
-                return [modelClass yy_modelWithJSON:jsonObject];
+                return [[modelClass class] yy_modelWithJSON:jsonObject];
             }
         }
     }

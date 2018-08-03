@@ -27,6 +27,16 @@ typedef NS_ENUM(NSUInteger,GTEventMessageType) {
  消息搭载的数据（这个只能是OC 数据类型）
  */
 @property(nonatomic,strong)id messageBody;
+
+/**
+ 根据消息名字，消息类型，消息体创建消息
+
+ @param name 消息名字
+ @param messageType 消息类型
+ @param messageBody 消息体
+ @return 返回消息对象
+ */
++ (instancetype)eventWithName:(NSString *)name messageType:(GTEventMessageType)messageType messageBody:(id)messageBody;
 @end
 
 typedef void(^GTCallBackBlock)(id data);
@@ -35,52 +45,62 @@ typedef void(^GTCallBackBlock)(id data);
 @protocol GTMessageSubscriberProtocol
 
 /**
- 订阅者统一处理自己观察的消息的方法
+ 当订阅者是对象统一处理自己观察的消息的方法
 
  @param eventMessage 消息
  @param completion 回调函数
  */
 - (void)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
+
+/**
+ 当订阅者是类对象的时候处理观察的消息方法
+
+ @param eventMessage 消息
+ @param completion 回调函数
+ */
++ (void)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
 @end
 
 @interface NSObject (GTEventBus)
 /**
- 订阅消息
+ 对象订阅消息
  
  @param name 消息名字
  */
 - (void)subscribeMessageWithName:(NSString *)name;
 
 /**
- 订阅一系列的消息
+ 类订阅消息
+
+ @param name 消息名字
+ */
++ (void)subscribeMessageWithName:(NSString *)name;
+/**
+ 对象订阅一系列的消息
  
  @param messageNames 消息名字
  */
 - (void)subscribeMessagesWithNames:(NSArray *)messageNames;
-@end
-
-@interface GTEventBus : NSObject
 
 /**
- 消息主线的共用对象
+ 类对象订阅一系列的消息
 
- @return 返回消息主线
+ @param messageNames 消息名字
  */
-+ (instancetype)shareInstance;
-
-/**
- 根据消息名字来移除消息
-
- @param name 消息名字
- */
-- (void)removeMessageWithName:(NSString *)name;
-
++ (void)subscribeMessagesWithNames:(NSArray *)messageNames;
 /**
  发送消息
-
+ 
  @param message 消息
  @param callBack 订阅者处理完成后回调方法
  */
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack;
-
+/**
+ 根据消息名字来移除消息
+ 
+ @param name 消息名字
+ */
+- (void)removeMessageWithName:(NSString *)name;
 @end
+
+

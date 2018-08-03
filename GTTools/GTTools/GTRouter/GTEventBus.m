@@ -11,6 +11,17 @@
 void (*gtRouter_sendVoidMessage)(id, SEL, ...) = (void (*)(id, SEL,...))objc_msgSend;
 id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
 
+@implementation GTEventMessage
++ (instancetype)eventWithName:(NSString *)name messageType:(GTEventMessageType)messageType messageBody:(id)messageBody {
+    GTEventMessage *instance = [[self alloc] init];
+    if(instance) {
+        instance.name = name;
+        instance.messageType = messageType;
+        instance.messageBody = messageBody;
+    }
+    return instance;
+}
+@end
 
 @interface GTEventMessagesPoolElement : NSObject
 @property(nonatomic, strong)GTEventMessage *message;
@@ -25,7 +36,14 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
     return element;
 }
 @end
-@interface GTEventBus()
+@interface GTEventBus : NSObject
+
+/**
+ 消息主线的共用对象
+ 
+ @return 返回消息主线
+ */
++ (instancetype)shareInstance;
 /**
  消息池子
  */
@@ -46,7 +64,6 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
     return bus;
 }
 
-
 - (void)subscribeMessageWithName:(NSString *)messageName subscriber:(NSObject<GTMessageSubscriberProtocol> *)subscriber {
     
     if(messageName&&messageName.length>0&& subscriber) {
@@ -65,13 +82,14 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
         //从以前缓存事件读取事件执行
        GTEventMessagesPoolElement *eventMessageElemet = gtRouter_sendMessage(self,@selector(getElementFromMessagesPool:),messageName);
         if(eventMessageElemet) {
-            if([self respondsToSelector:@selector(handleEventMessage:completion:)]) {
+            if([subscriber respondsToSelector:@selector(handleEventMessage:completion:)]) {
                  gtRouter_sendVoidMessage(subscriber,@selector(handleEventMessage:completion:),eventMessageElemet.message,eventMessageElemet.callBack);
                 [self removeMessageWithName:messageName];
             }
         }
     }
 }
+
 - (void)subscribeMessagesWithNames:(NSArray *)messageNames subscriber:(NSObject<GTMessageSubscriberProtocol> *)subscriber {
     
     if(messageNames&&[messageNames isKindOfClass:[NSArray class]]&&messageNames.count>0) {
@@ -86,11 +104,9 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
     [self.eventMessagesPool removeObjectForKey:name];
 }
 
-
-
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
     if(message){
-      NSHashTable *subscribersTable = gtRouter_sendMessage(self,@selector(subscribersForMessage:),message);
+      NSHashTable *subscribersTable = gtRouter_sendMessage(self,@selector(subscribersForMessage:),message.name);
       if(subscribersTable) {
          //如果存在订阅者
           NSArray *subscribers = [subscribersTable allObjects];
@@ -149,7 +165,11 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
 }
 @end
 @implementation NSObject (GTEventBus)
-
++ (void)subscribeMessageWithName:(NSString *)name {
+    if(name && name.length>0) {
+        gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(subscribeMessageWithName:subscriber:),name,self);
+    }
+}
 - (void)subscribeMessageWithName:(NSString *)name {
     if(name && name.length>0) {
         gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(subscribeMessageWithName:subscriber:),name,self);
@@ -160,5 +180,16 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
     if(messageNames && messageNames.count>0) {
         gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(subscribeMessagesWithNames:subscriber:),messageNames,self);
     }
+}
++ (void)subscribeMessagesWithNames:(NSArray *)messageNames {
+    if(messageNames && messageNames.count>0) {
+        gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(subscribeMessagesWithNames:subscriber:),messageNames,self);
+    }
+}
+- (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
+    gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(sendMessage:completion:),message,callBack);
+}
+- (void)removeMessageWithName:(NSString *)name {
+    gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(removeMessageWithName:),name);
 }
 @end
