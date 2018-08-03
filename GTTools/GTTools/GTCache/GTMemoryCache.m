@@ -131,6 +131,9 @@
         return YES;
     }
 }
+- (void)removeObjectForKey:(NSString *)key {
+    
+}
 #pragma mark set/get
 - (_GTMemoryMap *)map {
     if(!_map) {

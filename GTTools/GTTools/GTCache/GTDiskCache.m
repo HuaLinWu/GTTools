@@ -79,7 +79,12 @@
     }
     return NO;
 }
-
+- (void)removeObjectForKey:(NSString *)key {
+    NSString *filePath = [self.cacheDirectoriePath stringByAppendingPathComponent:[self md5String:key]];
+    [GTFileManager deleteFileInPath:filePath];
+    [self.fileAttributeMap removeObjectForKey:key];
+    [self.fileAttributeMap writeToFile:[self filesAttributeFilePath] atomically:YES];
+}
 #pragma mark private_method
 - (NSString *)md5String:(NSString *)inputStr {
     const char *cStr = [inputStr UTF8String];

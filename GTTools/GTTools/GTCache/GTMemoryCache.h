@@ -12,4 +12,5 @@
 - (void)setObject:(id)anObject forKey:(NSString *)aKey;
 - (id)objectForKey:(NSString *)key;
 - (BOOL)containObjectForKey:(NSString *)key;
+- (void)removeObjectForKey:(NSString *)key;
 @end

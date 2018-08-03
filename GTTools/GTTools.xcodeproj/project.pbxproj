@@ -91,6 +91,8 @@
 		FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */; };
 		FE7E09762113E6B7002E109F /* GTEventBusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7E09752113E6B7002E109F /* GTEventBusTest.m */; };
 		FE7E09C621143A2E002E109F /* GTMemoryCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7E09C521143A2E002E109F /* GTMemoryCacheTest.m */; };
+		FE7E09CC21144E48002E109F /* GTCache.h in Headers */ = {isa = PBXBuildFile; fileRef = FE7E09CA21144E48002E109F /* GTCache.h */; };
+		FE7E09CD21144E48002E109F /* GTCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7E09CB21144E48002E109F /* GTCache.m */; };
 		FEDD154921118444007A6F7F /* GTFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FEDD154721118444007A6F7F /* GTFileManager.h */; };
 		FEDD154A21118444007A6F7F /* GTFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD154821118444007A6F7F /* GTFileManager.m */; };
 		FEDD15792112FF8C007A6F7F /* GTDiskCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */; };
@@ -194,6 +196,8 @@
 		FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GTTools.m"; sourceTree = "<group>"; };
 		FE7E09752113E6B7002E109F /* GTEventBusTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEventBusTest.m; sourceTree = "<group>"; };
 		FE7E09C521143A2E002E109F /* GTMemoryCacheTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTMemoryCacheTest.m; sourceTree = "<group>"; };
+		FE7E09CA21144E48002E109F /* GTCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTCache.h; sourceTree = "<group>"; };
+		FE7E09CB21144E48002E109F /* GTCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTCache.m; sourceTree = "<group>"; };
 		FEDD154721118444007A6F7F /* GTFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTFileManager.h; sourceTree = "<group>"; };
 		FEDD154821118444007A6F7F /* GTFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTFileManager.m; sourceTree = "<group>"; };
 		FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTDiskCacheTest.m; sourceTree = "<group>"; };
@@ -371,6 +375,8 @@
 				FE3A414720DB3F5E00F78947 /* GTDiskCache.m */,
 				FEDD154721118444007A6F7F /* GTFileManager.h */,
 				FEDD154821118444007A6F7F /* GTFileManager.m */,
+				FE7E09CA21144E48002E109F /* GTCache.h */,
+				FE7E09CB21144E48002E109F /* GTCache.m */,
 			);
 			path = GTCache;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 				FE212ABB20EDFA660046520F /* GTWebViewJSBridge_JS.h in Headers */,
 				FE0F8D70210FFA5A0026355D /* GTRouteGlobalConstant.h in Headers */,
 				FE3A40F920DA0EC000F78947 /* GTModelManager.h in Headers */,
+				FE7E09CC21144E48002E109F /* GTCache.h in Headers */,
 				FE3A410320DA0F4100F78947 /* YYModel.h in Headers */,
 				FE4E94ED20E5CF4E00FEE678 /* UIImage+GTTools.h in Headers */,
 				FE4E94F520E61C2700FEE678 /* UIImageView+GTTools.h in Headers */,
@@ -584,6 +591,7 @@
 				FE3A414D20DB3FF500F78947 /* GTWebView.m in Sources */,
 				FE3A413D20DB361700F78947 /* UIView+GTTools.m in Sources */,
 				FE212AB920EDFA570046520F /* GTWebViewJSBridge_JS.m in Sources */,
+				FE7E09CD21144E48002E109F /* GTCache.m in Sources */,
 				FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */,
 				FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */,
 				FEDD154A21118444007A6F7F /* GTFileManager.m in Sources */,
