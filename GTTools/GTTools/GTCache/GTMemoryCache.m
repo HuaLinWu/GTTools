@@ -51,12 +51,13 @@
     } else if(!self.headNode) {
         self.headNode = node;
         self.footNode = node;
+        CFDictionaryAddValue(self.mapDict, (__bridge const void *)(node.key),(__bridge const void *)(node));
     } else {
         self.headNode.preNode = node;
         node.nextNode = self.headNode;
         node.preNode = nil;
         self.headNode = node;
-        CFDictionaryAddValue(self.mapDict, (__bridge const void *)(node.key), (__bridge const void *)(node.data));
+        CFDictionaryAddValue(self.mapDict, (__bridge const void *)(node.key), (__bridge const void *)(node));
     }
    
 }
@@ -100,8 +101,7 @@
 @property(nonatomic,strong)_GTMemoryMap *map;
 @end
 @implementation GTMemoryCache
-- (void)setObject:(id)anObject forKey:(nonnull id)aKey {
-    
+- (void)setObject:(id)anObject forKey:(NSString *)aKey {
     if(!anObject || !aKey) {
         return;
     } else {

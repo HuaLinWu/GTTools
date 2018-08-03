@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, GTDiskCacheRootDirectories) {
  */
 - (instancetype)initWithDirectoriePath:(NSString *)path;
 /**
- 存储对象到沙盒硬盘中（默认是存储在GTCachesDirectories 中）
+ 存储对象到沙盒硬盘中（默认是存储在Library/Caches 中）
 
  @param anObject 需要存储的对象
  @param aKey 对应关键key
