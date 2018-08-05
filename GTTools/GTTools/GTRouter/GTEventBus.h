@@ -1,7 +1,7 @@
 //
 //  GTEventBus.h
 //  GTTools
-//
+// 本工具类主要解决多个类或者类对象之间事件调用的问题（同一事件最后一个订阅者先获取事件进行处理，并且返回下一个订阅者需要处理的事件，如果返回的nil则下一个订阅者无权处理本次事件）
 //  Created by 吴华林 on 2018/7/30.
 //  Copyright © 2018年 吴华林. All rights reserved.
 //
@@ -49,16 +49,18 @@ typedef void(^GTCallBackBlock)(id data);
 
  @param eventMessage 消息
  @param completion 回调函数
+ @return 返回下一个订阅者需要处理的消息（如果不希望下一个订阅者处理直接返回nil）
  */
-- (void)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
+- (GTEventMessage *)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
 
 /**
  当订阅者是类对象的时候处理观察的消息方法
 
  @param eventMessage 消息
  @param completion 回调函数
+ @return 返回下一个订阅者需要处理的消息（如果不希望下一个订阅者处理直接返回nil）
  */
-+ (void)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
++ (GTEventMessage *)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
 @end
 
 @interface NSObject (GTEventBus)
@@ -95,12 +97,14 @@ typedef void(^GTCallBackBlock)(id data);
  @param callBack 订阅者处理完成后回调方法
  */
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack;
++ (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack;
 /**
  根据消息名字来移除消息
  
  @param name 消息名字
  */
 - (void)removeMessageWithName:(NSString *)name;
++ (void)removeMessageWithName:(NSString *)name;
 @end
 
 

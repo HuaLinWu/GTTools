@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "UIWebViewController.h"
 #import <GTTools/GTTools.h>
+#import "GTCollectionViewController.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIView *testView;
 
@@ -32,6 +33,10 @@
     
     [self.testView gt_setCornerRadius:20 borderColor:nil borderWidth:0];
 //    [self.testView gt_setCornerRadiusRatioToHeight:0.5];
+}
+- (IBAction)jumpCollectionViewController:(UIButton *)sender {
+  GTCollectionViewController *collectionVC =  [[GTCollectionViewController alloc] init];
+    [self.navigationController pushViewController:collectionVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

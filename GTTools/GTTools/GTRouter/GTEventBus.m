@@ -52,7 +52,7 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
 /**
  消息和订阅者对应关系map
  */
-@property(nonatomic,strong)NSMutableDictionary<NSString *,NSHashTable *> *messageAndSubscribersMap;
+@property(nonatomic,strong)NSMutableDictionary<NSString *,NSPointerArray *> *messageAndSubscribersMap;
 @end
 @implementation GTEventBus
 + (instancetype)shareInstance {
@@ -67,24 +67,31 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
 - (void)subscribeMessageWithName:(NSString *)messageName subscriber:(NSObject<GTMessageSubscriberProtocol> *)subscriber {
     
     if(messageName&&messageName.length>0&& subscriber) {
-      NSHashTable *subscribersTable = [self.messageAndSubscribersMap objectForKey:messageName];
+    
+      NSPointerArray *subscribersTable = [self.messageAndSubscribersMap objectForKey:messageName];
         if(subscribersTable) {
-            if(![subscribersTable containsObject:subscriber]){
-                [subscribersTable addObject:subscriber];
+            
+            if(![[subscribersTable allObjects] containsObject:subscriber]){
+                [subscribersTable addPointer:(__bridge void * _Nullable)(subscriber)];
             } else {
                 return;
             }
         } else {
-            subscribersTable = [NSHashTable weakObjectsHashTable];
-            [subscribersTable addObject:subscriber];
+            subscribersTable = [NSPointerArray weakObjectsPointerArray];
+            [subscribersTable addPointer:(__bridge void * _Nullable)(subscriber)];
             [self.messageAndSubscribersMap setObject:subscribersTable forKey:messageName];
         }
         //从以前缓存事件读取事件执行
        GTEventMessagesPoolElement *eventMessageElemet = gtRouter_sendMessage(self,@selector(getElementFromMessagesPool:),messageName);
         if(eventMessageElemet) {
             if([subscriber respondsToSelector:@selector(handleEventMessage:completion:)]) {
-                 gtRouter_sendVoidMessage(subscriber,@selector(handleEventMessage:completion:),eventMessageElemet.message,eventMessageElemet.callBack);
-                [self removeMessageWithName:messageName];
+                 GTEventMessage*message = gtRouter_sendMessage(subscriber,@selector(handleEventMessage:completion:),eventMessageElemet.message,eventMessageElemet.callBack);
+                if(message) {
+                     [self saveMessage:message callBack:eventMessageElemet.callBack];
+                } else {
+                   [self removeMessageWithName:messageName];
+                }
+                
             }
         }
     }
@@ -106,13 +113,18 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
 
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
     if(message){
-      NSHashTable *subscribersTable = gtRouter_sendMessage(self,@selector(subscribersForMessage:),message.name);
+      NSPointerArray *subscribersTable = gtRouter_sendMessage(self,@selector(subscribersForMessage:),message.name);
       if(subscribersTable) {
          //如果存在订阅者
           NSArray *subscribers = [subscribersTable allObjects];
-          for(NSObject<GTMessageSubscriberProtocol> *subscriber in subscribers) {
-              if([subscriber respondsToSelector:@selector(handleEventMessage:completion:)]) {
-                  gtRouter_sendVoidMessage(subscriber,@selector(handleEventMessage:completion:),message,callBack);
+          GTEventMessage *nextMessage = message;
+          for(int i=(int)(subscribers.count-1);i>=0;i--) {
+              NSObject<GTMessageSubscriberProtocol> *subscriber = subscribers[i];
+              if(subscriber && [subscriber respondsToSelector:@selector(handleEventMessage:completion:)]){
+                 nextMessage = gtRouter_sendMessage(subscriber,@selector(handleEventMessage:completion:),nextMessage,callBack);
+                  if(!nextMessage){
+                      return;
+                  }
               }
           }
       } else {
@@ -120,11 +132,7 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
           if(message.messageType == GTViscidEventMessage) {
               if(message.name) {
                   //缓存消息
-                  if([[self.eventMessagesPool allKeys] containsObject:message.name]) {
-                      [self.eventMessagesPool removeObjectForKey:message.name];
-                  }
-                  GTEventMessagesPoolElement *element = [GTEventMessagesPoolElement createElementWithMessage:message callBack:callBack];
-                  [self.eventMessagesPool setObject:element forKey:message.name];
+                  [self saveMessage:message callBack:callBack];
               }
           } else {
               return;
@@ -135,18 +143,27 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
    
 }
 #pragma mark private_method
-- (NSHashTable *)subscribersForMessage:(NSString *)messageName {
+- (NSPointerArray *)subscribersForMessage:(NSString *)messageName {
     if(messageName && messageName.length>0) {
         return [self.messageAndSubscribersMap objectForKey:messageName];
     } else {
         return nil;
     }
 }
-
+- (void)saveMessage:(GTEventMessage *)message callBack:(GTCallBackBlock)callBack {
+    if(message.name) {
+        //缓存消息
+        if([[self.eventMessagesPool allKeys] containsObject:message.name]) {
+            [self.eventMessagesPool removeObjectForKey:message.name];
+        }
+        GTEventMessagesPoolElement *element = [GTEventMessagesPoolElement createElementWithMessage:message callBack:callBack];
+        [self.eventMessagesPool setObject:element forKey:message.name];
+    }
+}
 #pragma mark set/get
-- (NSMutableDictionary<NSString *,NSHashTable *> *)messageAndSubscribersMap {
+- (NSMutableDictionary<NSString *, NSPointerArray*> *)messageAndSubscribersMap {
     if(!_messageAndSubscribersMap) {
-        _messageAndSubscribersMap = (NSMutableDictionary<NSString *,NSHashTable *> *)[NSMutableDictionary dictionary];
+        _messageAndSubscribersMap = (NSMutableDictionary<NSString *,NSPointerArray *> *)[NSMutableDictionary dictionary];
     }
     return _messageAndSubscribersMap;
 }
@@ -189,7 +206,13 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
     gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(sendMessage:completion:),message,callBack);
 }
++ (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
+    gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(sendMessage:completion:),message,callBack);
+}
 - (void)removeMessageWithName:(NSString *)name {
+    gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(removeMessageWithName:),name);
+}
++ (void)removeMessageWithName:(NSString *)name {
     gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(removeMessageWithName:),name);
 }
 @end

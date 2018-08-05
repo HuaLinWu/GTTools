@@ -22,6 +22,8 @@
 		FE3A417C20DB74C900F78947 /* GTToolsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A417B20DB74C900F78947 /* GTToolsUITests.m */; };
 		FE3A418720DB74C900F78947 /* GTToolsUIUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A418620DB74C900F78947 /* GTToolsUIUITests.m */; };
 		FE3E0BC7210B20570050CB00 /* UIResponder+GSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BC6210B20560050CB00 /* UIResponder+GSCategory.m */; };
+		FE8AE5A12116FE2300AC264F /* GTCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8AE59F2116FE2300AC264F /* GTCollectionViewController.m */; };
+		FE8AE5A22116FE2300AC264F /* GTCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE8AE5A02116FE2300AC264F /* GTCollectionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,9 @@
 		FE3A418820DB74C900F78947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE3E0BC5210B20560050CB00 /* UIResponder+GSCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+GSCategory.h"; sourceTree = "<group>"; };
 		FE3E0BC6210B20560050CB00 /* UIResponder+GSCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+GSCategory.m"; sourceTree = "<group>"; };
+		FE8AE59E2116FE2300AC264F /* GTCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTCollectionViewController.h; sourceTree = "<group>"; };
+		FE8AE59F2116FE2300AC264F /* GTCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTCollectionViewController.m; sourceTree = "<group>"; };
+		FE8AE5A02116FE2300AC264F /* GTCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GTCollectionViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +146,9 @@
 				FE1E040220E1CD5B00FB080E /* UIWebViewController.h */,
 				FE1E040320E1CD5B00FB080E /* UIWebViewController.m */,
 				FE1E040420E1CD5B00FB080E /* UIWebViewController.xib */,
+				FE8AE59E2116FE2300AC264F /* GTCollectionViewController.h */,
+				FE8AE59F2116FE2300AC264F /* GTCollectionViewController.m */,
+				FE8AE5A02116FE2300AC264F /* GTCollectionViewController.xib */,
 				FE3591C020E7446700D54269 /* textHtml.html */,
 				FE3E0BC5210B20560050CB00 /* UIResponder+GSCategory.h */,
 				FE3E0BC6210B20560050CB00 /* UIResponder+GSCategory.m */,
@@ -273,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8AE5A22116FE2300AC264F /* GTCollectionViewController.xib in Resources */,
 				FE3A416F20DB74C800F78947 /* LaunchScreen.storyboard in Resources */,
 				FE3A416C20DB74C800F78947 /* Assets.xcassets in Resources */,
 				FE3A416A20DB74C500F78947 /* Main.storyboard in Resources */,
@@ -303,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8AE5A12116FE2300AC264F /* GTCollectionViewController.m in Sources */,
 				FE3E0BC7210B20570050CB00 /* UIResponder+GSCategory.m in Sources */,
 				FE3A416720DB74C500F78947 /* ViewController.m in Sources */,
 				FE3A417220DB74C800F78947 /* main.m in Sources */,
