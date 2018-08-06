@@ -70,12 +70,12 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-//    {
-//        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae2" messageType:GTDefaultEventMessage messageBody:@"123456"];
-//        [self sendMessage:event1 completion:^(id data) {
-//            NSLog(@"------>%@",data);
-//        }];
-//    }
+    {
+        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae2" messageType:GTDefaultEventMessage messageBody:@"123456"];
+        [self sendMessage:event1 completion:^(id data) {
+            NSLog(@"------>%@",data);
+        }];
+    }
     {
         GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae2" messageType:GTDefaultEventMessage messageBody:@"123456"];
         _event2 = nil;
@@ -83,20 +83,20 @@
             NSLog(@"------>%@",data);
         }];
     }
-//    {
-//        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae1" messageType:GTViscidEventMessage messageBody:@"123456"];
-//        [self sendMessage:event1 completion:^(id data) {
-//            NSLog(@"------>%@",data);
-//        }];
-//        [self.event1 subscribeMessageWithName:@"testMessgae3"];
-//    }
-//    {
-//        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae3" messageType:GTViscidEventMessage messageBody:@"123456"];
-//        [self sendMessage:event1 completion:^(id data) {
-//            NSLog(@"------>%@",data);
-//        }];
-//        [self.event1 subscribeMessageWithName:@"testMessgae3"];
-//    }
+    {
+        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae1" messageType:GTViscidEventMessage messageBody:@"123456"];
+        [self sendMessage:event1 completion:^(id data) {
+            NSLog(@"------>%@",data);
+        }];
+        [self.event1 subscribeMessageWithName:@"testMessgae3"];
+    }
+    {
+        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae3" messageType:GTViscidEventMessage messageBody:@"123456"];
+        [self sendMessage:event1 completion:^(id data) {
+            NSLog(@"------>%@",data);
+        }];
+        [self.event1 subscribeMessageWithName:@"testMessgae3"];
+    }
     
 }
 

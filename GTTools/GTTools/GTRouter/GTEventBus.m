@@ -44,6 +44,15 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
 @interface GTEventBus : NSObject
 
 /**
+ 消息池信号量
+ */
+@property(nonatomic,strong)dispatch_semaphore_t messagesPoolSemaphore;
+
+/**
+ 消息和观察者信号量
+ */
+@property(nonatomic,strong)dispatch_semaphore_t messageAndSubscribersMapSemaphore;
+/**
  消息主线的共用对象
  
  @return 返回消息主线
@@ -65,6 +74,8 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         bus = [[GTEventBus alloc] init];
+        bus.messagesPoolSemaphore = dispatch_semaphore_create(1);
+        bus.messageAndSubscribersMapSemaphore = dispatch_semaphore_create(1);
     });
     return bus;
 }
@@ -72,8 +83,9 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
 - (void)subscribeMessageWithName:(NSString *)messageName subscriber:(NSObject<GTMessageSubscriberProtocol> *)subscriber {
     
     if(messageName&&messageName.length>0&& subscriber) {
-    
+      dispatch_semaphore_wait(self.messageAndSubscribersMapSemaphore, DISPATCH_TIME_FOREVER);
       NSPointerArray *subscribersTable = [self.messageAndSubscribersMap objectForKey:messageName];
+        dispatch_semaphore_signal(self.messageAndSubscribersMapSemaphore);
         if(subscribersTable) {
             
             if(![[subscribersTable allObjects] containsObject:subscriber]){
@@ -84,7 +96,9 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
         } else {
             subscribersTable = [NSPointerArray weakObjectsPointerArray];
             [subscribersTable addPointer:(__bridge void * _Nullable)(subscriber)];
+            dispatch_semaphore_wait(self.messageAndSubscribersMapSemaphore, DISPATCH_TIME_FOREVER);
             [self.messageAndSubscribersMap setObject:subscribersTable forKey:messageName];
+             dispatch_semaphore_signal(self.messageAndSubscribersMapSemaphore);
         }
         //从以前缓存事件读取事件执行
        GTEventMessagesPoolElement *eventMessageElemet = gtRouter_sendMessage(self,@selector(getElementFromMessagesPool:),messageName);
@@ -111,7 +125,9 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
 }
 
 - (void)removeMessageWithName:(NSString *)name {
+    dispatch_semaphore_wait(self.messagesPoolSemaphore, DISPATCH_TIME_FOREVER);
     [self.eventMessagesPool removeObjectForKey:name];
+    dispatch_semaphore_signal(self.messagesPoolSemaphore);
 }
 
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
@@ -148,7 +164,10 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
 #pragma mark private_method
 - (NSPointerArray *)subscribersForMessage:(NSString *)messageName {
     if(messageName && messageName.length>0) {
-        return [self.messageAndSubscribersMap objectForKey:messageName];
+        dispatch_semaphore_wait(self.messageAndSubscribersMapSemaphore, DISPATCH_TIME_FOREVER);
+        NSPointerArray *array = [self.messageAndSubscribersMap objectForKey:messageName];
+        dispatch_semaphore_signal(self.messageAndSubscribersMapSemaphore);
+        return array;
     } else {
         return nil;
     }
@@ -156,11 +175,13 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
 - (void)saveMessage:(GTEventMessage *)message callBack:(GTCallBackBlock)callBack {
     if(message.name) {
         //缓存消息
+        dispatch_semaphore_wait(self.messagesPoolSemaphore, DISPATCH_TIME_FOREVER);
         if([[self.eventMessagesPool allKeys] containsObject:message.name]) {
             [self.eventMessagesPool removeObjectForKey:message.name];
         }
         GTEventMessagesPoolElement *element = [GTEventMessagesPoolElement createElementWithMessage:message callBack:callBack];
         [self.eventMessagesPool setObject:element forKey:message.name];
+        dispatch_semaphore_signal(self.messagesPoolSemaphore);
     }
 }
 #pragma mark set/get
@@ -178,7 +199,10 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
 }
 - (GTEventMessagesPoolElement *)getElementFromMessagesPool:(NSString *)eventMessageName {
     if(eventMessageName && eventMessageName.length >0) {
-        return [self.eventMessagesPool objectForKey:eventMessageName];
+        dispatch_semaphore_wait(self.messagesPoolSemaphore, DISPATCH_TIME_FOREVER);
+        GTEventMessagesPoolElement *messagesPoolElement = [self.eventMessagesPool objectForKey:eventMessageName];
+        dispatch_semaphore_signal(self.messagesPoolSemaphore);
+        return messagesPoolElement;
     } else {
         return nil;
     }

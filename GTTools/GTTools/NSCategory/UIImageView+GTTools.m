@@ -9,5 +9,11 @@
 #import "UIImageView+GTTools.h"
 
 @implementation UIImageView (GTTools)
-
+- (void)gt_setImageWithURL:(NSString *)url placeholderImage:(UIImage *)image {
+    if(image) {
+        self.image = image;
+    }
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+}
 @end

@@ -20,23 +20,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+//    [GTTimer gt_createSECTimerWithName:@"thread1" period:1 repeats:NO eventHandler:^{
+//        NSLog(@"----->%@",[NSThread currentThread]);
+//    }];
 }
 
 - (IBAction)jumpWebViewBtnClick:(UIButton *)sender {
-    UIWebViewController *webVC = [[UIWebViewController alloc] initWithNibName:@"UIWebViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:webVC animated:YES];
+//    UIWebViewController *webVC = [[UIWebViewController alloc] initWithNibName:@"UIWebViewController" bundle:[NSBundle mainBundle]];
+//    [self.navigationController pushViewController:webVC animated:YES];
 //    [self presentViewController:webVC animated:YES completion:nil];
 //    [self showViewController:webVC sender:nil];
 //    [self showDetailViewController:webVC sender:nil];
+//    [GTTimer resumeTimerWithName:@"thread1"];
 }
 - (IBAction)jumpWKWebViewClick:(UIButton *)sender {
-    
-    [self.testView gt_setCornerRadius:20 borderColor:nil borderWidth:0];
+//    [GTTimer suspendTimerWithName:@"thread1"];
+//    [self.testView gt_setCornerRadius:20 borderColor:nil borderWidth:0];
 //    [self.testView gt_setCornerRadiusRatioToHeight:0.5];
 }
 - (IBAction)jumpCollectionViewController:(UIButton *)sender {
-  GTCollectionViewController *collectionVC =  [[GTCollectionViewController alloc] init];
+    GTCollectionViewController *collectionVC =  [[GTCollectionViewController alloc] init];
     [self.navigationController pushViewController:collectionVC animated:YES];
+//     [GTTimer releaseTimerWithName:@"thread1"];
 }
 
 - (void)didReceiveMemoryWarning {
