@@ -16,17 +16,17 @@ typedef NS_ENUM(NSUInteger,GTEventMessageType) {
 /**
  事件名字（在GTEventBus 事件缓存池里面，同一名称的事件只会有一个，后面的事件会冲掉相同名字之前的事件）
  */
-@property(nonatomic,copy)NSString *name;
+@property(nonatomic,copy,readonly)NSString *name;
 
 /**
  时间类型决定了是否在没有订阅者时候消息会被缓存
  */
-@property(nonatomic,assign)GTEventMessageType messageType;
+@property(nonatomic,assign,readonly)GTEventMessageType messageType;
 
 /**
  消息搭载的数据（这个只能是OC 数据类型）
  */
-@property(nonatomic,strong)id messageBody;
+@property(nonatomic,strong,readonly)id messageBody;
 
 /**
  根据消息名字，消息类型，消息体创建消息
@@ -49,18 +49,18 @@ typedef void(^GTCallBackBlock)(id data);
 
  @param eventMessage 消息
  @param completion 回调函数
- @return 返回下一个订阅者需要处理的消息（如果不希望下一个订阅者处理直接返回nil）
+ @return 返回YES 表示当前订阅者已经对消息进行了处理，不需要下一个订阅者进行处理，如果返回NO表示当前订阅者没有处理需要下一个订阅者处理
  */
-- (GTEventMessage *)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
+- (BOOL)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
 
 /**
  当订阅者是类对象的时候处理观察的消息方法
 
  @param eventMessage 消息
  @param completion 回调函数
- @return 返回下一个订阅者需要处理的消息（如果不希望下一个订阅者处理直接返回nil）
+ @return 返回YES 表示当前订阅者已经对消息进行了处理，不需要下一个订阅者进行处理，如果返回NO表示当前订阅者没有处理需要下一个订阅者处理
  */
-+ (GTEventMessage *)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
++ (BOOL)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion;
 @end
 
 @interface NSObject (GTEventBus)

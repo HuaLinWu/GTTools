@@ -10,7 +10,12 @@
 #import <objc/message.h>
 void (*gtRouter_sendVoidMessage)(id, SEL, ...) = (void (*)(id, SEL,...))objc_msgSend;
 id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
-
+BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSend;
+@interface GTEventMessage()
+@property(nonatomic,copy)NSString *name;
+@property(nonatomic,assign)GTEventMessageType messageType;
+@property(nonatomic,strong)id messageBody;
+@end
 @implementation GTEventMessage
 + (instancetype)eventWithName:(NSString *)name messageType:(GTEventMessageType)messageType messageBody:(id)messageBody {
     GTEventMessage *instance = [[self alloc] init];
@@ -85,11 +90,9 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
        GTEventMessagesPoolElement *eventMessageElemet = gtRouter_sendMessage(self,@selector(getElementFromMessagesPool:),messageName);
         if(eventMessageElemet) {
             if([subscriber respondsToSelector:@selector(handleEventMessage:completion:)]) {
-                 GTEventMessage*message = gtRouter_sendMessage(subscriber,@selector(handleEventMessage:completion:),eventMessageElemet.message,eventMessageElemet.callBack);
-                if(message) {
-                     [self saveMessage:message callBack:eventMessageElemet.callBack];
-                } else {
-                   [self removeMessageWithName:messageName];
+                 BOOL haveHandle = gtRouter_sendBOOLMessage(subscriber,@selector(handleEventMessage:completion:),eventMessageElemet.message,eventMessageElemet.callBack);
+                if(haveHandle) {
+                     [self removeMessageWithName:messageName];
                 }
                 
             }
@@ -117,12 +120,12 @@ id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
       if(subscribersTable) {
          //如果存在订阅者
           NSArray *subscribers = [subscribersTable allObjects];
-          GTEventMessage *nextMessage = message;
+          
           for(int i=(int)(subscribers.count-1);i>=0;i--) {
               NSObject<GTMessageSubscriberProtocol> *subscriber = subscribers[i];
               if(subscriber && [subscriber respondsToSelector:@selector(handleEventMessage:completion:)]){
-                 nextMessage = gtRouter_sendMessage(subscriber,@selector(handleEventMessage:completion:),nextMessage,callBack);
-                  if(!nextMessage){
+                 BOOL haveHandle = gtRouter_sendBOOLMessage(subscriber,@selector(handleEventMessage:completion:),message,callBack);
+                  if(haveHandle){
                       return;
                   }
               }

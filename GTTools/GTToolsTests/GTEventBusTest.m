@@ -30,21 +30,22 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        [[self class] subscribeMessageWithName:@"testMessgae2"];
         [self subscribeMessageWithName:@"testMessgae2"];
+        [[self class] subscribeMessageWithName:@"testMessgae2"];
+        
        
     }
     return self;
 }
-- (GTEventMessage *)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion {
+- (BOOL)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion {
     NSLog(@"--GTEvent2-->%@--->%i----->%@",eventMessage.name,eventMessage.messageType,eventMessage.messageBody);
     completion(@"我已经收到消息了");
-    return eventMessage;
+    return NO;
 }
-+ (GTEventMessage *)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion {
++ (BOOL)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion {
     NSLog(@"-GTEvent2-class-->%@--->%i----->%@",eventMessage.name,eventMessage.messageType,eventMessage.messageBody);
     completion(@"我已经收到消息了");
-    return nil;
+    return YES;
 }
 @end
 @interface GTEventBusTest : XCTestCase
@@ -69,19 +70,19 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    {
-        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae2" messageType:GTDefaultEventMessage messageBody:@"123456"];
-        [self sendMessage:event1 completion:^(id data) {
-            NSLog(@"------>%@",data);
-        }];
-    }
 //    {
 //        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae2" messageType:GTDefaultEventMessage messageBody:@"123456"];
-//        _event2 = nil;
 //        [self sendMessage:event1 completion:^(id data) {
 //            NSLog(@"------>%@",data);
 //        }];
 //    }
+    {
+        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae2" messageType:GTDefaultEventMessage messageBody:@"123456"];
+        _event2 = nil;
+        [self sendMessage:event1 completion:^(id data) {
+            NSLog(@"------>%@",data);
+        }];
+    }
 //    {
 //        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae1" messageType:GTViscidEventMessage messageBody:@"123456"];
 //        [self sendMessage:event1 completion:^(id data) {
