@@ -7,10 +7,7 @@
 //
 
 #import "GTEventBus.h"
-#import <objc/message.h>
-void (*gtRouter_sendVoidMessage)(id, SEL, ...) = (void (*)(id, SEL,...))objc_msgSend;
-id (*gtRouter_sendMessage)(id, SEL,...) = (id (*)(id, SEL,...))objc_msgSend;
-BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSend;
+#import <objc/runtime.h>
 @interface GTEventMessage()
 @property(nonatomic,copy)NSString *name;
 @property(nonatomic,assign)GTEventMessageType messageType;
@@ -80,7 +77,7 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
     return bus;
 }
 
-- (void)subscribeMessageWithName:(NSString *)messageName subscriber:(NSObject<GTMessageSubscriberProtocol> *)subscriber {
+- (void)subscribeMessageWithName:(NSString *)messageName subscriber:(id<GTMessageSubscriberProtocol>)subscriber {
     
     if(messageName&&messageName.length>0&& subscriber) {
       dispatch_semaphore_wait(self.messageAndSubscribersMapSemaphore, DISPATCH_TIME_FOREVER);
@@ -101,10 +98,18 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
              dispatch_semaphore_signal(self.messageAndSubscribersMapSemaphore);
         }
         //从以前缓存事件读取事件执行
-       GTEventMessagesPoolElement *eventMessageElemet = gtRouter_sendMessage(self,@selector(getElementFromMessagesPool:),messageName);
+        GTEventMessagesPoolElement *eventMessageElemet = [self getElementFromMessagesPool:messageName];
+        
         if(eventMessageElemet) {
-            if([subscriber respondsToSelector:@selector(handleEventMessage:completion:)]) {
-                 BOOL haveHandle = gtRouter_sendBOOLMessage(subscriber,@selector(handleEventMessage:completion:),eventMessageElemet.message,eventMessageElemet.callBack);
+            Class subscriberClass = object_getClass(subscriber);
+            Method method = nil;
+            if(class_isMetaClass(subscriberClass)) {
+              method = class_getClassMethod((Class)subscriber, @selector(handleEventMessage:completion:));
+            } else {
+                method = class_getInstanceMethod(subscriberClass, @selector(handleEventMessage:completion:));
+            }
+            if(method) {
+                BOOL haveHandle = [subscriber handleEventMessage:eventMessageElemet.message completion:eventMessageElemet.callBack];
                 if(haveHandle) {
                      [self removeMessageWithName:messageName];
                 }
@@ -114,12 +119,12 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
     }
 }
 
-- (void)subscribeMessagesWithNames:(NSArray *)messageNames subscriber:(NSObject<GTMessageSubscriberProtocol> *)subscriber {
+- (void)subscribeMessagesWithNames:(NSArray *)messageNames subscriber:(id<GTMessageSubscriberProtocol> )subscriber {
     
     if(messageNames&&[messageNames isKindOfClass:[NSArray class]]&&messageNames.count>0) {
         for(int i=0;i<messageNames.count;i++) {
         NSString *messageName = messageNames[i];
-    gtRouter_sendVoidMessage(self,@selector(subscribeMessageWithName:subscriber:),messageName,subscriber);
+            [self subscribeMessageWithName:messageName subscriber:subscriber];
         }
     }
 }
@@ -132,18 +137,26 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
 
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
     if(message){
-      NSPointerArray *subscribersTable = gtRouter_sendMessage(self,@selector(subscribersForMessage:),message.name);
+      NSPointerArray *subscribersTable = [self subscribersForMessage:message.name];
       if(subscribersTable) {
          //如果存在订阅者
           NSArray *subscribers = [subscribersTable allObjects];
           
           for(int i=(int)(subscribers.count-1);i>=0;i--) {
-              NSObject<GTMessageSubscriberProtocol> *subscriber = subscribers[i];
-              if(subscriber && [subscriber respondsToSelector:@selector(handleEventMessage:completion:)]){
-                 BOOL haveHandle = gtRouter_sendBOOLMessage(subscriber,@selector(handleEventMessage:completion:),message,callBack);
-                  if(haveHandle){
-                      return;
+              id<GTMessageSubscriberProtocol>subscriber = subscribers[i];
+              Class subscriberClass = object_getClass(subscriber);
+              Method method = nil;
+              if(class_isMetaClass(subscriberClass)) {
+                  method = class_getClassMethod((Class)subscriber, @selector(handleEventMessage:completion:));
+              } else {
+                  method = class_getInstanceMethod(subscriberClass, @selector(handleEventMessage:completion:));
+              }
+              if(method) {
+                  BOOL haveHandle = [subscriber handleEventMessage:message completion:callBack];
+                  if(haveHandle) {
+                      [self removeMessageWithName:message.name];
                   }
+                  
               }
           }
       } else {
@@ -211,35 +224,36 @@ BOOL(*gtRouter_sendBOOLMessage)(id, SEL,...) = (BOOL (*)(id, SEL,...))objc_msgSe
 @implementation NSObject (GTEventBus)
 + (void)subscribeMessageWithName:(NSString *)name {
     if(name && name.length>0) {
-        gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(subscribeMessageWithName:subscriber:),name,self);
+        [[GTEventBus shareInstance] subscribeMessageWithName:name subscriber:(id<GTMessageSubscriberProtocol>)self];
     }
 }
 - (void)subscribeMessageWithName:(NSString *)name {
     if(name && name.length>0) {
-        gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(subscribeMessageWithName:subscriber:),name,self);
+          [[GTEventBus shareInstance] subscribeMessageWithName:name subscriber:(id<GTMessageSubscriberProtocol>)self];
     }
 }
 
 - (void)subscribeMessagesWithNames:(NSArray *)messageNames {
     if(messageNames && messageNames.count>0) {
-        gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(subscribeMessagesWithNames:subscriber:),messageNames,self);
+        [[GTEventBus shareInstance] subscribeMessagesWithNames:messageNames subscriber:(id<GTMessageSubscriberProtocol>)self];
     }
 }
 + (void)subscribeMessagesWithNames:(NSArray *)messageNames {
     if(messageNames && messageNames.count>0) {
-        gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(subscribeMessagesWithNames:subscriber:),messageNames,self);
+         [[GTEventBus shareInstance] subscribeMessagesWithNames:messageNames subscriber:(id<GTMessageSubscriberProtocol>)self];
     }
 }
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
-    gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(sendMessage:completion:),message,callBack);
+    
+    [[GTEventBus shareInstance] sendMessage:message completion:callBack];
 }
 + (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
-    gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(sendMessage:completion:),message,callBack);
+   [[GTEventBus shareInstance] sendMessage:message completion:callBack];
 }
 - (void)removeMessageWithName:(NSString *)name {
-    gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(removeMessageWithName:),name);
+    [[GTEventBus shareInstance] removeMessageWithName:name];
 }
 + (void)removeMessageWithName:(NSString *)name {
-    gtRouter_sendVoidMessage([GTEventBus shareInstance],@selector(removeMessageWithName:),name);
+    [[GTEventBus shareInstance] removeMessageWithName:name];
 }
 @end

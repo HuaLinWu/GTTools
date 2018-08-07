@@ -11,14 +11,21 @@
 @interface GTEvent1 : NSObject<GTMessageSubscriberProtocol>
 @end
 @implementation GTEvent1
++ (void)load {
+     [self subscribeMessagesWithNames:@[@"testMessgae1",@"testMessgae2"]];
+}
 - (instancetype)init {
     self = [super init];
     if(self) {
-        [self subscribeMessagesWithNames:@[@"testMessgae1",@"testMessgae2"]];
+//        [self subscribeMessagesWithNames:@[@"testMessgae1",@"testMessgae2"]];
     }
     return self;
 }
 - (GTEventMessage *)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion {
+    NSLog(@"--GTEvent1-->%@",eventMessage.name);
+    return nil;
+}
++ (GTEventMessage *)handleEventMessage:(GTEventMessage *)eventMessage completion:(GTCallBackBlock)completion {
     NSLog(@"--GTEvent1-->%@",eventMessage.name);
     return nil;
 }
@@ -30,8 +37,8 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        [self subscribeMessageWithName:@"testMessgae2"];
-        [[self class] subscribeMessageWithName:@"testMessgae2"];
+//        [self subscribeMessageWithName:@"testMessgae2"];
+//        [[self class] subscribeMessageWithName:@"testMessgae2"];
         
        
     }
@@ -76,27 +83,27 @@
             NSLog(@"------>%@",data);
         }];
     }
-    {
-        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae2" messageType:GTDefaultEventMessage messageBody:@"123456"];
-        _event2 = nil;
-        [self sendMessage:event1 completion:^(id data) {
-            NSLog(@"------>%@",data);
-        }];
-    }
-    {
-        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae1" messageType:GTViscidEventMessage messageBody:@"123456"];
-        [self sendMessage:event1 completion:^(id data) {
-            NSLog(@"------>%@",data);
-        }];
-        [self.event1 subscribeMessageWithName:@"testMessgae3"];
-    }
-    {
-        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae3" messageType:GTViscidEventMessage messageBody:@"123456"];
-        [self sendMessage:event1 completion:^(id data) {
-            NSLog(@"------>%@",data);
-        }];
-        [self.event1 subscribeMessageWithName:@"testMessgae3"];
-    }
+//    {
+//        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae2" messageType:GTDefaultEventMessage messageBody:@"123456"];
+//        _event2 = nil;
+//        [self sendMessage:event1 completion:^(id data) {
+//            NSLog(@"------>%@",data);
+//        }];
+//    }
+//    {
+//        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae1" messageType:GTViscidEventMessage messageBody:@"123456"];
+//        [self sendMessage:event1 completion:^(id data) {
+//            NSLog(@"------>%@",data);
+//        }];
+//        [self.event1 subscribeMessageWithName:@"testMessgae3"];
+//    }
+//    {
+//        GTEventMessage *event1 = [GTEventMessage eventWithName:@"testMessgae3" messageType:GTViscidEventMessage messageBody:@"123456"];
+//        [self sendMessage:event1 completion:^(id data) {
+//            NSLog(@"------>%@",data);
+//        }];
+//        [self.event1 subscribeMessageWithName:@"testMessgae3"];
+//    }
     
 }
 
