@@ -7,129 +7,63 @@
 //
 
 #import "NSArray+GTTools.h"
-#import "GTNullFilter.h"
-@interface NSArray()
-- (BOOL)gt_isBeyondRangeWithIndex:(NSUInteger)index;
-- (BOOL)gt_isBeyondRangeWithRange:(NSRange )range;
+#import <objc/runtime.h>
+
+@implementation NSArray(GTSafe)
+- (NSUInteger)gtSafeCount {
+    return 0;
+}
+- (id)gtSafeObjectAtIndex:(NSUInteger)index {
+    return nil;
+}
 @end
-@implementation NSArray (GTTools)
-- (nullable id)gt_objectAtIndex:(NSUInteger)index {
-    if([self gt_isBeyondRangeWithIndex:index]) {
-        return nil;
-    } else {
-       return [self objectAtIndex:index];
-    }
+@implementation NSMutableArray(GTSafeMutableArray)
+- (void)gtSafeAddObject:(id)anObject {
+    
 }
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-- (BOOL)gt_isBeyondRangeWithIndex:(NSUInteger)index {
-    if(index>=self.count) {
-        return YES;
-    } else {
-        return NO;
-    }
+- (void)gtSafeInsertObject:(id)anObject atIndex:(NSUInteger)index {
+    
 }
-- (BOOL)gt_isBeyondRangeWithRange:(NSRange )range {
-    if ((range.location + range.length)>self.count) {
-        return YES;
-    } else {
-        return NO;
-    }
+- (void)gtSafeRemoveLastObject {
+    
 }
-#pragma clang diagnostic pop
+- (void)gtSafeRemoveObjectAtIndex:(NSUInteger)index {
+    
+}
+- (void)gtSafeReplaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
+    
+}
+- (dispatch_queue_t)GTSyncQueue {
+   
+    dispatch_queue_t queue = objc_getAssociatedObject(self, "GTSyncQueue");
+    if(!queue) {
+        queue = dispatch_queue_create("GTSafeQueue", DISPATCH_QUEUE_CONCURRENT);
+        objc_setAssociatedObject(self, "GTSyncQueue", queue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return queue;
+}
 @end
-@implementation NSMutableArray (GTTools)
-- (void)gt_addObject:(id)anObject {
-    if([GTNullFilter isNullForObject:anObject]) {
-        return;
-    } else {
-        [self addObject:anObject];
-    }
-}
-- (void)gt_removeObjectAtIndex:(NSUInteger)index {
-    if([self gt_isBeyondRangeWithIndex:index]) {
-        return;
-    } else {
-        [self removeObjectAtIndex:index];
-    }
-}
-- (void)gt_replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
-    if([self gt_isBeyondRangeWithIndex:index] || [GTNullFilter isNullForObject:anObject]) {
-        return;
-    } else {
-        [self replaceObjectAtIndex:index withObject:anObject];
-    }
-}
-- (void)gt_insertObject:(id)anObject atIndex:(NSUInteger)index {
+@implementation GTSafeMutableArray
+- (void)addObject:(id)anObject {
     
-    if([self gt_isBeyondRangeWithIndex:index] || [GTNullFilter isNullForObject:anObject]) {
-        return;
-    } else {
-        [self insertObject:anObject atIndex:index];
-    }
 }
-- (void)gt_exchangeObjectAtIndex:(NSUInteger)idx1 withObjectAtIndex:(NSUInteger)idx2 {
-    if([self gt_isBeyondRangeWithIndex:idx1] || [self gt_isBeyondRangeWithIndex:idx2]) {
-        return;
-    } else {
-        [self exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
-    }
-}
-- (void)gt_removeObjectsInRange:(NSRange)range {
-    if([self gt_isBeyondRangeWithRange:range]) {
-        return;
-    } else {
-        [self removeObjectsInRange:range];
-    }
-}
-- (void)gt_removeObject:(id)anObject inRange:(NSRange)range {
+- (void)insertObject:(id)anObject atIndex:(NSUInteger)index {
     
-    if([self gt_isBeyondRangeWithRange:range]) {
-        return;
-    } else {
-        [self removeObject:anObject inRange:range];
-    }
 }
-- (void)gt_removeObjectIdenticalTo:(id)anObject inRange:(NSRange)range {
-    if([self gt_isBeyondRangeWithRange:range]) {
-        return;
-    } else {
-        [self removeObjectIdenticalTo:anObject inRange:range];
-    }
+- (void)removeLastObject {
+    
 }
-- (void)gt_replaceObjectsInRange:(NSRange)range withObjectsFromArray:(NSArray<id> *)otherArray range:(NSRange)otherRange {
-    if([self gt_isBeyondRangeWithRange:range]||[otherArray gt_isBeyondRangeWithRange:otherRange]) {
-        return;
-    } else {
-        [self replaceObjectsInRange:range withObjectsFromArray:otherArray range:otherRange];
-    }
+- (void)removeObjectAtIndex:(NSUInteger)index {
+    
 }
-- (void)gt_replaceObjectsInRange:(NSRange)range withObjectsFromArray:(NSArray<id> *)otherArray {
-    if([self gt_isBeyondRangeWithRange:range]) {
-        return;
-    } else {
-        [self replaceObjectsInRange:range withObjectsFromArray:otherArray];
-    }
+- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
+    
 }
-- (void)gt_insertObjects:(NSArray<id> *)objects atIndexes:(NSIndexSet *)indexes {
-    if([indexes indexGreaterThanOrEqualToIndex:self.count] >self.count) {
-        return;
-    } else {
-        [self insertObjects:objects atIndexes:indexes];
+- (instancetype)init {
+    self = [super init];
+    if(self) {
+        
     }
-}
-- (void)gt_removeObjectsAtIndexes:(NSIndexSet *)indexes {
-    if([indexes indexGreaterThanOrEqualToIndex:self.count] >self.count) {
-        return;
-    } else {
-        [self removeObjectsAtIndexes:indexes];
-    }
-}
-- (void)gt_replaceObjectsAtIndexes:(NSIndexSet *)indexes withObjects:(NSArray<id> *)objects {
-    if([indexes indexGreaterThanOrEqualToIndex:self.count] >self.count) {
-        return;
-    } else {
-        [self replaceObjectsAtIndexes:indexes withObjects:objects];
-    }
+    return self;
 }
 @end

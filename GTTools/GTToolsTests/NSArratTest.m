@@ -29,12 +29,11 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 - (void)testMutableArray {
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    [array gt_addObject:@(1)];
-//    [array gt_removeObjectsInRange:NSMakeRange(0, 1)];
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:1];
-    [array gt_removeObjectsAtIndexes:indexSet];
-   
+//    NSMutableArray *array = [[NSMutableArray alloc] init];
+//    [array gt_addObject:@(1)];
+////    [array gt_removeObjectsInRange:NSMakeRange(0, 1)];
+//    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:1];
+//    [array gt_removeObjectsAtIndexes:indexSet];
 }
 
 - (void)testPerformanceExample {

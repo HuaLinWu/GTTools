@@ -37,8 +37,8 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-//        [self subscribeMessageWithName:@"testMessgae2"];
-//        [[self class] subscribeMessageWithName:@"testMessgae2"];
+        [self subscribeMessageWithName:@"testMessgae2"];
+        [[self class] subscribeMessageWithName:@"testMessgae2"];
         
        
     }

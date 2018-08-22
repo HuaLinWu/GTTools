@@ -23,6 +23,7 @@
 //    [GTTimer gt_createSECTimerWithName:@"thread1" period:1 repeats:NO eventHandler:^{
 //        NSLog(@"----->%@",[NSThread currentThread]);
 //    }];
+    
 }
 
 - (IBAction)jumpWebViewBtnClick:(UIButton *)sender {

@@ -96,6 +96,10 @@
 		FE8AE5A5211701D500AC264F /* GTTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = FE8AE5A3211701D500AC264F /* GTTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE8AE5A6211701D500AC264F /* GTTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8AE5A4211701D500AC264F /* GTTimer.m */; };
 		FE9CC9C62117FA0D00D2ADAF /* GTTimerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9CC9C52117FA0D00D2ADAF /* GTTimerTest.m */; };
+		FEB3DEF6212D52C700BBBB10 /* GTTableViewAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = FEB3DEF4212D52C700BBBB10 /* GTTableViewAdapter.h */; };
+		FEB3DEF7212D52C700BBBB10 /* GTTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB3DEF5212D52C700BBBB10 /* GTTableViewAdapter.m */; };
+		FEBB9B8C2126C4770037EB38 /* GTMutableThreads.h in Headers */ = {isa = PBXBuildFile; fileRef = FEBB9B8B2126C4770037EB38 /* GTMutableThreads.h */; };
+		FEBB9B8E2126C94E0037EB38 /* GTMutableThreads.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBB9B8D2126C94E0037EB38 /* GTMutableThreads.m */; };
 		FEDD154921118444007A6F7F /* GTFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FEDD154721118444007A6F7F /* GTFileManager.h */; };
 		FEDD154A21118444007A6F7F /* GTFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD154821118444007A6F7F /* GTFileManager.m */; };
 		FEDD15792112FF8C007A6F7F /* GTDiskCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */; };
@@ -204,6 +208,10 @@
 		FE8AE5A3211701D500AC264F /* GTTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTimer.h; sourceTree = "<group>"; };
 		FE8AE5A4211701D500AC264F /* GTTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTimer.m; sourceTree = "<group>"; };
 		FE9CC9C52117FA0D00D2ADAF /* GTTimerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTimerTest.m; sourceTree = "<group>"; };
+		FEB3DEF4212D52C700BBBB10 /* GTTableViewAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTableViewAdapter.h; sourceTree = "<group>"; };
+		FEB3DEF5212D52C700BBBB10 /* GTTableViewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTableViewAdapter.m; sourceTree = "<group>"; };
+		FEBB9B8B2126C4770037EB38 /* GTMutableThreads.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMutableThreads.h; sourceTree = "<group>"; };
+		FEBB9B8D2126C94E0037EB38 /* GTMutableThreads.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTMutableThreads.m; sourceTree = "<group>"; };
 		FEDD154721118444007A6F7F /* GTFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTFileManager.h; sourceTree = "<group>"; };
 		FEDD154821118444007A6F7F /* GTFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTFileManager.m; sourceTree = "<group>"; };
 		FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTDiskCacheTest.m; sourceTree = "<group>"; };
@@ -284,6 +292,10 @@
 				FE3A412720DA62BC00F78947 /* GTSoftwareInfo.m */,
 				FE8AE5A3211701D500AC264F /* GTTimer.h */,
 				FE8AE5A4211701D500AC264F /* GTTimer.m */,
+				FEBB9B8B2126C4770037EB38 /* GTMutableThreads.h */,
+				FEBB9B8D2126C94E0037EB38 /* GTMutableThreads.m */,
+				FEB3DEF3212D50A800BBBB10 /* UICollectionViewAdapter */,
+				FEB3DEF2212D4FA900BBBB10 /* UITableViewAdapter */,
 				FE212AC120F2F7CF0046520F /* GTRouter */,
 				FE212ABC20EF6EE40046520F /* MVVM */,
 				FE3A419420DB756B00F78947 /* GTSwizzle */,
@@ -425,6 +437,22 @@
 			path = GTSwizzle;
 			sourceTree = "<group>";
 		};
+		FEB3DEF2212D4FA900BBBB10 /* UITableViewAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				FEB3DEF4212D52C700BBBB10 /* GTTableViewAdapter.h */,
+				FEB3DEF5212D52C700BBBB10 /* GTTableViewAdapter.m */,
+			);
+			path = UITableViewAdapter;
+			sourceTree = "<group>";
+		};
+		FEB3DEF3212D50A800BBBB10 /* UICollectionViewAdapter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UICollectionViewAdapter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -463,6 +491,7 @@
 				FE3A419820DB786000F78947 /* Aspects.h in Headers */,
 				FE4E950520E6338300FEE678 /* UIButton+GTTools.h in Headers */,
 				FE0F8D6B210FFA5A0026355D /* UIViewControllerRouteProtocol.h in Headers */,
+				FEBB9B8C2126C4770037EB38 /* GTMutableThreads.h in Headers */,
 				FE3A410820DA220700F78947 /* GTModelProtocol.h in Headers */,
 				FE3A414420DB3F2F00F78947 /* GTMemoryCache.h in Headers */,
 				FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */,
@@ -472,6 +501,7 @@
 				FE3A410620DA0F4100F78947 /* NSObject+YYModel.h in Headers */,
 				FE4E94F120E6152B00FEE678 /* NSAttributedString+GTTools.h in Headers */,
 				FE0F8D6C210FFA5A0026355D /* GTRoute+PresentViewController.h in Headers */,
+				FEB3DEF6212D52C700BBBB10 /* GTTableViewAdapter.h in Headers */,
 				FE3A414820DB3F5E00F78947 /* GTDiskCache.h in Headers */,
 				FE3A414C20DB3FF500F78947 /* GTWebView.h in Headers */,
 			);
@@ -574,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE4E94FA20E61F6F00FEE678 /* UILabel+GTTools.m in Sources */,
+				FEBB9B8E2126C94E0037EB38 /* GTMutableThreads.m in Sources */,
 				FE4E94FE20E6279B00FEE678 /* UIFont+GTTools.m in Sources */,
 				FE3A411E20DA49F000F78947 /* UIColor+GTTools.m in Sources */,
 				FE3A40EA20D9F0EC00F78947 /* NSDictionary+GTTools.m in Sources */,
@@ -602,6 +633,7 @@
 				FE3A414D20DB3FF500F78947 /* GTWebView.m in Sources */,
 				FE3A413D20DB361700F78947 /* UIView+GTTools.m in Sources */,
 				FE212AB920EDFA570046520F /* GTWebViewJSBridge_JS.m in Sources */,
+				FEB3DEF7212D52C700BBBB10 /* GTTableViewAdapter.m in Sources */,
 				FE7E09CD21144E48002E109F /* GTCache.m in Sources */,
 				FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */,
 				FE1E040E20E1D4F900FB080E /* GTWKWebViewJSBridge.m in Sources */,
