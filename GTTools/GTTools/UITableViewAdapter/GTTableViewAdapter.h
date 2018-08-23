@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "GTTableViewAdapterSectionItem.h"
 @interface GTTableViewAdapter : NSObject
+- (void)addSectionItem:(GTTableViewAdapterSectionItem *)sectionItem;
+- (void)addSectionItems:(NSArray<GTTableViewAdapterSectionItem *> *)sectionItems;
 @end

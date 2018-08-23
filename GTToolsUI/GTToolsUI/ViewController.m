@@ -23,7 +23,7 @@
 //    [GTTimer gt_createSECTimerWithName:@"thread1" period:1 repeats:NO eventHandler:^{
 //        NSLog(@"----->%@",[NSThread currentThread]);
 //    }];
-    
+//    UITableViewRowAction
 }
 
 - (IBAction)jumpWebViewBtnClick:(UIButton *)sender {

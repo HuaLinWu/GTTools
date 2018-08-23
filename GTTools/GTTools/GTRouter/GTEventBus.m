@@ -84,7 +84,6 @@
       NSPointerArray *subscribersTable = [self.messageAndSubscribersMap objectForKey:messageName];
         dispatch_semaphore_signal(self.messageAndSubscribersMapSemaphore);
         if(subscribersTable) {
-            
             if(![[subscribersTable allObjects] containsObject:subscriber]){
                 [subscribersTable addPointer:(__bridge void * _Nullable)(subscriber)];
             } else {
@@ -138,7 +137,7 @@
 - (void)sendMessage:(GTEventMessage *)message completion:(GTCallBackBlock)callBack {
     if(message){
       NSPointerArray *subscribersTable = [self subscribersForMessage:message.name];
-      if(subscribersTable) {
+      if(subscribersTable && subscribersTable.count>0) {
          //如果存在订阅者
           NSArray *subscribers = [subscribersTable allObjects];
           
@@ -179,6 +178,10 @@
     if(messageName && messageName.length>0) {
         dispatch_semaphore_wait(self.messageAndSubscribersMapSemaphore, DISPATCH_TIME_FOREVER);
         NSPointerArray *array = [self.messageAndSubscribersMap objectForKey:messageName];
+        if(array) {
+            [array addPointer:NULL];
+            [array compact];
+        }
         dispatch_semaphore_signal(self.messageAndSubscribersMapSemaphore);
         return array;
     } else {
