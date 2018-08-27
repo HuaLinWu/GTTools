@@ -11,4 +11,5 @@
 @interface GTTableViewAdapter : NSObject
 - (void)addSectionItem:(GTTableViewAdapterSectionItem *)sectionItem;
 - (void)addSectionItems:(NSArray<GTTableViewAdapterSectionItem *> *)sectionItems;
+- (void)reload;
 @end

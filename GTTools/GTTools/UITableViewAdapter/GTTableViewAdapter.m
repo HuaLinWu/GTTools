@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 @interface GTTableViewAdapter()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSMutableArray *sectionItems;
+@property(nonatomic,weak)UITableView *tableview;
 @end
 @implementation GTTableViewAdapter
 #pragma mark public_methods
@@ -148,6 +149,9 @@
 ////@optional
 //// Default is 1 if not implemented
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if(self.tableview!=tableView) {
+        self.tableview = tableView;
+    }
     return self.sectionItems.count;
 }
 //// fixed font style. use custom view (UILabel) if you want something different

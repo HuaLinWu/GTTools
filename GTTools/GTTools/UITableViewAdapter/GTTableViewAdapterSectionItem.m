@@ -7,8 +7,35 @@
 //
 
 #import "GTTableViewAdapterSectionItem.h"
+
+/**
+ cell高度计算枚举
+ */
+NS_ENUM(NSUInteger,_GTRowStatus) {
+    GTEndCalculate,//计算结束
+    GTBeginCalculate,//开始计算
+    GTCalculateing//正在计算中
+};
+@interface GTTableViewAdapterCellItem()
+@property(nonatomic,assign) enum _GTRowStatus rowHeightCalculateStatus;
+@end
 @implementation GTTableViewAdapterCellItem
+- (instancetype)init {
+    self = [super init];
+    if(self) {
+        [self addObserver:self forKeyPath:@"rowHeight" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    return self;
+}
+//MARK: public
 - (void)setNeedUpdateRowHeight {
+    if(self.calculateRowHeightBlock) {
+        self.rowHeightCalculateStatus = GTBeginCalculate;
+        self.calculateRowHeightBlock();
+    }
+}
+//MARK:Observer
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     
 }
 @end

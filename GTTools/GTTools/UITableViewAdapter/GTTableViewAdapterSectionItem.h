@@ -26,7 +26,7 @@
 @property(nonatomic, strong)id cellData;
 
 /**
- cell 绑定数据的方法默认是@selector(bindData:)
+ cell 绑定数据的对象方法默认是@selector(bindData:)
  */
 @property(nonatomic, assign)SEL cellBindDataSeletor;
 /**
@@ -36,7 +36,7 @@
 /**
  用户自定义计算行高，计算完成请给rowHeight赋值
  */
-@property(nonatomic, copy)void(^calculateRowHeight)(void);
+@property(nonatomic, copy)void(^calculateRowHeightBlock)(void);
 
 /**
  用户自定义的额外参数，GTTableViewAdapter 不会调用
