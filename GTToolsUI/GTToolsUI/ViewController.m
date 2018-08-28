@@ -7,48 +7,47 @@
 //
 
 #import "ViewController.h"
-#import "UIWebViewController.h"
-#import <GTTools/GTTools.h>
-#import "GTCollectionViewController.h"
-@interface ViewController ()
-@property (weak, nonatomic) IBOutlet UIView *testView;
-
+#import "GTTableViewAdapterDemoVC.h"
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property(nonatomic,strong)NSArray *dataSourceArray;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-//    [GTTimer gt_createSECTimerWithName:@"thread1" period:1 repeats:NO eventHandler:^{
-//        NSLog(@"----->%@",[NSThread currentThread]);
-//    }];
-//    UITableViewRowAction
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [self.view addSubview:tableView];
+}
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSourceArray.count;
 }
 
-- (IBAction)jumpWebViewBtnClick:(UIButton *)sender {
-//    UIWebViewController *webVC = [[UIWebViewController alloc] initWithNibName:@"UIWebViewController" bundle:[NSBundle mainBundle]];
-//    [self.navigationController pushViewController:webVC animated:YES];
-//    [self presentViewController:webVC animated:YES completion:nil];
-//    [self showViewController:webVC sender:nil];
-//    [self showDetailViewController:webVC sender:nil];
-//    [GTTimer resumeTimerWithName:@"thread1"];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if(!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.textLabel.text = self.dataSourceArray[indexPath.row];
+    return cell;
 }
-- (IBAction)jumpWKWebViewClick:(UIButton *)sender {
-//    [GTTimer suspendTimerWithName:@"thread1"];
-//    [self.testView gt_setCornerRadius:20 borderColor:nil borderWidth:0];
-//    [self.testView gt_setCornerRadiusRatioToHeight:0.5];
+#pragma mark UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.row == 0) {
+        //@"tableViewAdapterDemo"
+        GTTableViewAdapterDemoVC *vc = [[GTTableViewAdapterDemoVC alloc] init];
+        vc.title = @"tableViewAdapterDemo";
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
-- (IBAction)jumpCollectionViewController:(UIButton *)sender {
-    GTCollectionViewController *collectionVC =  [[GTCollectionViewController alloc] init];
-    [self.navigationController pushViewController:collectionVC animated:YES];
-//     [GTTimer releaseTimerWithName:@"thread1"];
+#pragma mark set/get
+- (NSArray *)dataSourceArray {
+    if(!_dataSourceArray) {
+        _dataSourceArray = @[@"tableViewAdapterDemo"];
+    }
+    return _dataSourceArray;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 @end

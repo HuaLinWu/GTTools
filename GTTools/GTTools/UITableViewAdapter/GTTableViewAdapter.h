@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GTTableViewAdapterSectionItem.h"
-@interface GTTableViewAdapter : NSObject
+@interface GTTableViewAdapter : NSObject<UITableViewDelegate,UITableViewDataSource>
 - (void)addSectionItem:(GTTableViewAdapterSectionItem *)sectionItem;
 - (void)addSectionItems:(NSArray<GTTableViewAdapterSectionItem *> *)sectionItems;
 - (void)reload;

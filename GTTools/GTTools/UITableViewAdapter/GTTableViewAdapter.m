@@ -8,8 +8,9 @@
 
 #import "GTTableViewAdapter.h"
 #import <UIKit/UITableView.h>
+#import <UIKit/UIApplication.h>
 #import <objc/runtime.h>
-@interface GTTableViewAdapter()<UITableViewDelegate,UITableViewDataSource>
+@interface GTTableViewAdapter()
 @property(nonatomic,strong)NSMutableArray *sectionItems;
 @property(nonatomic,weak)UITableView *tableview;
 @end
@@ -25,13 +26,47 @@
         [self.sectionItems addObjectsFromArray:sectionItems];
     }
 }
+- (void)reload {
+    dispatch_async(dispatch_get_main_queue(), ^{
+         [self.tableview reloadData];
+    });
+}
+#pragma mark observe
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if([keyPath isEqualToString:@"needUpdate"] && [object isKindOfClass:[GTTableViewAdapterCellItem class]]) {
+        GTTableViewAdapterCellItem *item = (GTTableViewAdapterCellItem *)object;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"%@",[NSRunLoop currentRunLoop].currentMode);
+             if ([NSRunLoop currentRunLoop].currentMode ==(NSRunLoopMode)kCFRunLoopDefaultMode) {
+                //在默认
+                 NSArray<NSIndexPath *> *indexPaths = [self.tableview indexPathsForVisibleRows];
+                 for(NSIndexPath *indexPath in indexPaths) {
+                     GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+                     if(cellItem == item) {
+                         [self.tableview reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                         break;
+                     }
+                 }
+            }
+        });
+    }
+}
 #pragma mark UITableViewDelegate
 // Display customization
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+    [cellItem addObserver:self forKeyPath:@"needUpdate" options:NSKeyValueObservingOptionNew context:nil];
+}
 //- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
 //- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
-//- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath*)indexPath NS_AVAILABLE_IOS(6_0);
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath*)indexPath {
+    GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+    if(cellItem.observationInfo) {
+         [cellItem removeObserver:self forKeyPath:@"needUpdate"];
+    }
+   
+}
 //- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
 //- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
 
@@ -41,19 +76,24 @@
     GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
     return cellItem.rowHeight;
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 0;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0;
+}
 
-// Use the estimatedHeight methods to quickly calcuate guessed values which will allow for fast load times of the table.
-// If these methods are implemented, the above -tableView:heightForXXX calls will be deferred until views are ready to be displayed, so more expensive logic can be placed there.
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(7_0);
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section NS_AVAILABLE_IOS(7_0);
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section NS_AVAILABLE_IOS(7_0);
 
 // Section header & footer information. Views are preferred over title should you decide to provide both
 
-//- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;   // custom view for header. will be adjusted to default or specified header height
-//- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section;   // custom view for footer. will be adjusted to default or specified footer height
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return nil;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    [tableView dequeueReusableHeaderFooterViewWithIdentifier:@""]
+    return nil;
+}
 
 //// Accessories (disclosures).
 //
@@ -131,15 +171,26 @@
     return cellItemsNumberAtSection(self.sectionItems, section);
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
      GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellItem.reuseIdentifier];
+    NSString *cellClassStr;
+    NSString *cellReuseIdentifier;
+    if(![[cellItem valueForKey:@"needUpdate"] boolValue]) {
+        //未就绪
+        cellClassStr = cellItem.replaceCellClass;
+        cellReuseIdentifier = cellItem.replaceCellClass;
+    } else {
+        cellClassStr = cellItem.cellClass;
+        cellReuseIdentifier = cellItem.reuseIdentifier;
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
     if(!cell) {
-        Class class = NSClassFromString(cellItem.cellClass);
+        Class class = NSClassFromString(cellClassStr);
         cell = [[class alloc] init];
     }
     if([cell respondsToSelector:cellItem.cellBindDataSeletor]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
         [cell performSelector:cellItem.cellBindDataSeletor withObject:cellItem.cellData];
 #pragma clang diagnostic pop
     }
@@ -199,15 +250,21 @@
 //- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
 //    
 //}
+
 #pragma mark private_methods
 static inline CGFloat cellItemsNumberAtSection(NSMutableArray *sectionItems,NSInteger section) {
-    NSArray *cellItems= [sectionItems objectAtIndex:section];
-    return cellItems.count;
+   GTTableViewAdapterSectionItem *sectionItem= sectionItemAtSection(sectionItems,section);
+    return sectionItem.cellItems.count;
 }
 static inline GTTableViewAdapterCellItem *cellItemAtIndexPath(NSMutableArray *sectionItems,NSIndexPath * indexPath) {
-     NSArray *cellItems= [sectionItems objectAtIndex:indexPath.section];
-    GTTableViewAdapterCellItem *cellItem = [cellItems objectAtIndex:indexPath.row];
+     GTTableViewAdapterSectionItem *sectionItem= sectionItemAtSection(sectionItems,indexPath.section);
+    GTTableViewAdapterCellItem *cellItem = [sectionItem.cellItems objectAtIndex:indexPath.row];
     return cellItem;
+}
+static inline GTTableViewAdapterSectionItem *sectionItemAtSection(NSMutableArray *sectionItems,NSInteger section) {
+    
+    GTTableViewAdapterSectionItem *sectionItem= [sectionItems objectAtIndex:section];
+    return sectionItem;
 }
 #pragma mark set/get
 - (NSMutableArray *)sectionItems {

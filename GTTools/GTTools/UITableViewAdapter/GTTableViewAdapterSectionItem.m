@@ -7,43 +7,52 @@
 //
 
 #import "GTTableViewAdapterSectionItem.h"
-
-/**
- cell高度计算枚举
- */
-NS_ENUM(NSUInteger,_GTRowStatus) {
-    GTEndCalculate,//计算结束
-    GTBeginCalculate,//开始计算
-    GTCalculateing//正在计算中
-};
+#import <objc/runtime.h>
 @interface GTTableViewAdapterCellItem()
-@property(nonatomic,assign) enum _GTRowStatus rowHeightCalculateStatus;
+@property(nonatomic,assign)BOOL needUpdate;
 @end
 @implementation GTTableViewAdapterCellItem
 - (instancetype)init {
-    self = [super init];
+    self =[super init];
     if(self) {
-        [self addObserver:self forKeyPath:@"rowHeight" options:NSKeyValueObservingOptionNew context:nil];
+        _replaceCellClass = @"UITableViewCell";
+        _replaceRowHeight = 44;
     }
     return self;
 }
 //MARK: public
-- (void)setNeedUpdateRowHeight {
-    if(self.calculateRowHeightBlock) {
-        self.rowHeightCalculateStatus = GTBeginCalculate;
-        self.calculateRowHeightBlock();
-    }
-}
-//MARK:Observer
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    
+- (void)setNeedUpdate {
+    self.needUpdate = YES;
 }
 @end
+//_______________________________________________________________________________________________________________
+@interface GTTableViewAdapterSectionExtendViewItem()
+@property(nonatomic,assign)BOOL needUpdate;
+@end
+@implementation GTTableViewAdapterSectionExtendViewItem
+- (instancetype)init {
+    self =[super init];
+    if(self) {
+        _replaceViewClass = @"UIView";
+        _replaceViewHeight = 44;
+    }
+    return self;
+}
+//MARK: public
+- (void)setNeedUpdate {
+    self.needUpdate = YES;
+}
+@end
+//_______________________________________________________________________________________________________________
 @interface GTTableViewAdapterSectionItem()
 @property(nonatomic, strong)NSMutableArray *gtCellItems;
+@property(nonatomic,copy)GTTableViewAdapterSectionExtendViewItem *headerItem;
+@property(nonatomic,copy)GTTableViewAdapterSectionExtendViewItem *footerItem;
 @end
 @implementation GTTableViewAdapterSectionItem
-
+- (void)addSectionHeaderItem:(GTTableViewAdapterSectionExtendViewItem *)headerItem {
+    self.headerItem = headerItem;
+}
 - (void)addCellItem:(GTTableViewAdapterCellItem *)cellItem {
     GTTableViewAdapterCellItem *validCellItem = [self getValidCellItem:cellItem];
     if(validCellItem) {
@@ -74,18 +83,15 @@ NS_ENUM(NSUInteger,_GTRowStatus) {
         [self.gtCellItems replaceObjectAtIndex:row withObject:validCellItem];
     }
 }
+- (void)addSectionFooterItem:(GTTableViewAdapterSectionExtendViewItem *)footerItem {
+    self.footerItem = footerItem;
+}
 #pragma mark set/get
 - (GTTableViewAdapterCellItem *)getValidCellItem:(GTTableViewAdapterCellItem *)cellItem {
     if(!cellItem.cellClass ||![cellItem.cellClass isKindOfClass:[NSString class]] || !NSClassFromString(cellItem.cellClass)) {
 #ifdef DEBUG
         NSString *messgae = [NSString stringWithFormat:@"%@的cellClass不存在",cellItem];
-        NSAssert(1,messgae);
-#endif
-        return nil;
-    } else if (![NSClassFromString(cellItem.cellClass) isKindOfClass:[UITableViewCell class]]) {
-#ifdef DEBUG
-        NSString *messgae = [NSString stringWithFormat:@"%@的cellClass 不是UITableViewCell 的子类",cellItem];
-        NSAssert(1,messgae);
+        NSAssert(0,messgae);
 #endif
         return nil;
     }
@@ -98,10 +104,7 @@ NS_ENUM(NSUInteger,_GTRowStatus) {
     return cellItem;
 }
 - (NSArray<GTTableViewAdapterCellItem *> *)cellItems {
-    if(!_cellItems){
-        _cellItems = [self.gtCellItems copy];
-    }
-    return _cellItems;
+    return [self.gtCellItems copy];
 }
 - (NSMutableArray *)gtCellItems {
     if(!_gtCellItems){

@@ -22,6 +22,12 @@
 		FE3A417C20DB74C900F78947 /* GTToolsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A417B20DB74C900F78947 /* GTToolsUITests.m */; };
 		FE3A418720DB74C900F78947 /* GTToolsUIUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3A418620DB74C900F78947 /* GTToolsUIUITests.m */; };
 		FE3E0BC7210B20570050CB00 /* UIResponder+GSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3E0BC6210B20560050CB00 /* UIResponder+GSCategory.m */; };
+		FE654269213516BD008AB165 /* GTTableViewAdapterDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE654267213516BD008AB165 /* GTTableViewAdapterDemoVC.m */; };
+		FE65426D21351BAD008AB165 /* GTTableViewAdapterDemoVM.m in Sources */ = {isa = PBXBuildFile; fileRef = FE65426C21351BAD008AB165 /* GTTableViewAdapterDemoVM.m */; };
+		FE65427021351CDE008AB165 /* GTTableViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = FE65426F21351CDE008AB165 /* GTTableViewCell1.m */; };
+		FE65427321351CEB008AB165 /* GTTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = FE65427221351CEB008AB165 /* GTTableViewCell2.m */; };
+		FE65427521351F8A008AB165 /* GTTableViewAdapter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE65427421351F8A008AB165 /* GTTableViewAdapter.xcassets */; };
+		FE65427821352FE4008AB165 /* GTTableViewReplaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE65427721352FE4008AB165 /* GTTableViewReplaceCell.m */; };
 		FE8AE5A12116FE2300AC264F /* GTCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8AE59F2116FE2300AC264F /* GTCollectionViewController.m */; };
 		FE8AE5A22116FE2300AC264F /* GTCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE8AE5A02116FE2300AC264F /* GTCollectionViewController.xib */; };
 		FE9CC9CC21183B6700D2ADAF /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9CC9CA21183B6700D2ADAF /* CollectionViewCell.m */; };
@@ -73,6 +79,17 @@
 		FE3A418820DB74C900F78947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE3E0BC5210B20560050CB00 /* UIResponder+GSCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+GSCategory.h"; sourceTree = "<group>"; };
 		FE3E0BC6210B20560050CB00 /* UIResponder+GSCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+GSCategory.m"; sourceTree = "<group>"; };
+		FE654266213516BD008AB165 /* GTTableViewAdapterDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTableViewAdapterDemoVC.h; sourceTree = "<group>"; };
+		FE654267213516BD008AB165 /* GTTableViewAdapterDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTableViewAdapterDemoVC.m; sourceTree = "<group>"; };
+		FE65426B21351BAD008AB165 /* GTTableViewAdapterDemoVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTableViewAdapterDemoVM.h; sourceTree = "<group>"; };
+		FE65426C21351BAD008AB165 /* GTTableViewAdapterDemoVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTableViewAdapterDemoVM.m; sourceTree = "<group>"; };
+		FE65426E21351CDE008AB165 /* GTTableViewCell1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTableViewCell1.h; sourceTree = "<group>"; };
+		FE65426F21351CDE008AB165 /* GTTableViewCell1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTableViewCell1.m; sourceTree = "<group>"; };
+		FE65427121351CEB008AB165 /* GTTableViewCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTableViewCell2.h; sourceTree = "<group>"; };
+		FE65427221351CEB008AB165 /* GTTableViewCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTableViewCell2.m; sourceTree = "<group>"; };
+		FE65427421351F8A008AB165 /* GTTableViewAdapter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GTTableViewAdapter.xcassets; sourceTree = "<group>"; };
+		FE65427621352FE4008AB165 /* GTTableViewReplaceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTableViewReplaceCell.h; sourceTree = "<group>"; };
+		FE65427721352FE4008AB165 /* GTTableViewReplaceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTableViewReplaceCell.m; sourceTree = "<group>"; };
 		FE8AE59E2116FE2300AC264F /* GTCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTCollectionViewController.h; sourceTree = "<group>"; };
 		FE8AE59F2116FE2300AC264F /* GTCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTCollectionViewController.m; sourceTree = "<group>"; };
 		FE8AE5A02116FE2300AC264F /* GTCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GTCollectionViewController.xib; sourceTree = "<group>"; };
@@ -140,6 +157,7 @@
 		FE3A416120DB74C500F78947 /* GTToolsUI */ = {
 			isa = PBXGroup;
 			children = (
+				FE6542652135161C008AB165 /* UITableViewDemo */,
 				FE3A416220DB74C500F78947 /* AppDelegate.h */,
 				FE3A416320DB74C500F78947 /* AppDelegate.m */,
 				FE3A416520DB74C500F78947 /* ViewController.h */,
@@ -184,6 +202,24 @@
 				FE3A418820DB74C900F78947 /* Info.plist */,
 			);
 			path = GTToolsUIUITests;
+			sourceTree = "<group>";
+		};
+		FE6542652135161C008AB165 /* UITableViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FE654266213516BD008AB165 /* GTTableViewAdapterDemoVC.h */,
+				FE654267213516BD008AB165 /* GTTableViewAdapterDemoVC.m */,
+				FE65426B21351BAD008AB165 /* GTTableViewAdapterDemoVM.h */,
+				FE65426C21351BAD008AB165 /* GTTableViewAdapterDemoVM.m */,
+				FE65426E21351CDE008AB165 /* GTTableViewCell1.h */,
+				FE65426F21351CDE008AB165 /* GTTableViewCell1.m */,
+				FE65427121351CEB008AB165 /* GTTableViewCell2.h */,
+				FE65427221351CEB008AB165 /* GTTableViewCell2.m */,
+				FE65427621352FE4008AB165 /* GTTableViewReplaceCell.h */,
+				FE65427721352FE4008AB165 /* GTTableViewReplaceCell.m */,
+				FE65427421351F8A008AB165 /* GTTableViewAdapter.xcassets */,
+			);
+			path = UITableViewDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE65427521351F8A008AB165 /* GTTableViewAdapter.xcassets in Resources */,
 				FE8AE5A22116FE2300AC264F /* GTCollectionViewController.xib in Resources */,
 				FE3A416F20DB74C800F78947 /* LaunchScreen.storyboard in Resources */,
 				FE3A416C20DB74C800F78947 /* Assets.xcassets in Resources */,
@@ -321,11 +358,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE65427021351CDE008AB165 /* GTTableViewCell1.m in Sources */,
+				FE65427821352FE4008AB165 /* GTTableViewReplaceCell.m in Sources */,
+				FE65426D21351BAD008AB165 /* GTTableViewAdapterDemoVM.m in Sources */,
 				FE8AE5A12116FE2300AC264F /* GTCollectionViewController.m in Sources */,
 				FE3E0BC7210B20570050CB00 /* UIResponder+GSCategory.m in Sources */,
 				FE3A416720DB74C500F78947 /* ViewController.m in Sources */,
 				FE3A417220DB74C800F78947 /* main.m in Sources */,
+				FE654269213516BD008AB165 /* GTTableViewAdapterDemoVC.m in Sources */,
 				FE3A416420DB74C500F78947 /* AppDelegate.m in Sources */,
+				FE65427321351CEB008AB165 /* GTTableViewCell2.m in Sources */,
 				FE1E040520E1CD5B00FB080E /* UIWebViewController.m in Sources */,
 				FE9CC9CC21183B6700D2ADAF /* CollectionViewCell.m in Sources */,
 				FE1E040020E1CD4900FB080E /* WKWebViewController.m in Sources */,

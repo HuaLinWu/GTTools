@@ -89,8 +89,8 @@
 		FE62891720DCA50100AA27B5 /* GTBaseJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891520DCA50100AA27B5 /* GTBaseJSBridge.m */; };
 		FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */; };
 		FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */; };
-		FE76EEBB212E8F02004F5BDC /* GTTableViewAdapterSectionItem.h in Headers */ = {isa = PBXBuildFile; fileRef = FE76EEB9212E8F02004F5BDC /* GTTableViewAdapterSectionItem.h */; };
-		FE76EEBC212E8F02004F5BDC /* GTTableViewAdapterSectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FE76EEBA212E8F02004F5BDC /* GTTableViewAdapterSectionItem.m */; };
+		FE654263213514EB008AB165 /* GTTableViewAdapterSectionItem.h in Headers */ = {isa = PBXBuildFile; fileRef = FE654261213514EB008AB165 /* GTTableViewAdapterSectionItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE654264213514EB008AB165 /* GTTableViewAdapterSectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FE654262213514EB008AB165 /* GTTableViewAdapterSectionItem.m */; };
 		FE7E09762113E6B7002E109F /* GTEventBusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7E09752113E6B7002E109F /* GTEventBusTest.m */; };
 		FE7E09C621143A2E002E109F /* GTMemoryCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7E09C521143A2E002E109F /* GTMemoryCacheTest.m */; };
 		FE7E09CC21144E48002E109F /* GTCache.h in Headers */ = {isa = PBXBuildFile; fileRef = FE7E09CA21144E48002E109F /* GTCache.h */; };
@@ -98,9 +98,9 @@
 		FE8AE5A5211701D500AC264F /* GTTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = FE8AE5A3211701D500AC264F /* GTTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE8AE5A6211701D500AC264F /* GTTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8AE5A4211701D500AC264F /* GTTimer.m */; };
 		FE9CC9C62117FA0D00D2ADAF /* GTTimerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9CC9C52117FA0D00D2ADAF /* GTTimerTest.m */; };
-		FEB3DEF6212D52C700BBBB10 /* GTTableViewAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = FEB3DEF4212D52C700BBBB10 /* GTTableViewAdapter.h */; };
+		FEB3DEF6212D52C700BBBB10 /* GTTableViewAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = FEB3DEF4212D52C700BBBB10 /* GTTableViewAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FEB3DEF7212D52C700BBBB10 /* GTTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB3DEF5212D52C700BBBB10 /* GTTableViewAdapter.m */; };
-		FEBB9B8C2126C4770037EB38 /* GTMutableThreads.h in Headers */ = {isa = PBXBuildFile; fileRef = FEBB9B8B2126C4770037EB38 /* GTMutableThreads.h */; };
+		FEBB9B8C2126C4770037EB38 /* GTMutableThreads.h in Headers */ = {isa = PBXBuildFile; fileRef = FEBB9B8B2126C4770037EB38 /* GTMutableThreads.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FEBB9B8E2126C94E0037EB38 /* GTMutableThreads.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBB9B8D2126C94E0037EB38 /* GTMutableThreads.m */; };
 		FEDD154921118444007A6F7F /* GTFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FEDD154721118444007A6F7F /* GTFileManager.h */; };
 		FEDD154A21118444007A6F7F /* GTFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD154821118444007A6F7F /* GTFileManager.m */; };
@@ -203,8 +203,8 @@
 		FE62891520DCA50100AA27B5 /* GTBaseJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBaseJSBridge.m; sourceTree = "<group>"; };
 		FE62891820DE00DC00AA27B5 /* NSString+GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+GTTools.h"; sourceTree = "<group>"; };
 		FE62891920DE00DC00AA27B5 /* NSString+GTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GTTools.m"; sourceTree = "<group>"; };
-		FE76EEB9212E8F02004F5BDC /* GTTableViewAdapterSectionItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTableViewAdapterSectionItem.h; sourceTree = "<group>"; };
-		FE76EEBA212E8F02004F5BDC /* GTTableViewAdapterSectionItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTableViewAdapterSectionItem.m; sourceTree = "<group>"; };
+		FE654261213514EB008AB165 /* GTTableViewAdapterSectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTTableViewAdapterSectionItem.h; sourceTree = "<group>"; };
+		FE654262213514EB008AB165 /* GTTableViewAdapterSectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTTableViewAdapterSectionItem.m; sourceTree = "<group>"; };
 		FE7E09752113E6B7002E109F /* GTEventBusTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEventBusTest.m; sourceTree = "<group>"; };
 		FE7E09C521143A2E002E109F /* GTMemoryCacheTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTMemoryCacheTest.m; sourceTree = "<group>"; };
 		FE7E09CA21144E48002E109F /* GTCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTCache.h; sourceTree = "<group>"; };
@@ -446,8 +446,8 @@
 			children = (
 				FEB3DEF4212D52C700BBBB10 /* GTTableViewAdapter.h */,
 				FEB3DEF5212D52C700BBBB10 /* GTTableViewAdapter.m */,
-				FE76EEB9212E8F02004F5BDC /* GTTableViewAdapterSectionItem.h */,
-				FE76EEBA212E8F02004F5BDC /* GTTableViewAdapterSectionItem.m */,
+				FE654261213514EB008AB165 /* GTTableViewAdapterSectionItem.h */,
+				FE654262213514EB008AB165 /* GTTableViewAdapterSectionItem.m */,
 			);
 			path = UITableViewAdapter;
 			sourceTree = "<group>";
@@ -466,6 +466,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEBB9B8C2126C4770037EB38 /* GTMutableThreads.h in Headers */,
+				FE654263213514EB008AB165 /* GTTableViewAdapterSectionItem.h in Headers */,
+				FEB3DEF6212D52C700BBBB10 /* GTTableViewAdapter.h in Headers */,
 				FE4E94F520E61C2700FEE678 /* UIImageView+GTTools.h in Headers */,
 				FE8AE5A5211701D500AC264F /* GTTimer.h in Headers */,
 				FE3A40E920D9F0EC00F78947 /* NSDictionary+GTTools.h in Headers */,
@@ -492,13 +495,11 @@
 				FE4E94F920E61F6F00FEE678 /* UILabel+GTTools.h in Headers */,
 				FE3A411A20DA45AA00F78947 /* CAGradientLayer+GTTools.h in Headers */,
 				FE3A410220DA0F4100F78947 /* YYClassInfo.h in Headers */,
-				FE76EEBB212E8F02004F5BDC /* GTTableViewAdapterSectionItem.h in Headers */,
 				FE4E950120E628E700FEE678 /* NSData+GTTools.h in Headers */,
 				FE0F8D6F210FFA5A0026355D /* GTRoute.h in Headers */,
 				FE3A419820DB786000F78947 /* Aspects.h in Headers */,
 				FE4E950520E6338300FEE678 /* UIButton+GTTools.h in Headers */,
 				FE0F8D6B210FFA5A0026355D /* UIViewControllerRouteProtocol.h in Headers */,
-				FEBB9B8C2126C4770037EB38 /* GTMutableThreads.h in Headers */,
 				FE3A410820DA220700F78947 /* GTModelProtocol.h in Headers */,
 				FE3A414420DB3F2F00F78947 /* GTMemoryCache.h in Headers */,
 				FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */,
@@ -508,7 +509,6 @@
 				FE3A410620DA0F4100F78947 /* NSObject+YYModel.h in Headers */,
 				FE4E94F120E6152B00FEE678 /* NSAttributedString+GTTools.h in Headers */,
 				FE0F8D6C210FFA5A0026355D /* GTRoute+PresentViewController.h in Headers */,
-				FEB3DEF6212D52C700BBBB10 /* GTTableViewAdapter.h in Headers */,
 				FE3A414820DB3F5E00F78947 /* GTDiskCache.h in Headers */,
 				FE3A414C20DB3FF500F78947 /* GTWebView.h in Headers */,
 			);
@@ -619,7 +619,6 @@
 				FE0F8D7B2110442F0026355D /* NSURL+GTTools.m in Sources */,
 				FE8AE5A6211701D500AC264F /* GTTimer.m in Sources */,
 				FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */,
-				FE76EEBC212E8F02004F5BDC /* GTTableViewAdapterSectionItem.m in Sources */,
 				FE4E950620E6338300FEE678 /* UIButton+GTTools.m in Sources */,
 				FE0F8D54210EE9B80026355D /* GTEventBus.m in Sources */,
 				FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */,
@@ -650,6 +649,7 @@
 				FE3A412320DA4D5900F78947 /* GTDateFormatterManager.m in Sources */,
 				FE3A410420DA0F4100F78947 /* NSObject+YYModel.m in Sources */,
 				FE3A413520DA790E00F78947 /* UICKeyChainStore.m in Sources */,
+				FE654264213514EB008AB165 /* GTTableViewAdapterSectionItem.m in Sources */,
 				FE4E950220E628E700FEE678 /* NSData+GTTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
