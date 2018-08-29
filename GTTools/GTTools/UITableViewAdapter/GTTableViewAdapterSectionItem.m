@@ -17,30 +17,35 @@
     if(self) {
         _replaceCellClass = @"UITableViewCell";
         _replaceRowHeight = 44;
+        _cellBindDataSeletor = NSSelectorFromString(@"bindData:");
     }
     return self;
 }
 //MARK: public
 - (void)setNeedUpdate {
     self.needUpdate = YES;
+}
+- (void)setCellClass:(NSString *)cellClass {
+    if(!_reuseIdentifier || _reuseIdentifier.length ==0) {
+        _reuseIdentifier = cellClass;
+    }
+    _cellClass = cellClass;
 }
 @end
 //_______________________________________________________________________________________________________________
-@interface GTTableViewAdapterSectionExtendViewItem()
-@property(nonatomic,assign)BOOL needUpdate;
-@end
 @implementation GTTableViewAdapterSectionExtendViewItem
 - (instancetype)init {
-    self =[super init];
+    self = [super init];
     if(self) {
-        _replaceViewClass = @"UIView";
-        _replaceViewHeight = 44;
+        _bindDataSeletor = NSSelectorFromString(@"bindData:");
     }
     return self;
 }
-//MARK: public
-- (void)setNeedUpdate {
-    self.needUpdate = YES;
+- (void)setViewClass:(NSString *)viewClass {
+    if(!_reuseIdentifier || _reuseIdentifier.length ==0) {
+        _reuseIdentifier = viewClass;
+    }
+    _viewClass = viewClass;
 }
 @end
 //_______________________________________________________________________________________________________________
@@ -94,12 +99,6 @@
         NSAssert(0,messgae);
 #endif
         return nil;
-    }
-    if(!cellItem.reuseIdentifier ||![cellItem.reuseIdentifier isKindOfClass:[NSString class]]|| cellItem.reuseIdentifier.length==0) {
-        cellItem.reuseIdentifier = cellItem.cellClass;
-    }
-    if(!cellItem.cellBindDataSeletor) {
-        cellItem.cellBindDataSeletor = NSSelectorFromString(@"bindData:");
     }
     return cellItem;
 }

@@ -74,30 +74,72 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
-    return cellItem.rowHeight;
+    if(![[cellItem valueForKey:@"needUpdate"] boolValue]) {
+        //cell未准备就绪
+        return cellItem.replaceRowHeight;
+    } else {
+        //cell准备就绪了
+        return cellItem.rowHeight;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    return 0;
+    GTTableViewAdapterSectionExtendViewItem *headerItem = sectionItemAtSection(self.sectionItems, section).headerItem;
+    if(headerItem) {
+        return headerItem.height;
+    } else {
+        return 0;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0;
+    
+    GTTableViewAdapterSectionExtendViewItem *footerItem = sectionItemAtSection(self.sectionItems, section).footerItem;
+    if(footerItem) {
+        return footerItem.height;
+    } else {
+        return 0;
+    }
 }
 
 
 // Section header & footer information. Views are preferred over title should you decide to provide both
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    GTTableViewAdapterSectionExtendViewItem *headerItem = sectionItemAtSection(self.sectionItems, section).headerItem;
+    if(headerItem) {
+        UIView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerItem.reuseIdentifier];
+        if(!headerView){
+            headerView = [[NSClassFromString(headerItem.viewClass) alloc] init];
+        }
+        if([headerView respondsToSelector:headerItem.bindDataSeletor]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [headerView performSelector:headerItem.bindDataSeletor withObject:headerItem.data];
+#pragma clang diagnostic pop
+        }
+        return headerView;
+    }
     return nil;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    [tableView dequeueReusableHeaderFooterViewWithIdentifier:@""]
+    GTTableViewAdapterSectionExtendViewItem *footerItem = sectionItemAtSection(self.sectionItems, section).footerItem;
+    if(footerItem) {
+        UIView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerItem.reuseIdentifier];
+        if(!footerView){
+            footerView = [[NSClassFromString(footerItem.viewClass) alloc] init];
+        }
+        if([footerView respondsToSelector:footerItem.bindDataSeletor]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+             [footerView performSelector:footerItem.bindDataSeletor withObject:footerItem.data];
+#pragma clang diagnostic pop
+        }
+       
+        return footerView;
+    }
     return nil;
 }
 
 //// Accessories (disclosures).
-//
-//- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath NS_DEPRECATED_IOS(2_0, 3_0) __TVOS_PROHIBITED;
 //- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
 //
 //// Selection
@@ -177,10 +219,11 @@
     NSString *cellClassStr;
     NSString *cellReuseIdentifier;
     if(![[cellItem valueForKey:@"needUpdate"] boolValue]) {
-        //未就绪
+        //cell未就绪
         cellClassStr = cellItem.replaceCellClass;
         cellReuseIdentifier = cellItem.replaceCellClass;
     } else {
+        //cell就绪
         cellClassStr = cellItem.cellClass;
         cellReuseIdentifier = cellItem.reuseIdentifier;
     }
@@ -189,6 +232,7 @@
         Class class = NSClassFromString(cellClassStr);
         cell = [[class alloc] init];
     }
+    cell.accessoryType = cellItem.accessoryType;
     if([cell respondsToSelector:cellItem.cellBindDataSeletor]) {
 
         [cell performSelector:cellItem.cellBindDataSeletor withObject:cellItem.cellData];

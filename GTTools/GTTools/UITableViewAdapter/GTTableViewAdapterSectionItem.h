@@ -34,10 +34,9 @@
 @property(nonatomic, assign)CGFloat rowHeight;
 
 /**
- 用户自定义的额外参数，GTTableViewAdapter 不会调用
+ cell的accessoryType
  */
-@property(nonatomic, strong)id extraParameters;
-
+@property(nonatomic, assign)UITableViewCellAccessoryType accessoryType;
 /**
  在cell 未准备好时候，需要展示的cell(默认UITableViewCell)
  */
@@ -76,15 +75,9 @@
  */
 @property(nonatomic,copy)NSString *reuseIdentifier;
 /**
- 在view 未准备好时候，需要展示的view(默认UIView)
+ cell 绑定数据的对象方法默认是@selector(bindData:)
  */
-@property(nonatomic, copy)NSString *replaceViewClass;
-
-/**
- 默认为44
- */
-@property(nonatomic, assign)CGFloat replaceViewHeight;
-- (void)setNeedUpdate;
+@property(nonatomic, assign)SEL bindDataSeletor;
 @end
 
 //_______________________________________________________________________________________________________________
