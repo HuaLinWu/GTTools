@@ -25,8 +25,15 @@
     tableView.dataSource = self.viewMode.adapter;
     [self.view addSubview:tableView];
     [self.viewMode fetchData];
+//    [GTTimer gt_scheduledSECTTimerWithTimeInterval:1 repeats:NO tagert:self selecter:@selector(timerRun)];
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        NSLog(@"------->%@",[NSThread currentThread]);
+//    }];
+  
 }
-
+- (void)timerRun {
+    NSLog(@"------->");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -39,5 +46,7 @@
     }
     return _viewMode;
 }
-
+- (void)dealloc {
+    NSLog(@"111111111");
+}
 @end
