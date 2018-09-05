@@ -145,17 +145,73 @@
 //// Selection
 //
 //// -tableView:shouldHighlightRowAtIndexPath: is called when a touch comes down on a row.
-//// Returning NO to that message halts the selection process and does not cause the currently selected row to lose its selected look while the touch is down.
-//- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
-//- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
-//- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
+// Returning NO to that message halts the selection process and does not cause the currently selected row to lose its selected look while the touch is down.
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+    if(!cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+        //cell未准备就绪
+        return NO;
+    } else {
+        //准备就绪
+        return cellItem.shouldHighlight;
+    }
+  
+}
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+     GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+        if(cellItem.cellBackgroudColor){
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            if(cell.backgroundView) {
+                cell.backgroundView.backgroundColor = [self gt_colorWithHexString:cellItem.cellHighlightBackgroudColor];
+            }
+        }
+    }
+}
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+        if(cellItem.cellBackgroudColor){
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            if(cell.backgroundView) {
+                cell.backgroundView.backgroundColor = [self gt_colorWithHexString:cellItem.cellBackgroudColor];
+            }
+        }
+    }
+}
 //
 //// Called before the user changes the selection. Return a new indexPath, or nil, to change the proposed selection.
 //- (nullable NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 //- (nullable NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0);
 //// Called after the user changes the selection.
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0);
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+    if(![[cellItem valueForKey:@"needUpdate"] boolValue]) {
+        //cell未准备就绪
+        return;
+    } else {
+        //准备就绪
+        if(self.delegate && [self.delegate respondsToSelector:@selector(adapter:didSelectRowAtIndexPath:didSelectRowData:)]) {
+            [self.delegate adapter:self didSelectRowAtIndexPath:indexPath didSelectRowData:cellItem.cellData];
+        }
+    }
+    
+}
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+    if(![[cellItem valueForKey:@"needUpdate"] boolValue]) {
+        //cell未准备就绪
+        return;
+    } else {
+        //cell准备就绪
+        if(self.delegate && [self.delegate respondsToSelector:@selector(adapter:didDeselectRowAtIndexPath:didSelectRowData:)]) {
+            [self.delegate adapter:self didDeselectRowAtIndexPath:indexPath didSelectRowData:cellItem.cellData];
+        }
+    }
+    
+}
 //
 //// Editing
 //
@@ -218,7 +274,7 @@
      GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
     NSString *cellClassStr;
     NSString *cellReuseIdentifier;
-    if(![[cellItem valueForKey:@"needUpdate"] boolValue]) {
+    if(!cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
         //cell未就绪
         cellClassStr = cellItem.replaceCellClass;
         cellReuseIdentifier = cellItem.replaceCellClass;
@@ -231,8 +287,19 @@
     if(!cell) {
         Class class = NSClassFromString(cellClassStr);
         cell = [[class alloc] init];
+        if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)){
+            if(cellItem.cellBackgroudColor) {
+                cell.backgroundView = [[UIView alloc] init];
+            }
+        }
+        
     }
-    cell.accessoryType = cellItem.accessoryType;
+    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+        cell.accessoryType = cellItem.accessoryType;
+        if(cell.backgroundView) {
+            cell.backgroundView.backgroundColor = [self gt_colorWithHexString:cellItem.cellBackgroudColor];
+        }
+    }
     if([cell respondsToSelector:cellItem.cellBindDataSeletor]) {
 
         [cell performSelector:cellItem.cellBindDataSeletor withObject:cellItem.cellData];
@@ -309,6 +376,50 @@ static inline GTTableViewAdapterSectionItem *sectionItemAtSection(NSMutableArray
     
     GTTableViewAdapterSectionItem *sectionItem= [sectionItems objectAtIndex:section];
     return sectionItem;
+}
+static inline BOOL cellIsReadyAtIndexPath(NSMutableArray *sectionItems,NSIndexPath * indexPath) {
+    GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(sectionItems,indexPath);
+    return [[cellItem valueForKey:@"needUpdate"] boolValue];
+}
+- (UIColor *)gt_colorWithHexString:(NSString *)color {
+    NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([cString length] < 6) {
+        return [UIColor clearColor];
+    }
+    
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"])
+        cString = [cString substringFromIndex:2];
+    if ([cString hasPrefix:@"#"])
+        cString = [cString substringFromIndex:1];
+    if ([cString length] != 6)
+        return [UIColor clearColor];
+    
+    // Separate into r, g, b substrings
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    
+    //r
+    NSString *rString = [cString substringWithRange:range];
+    
+    //g
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    //b
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1];
 }
 #pragma mark set/get
 - (NSMutableArray *)sectionItems {

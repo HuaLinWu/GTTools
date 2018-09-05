@@ -18,6 +18,7 @@
         _replaceCellClass = @"UITableViewCell";
         _replaceRowHeight = 44;
         _cellBindDataSeletor = NSSelectorFromString(@"bindData:");
+        _shouldHighlight = YES;
     }
     return self;
 }

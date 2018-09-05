@@ -17,8 +17,7 @@
 /**
  cell class 类名字符串
  */
-@property(nonatomic, copy)NSString *cellClass;
-
+@property(nonatomic, copy,nonnull)NSString *cellClass;
 /**
  cell 需要的数据
  */
@@ -32,16 +31,29 @@
  cell 的行高，如果行高是固定的请用这个属性
  */
 @property(nonatomic, assign)CGFloat rowHeight;
-
 /**
  cell的accessoryType
  */
 @property(nonatomic, assign)UITableViewCellAccessoryType accessoryType;
+
+/**
+ 选中的时候是否需要高亮 YES,表示高亮，NO表示不高亮（默认YES）
+ */
+@property(nonatomic, assign)BOOL shouldHighlight;
+
+/**
+ cell背景色（16进制的）
+ */
+@property(nonatomic, strong)NSString *cellBackgroudColor;
+
+/**
+  cell高亮时候的背景的色（16进制的）
+ */
+@property(nonatomic, strong)NSString *cellHighlightBackgroudColor;
 /**
  在cell 未准备好时候，需要展示的cell(默认UITableViewCell)
  */
 @property(nonatomic, copy)NSString *replaceCellClass;
-
 /**
  默认为44
  */

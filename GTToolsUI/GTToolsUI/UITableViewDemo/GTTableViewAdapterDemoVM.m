@@ -32,6 +32,8 @@
     item3.rowHeight = 60;
     item3.replaceCellClass = @"GTTableViewReplaceCell";
     item3.replaceRowHeight = 44;
+    item3.shouldHighlight = NO;
+    item3.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [sectionItem0 addCellItem:item3];
     
     GTTableViewAdapterCellItem *item4 = [[GTTableViewAdapterCellItem alloc] init];

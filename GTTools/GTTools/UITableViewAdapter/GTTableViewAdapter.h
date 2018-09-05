@@ -8,7 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "GTTableViewAdapterSectionItem.h"
+@class GTTableViewAdapter;
+@protocol GTTableViewAdapterProtocol<NSObject>
+@optional
+- (void)adapter:(GTTableViewAdapter *)adapter didSelectRowAtIndexPath:(NSIndexPath *)indexPath didSelectRowData:(id)rowData;
+- (void)adapter:(GTTableViewAdapter *)adapter didDeselectRowAtIndexPath:(NSIndexPath *)indexPath didSelectRowData:(id)rowData;
+@required
+
+@end
+
 @interface GTTableViewAdapter : NSObject<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,weak)id<GTTableViewAdapterProtocol>delegate;
 - (void)addSectionItem:(GTTableViewAdapterSectionItem *)sectionItem;
 - (void)addSectionItems:(NSArray<GTTableViewAdapterSectionItem *> *)sectionItems;
 - (void)reload;
