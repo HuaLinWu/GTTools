@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UITableView.h>
+#import <UIKit/UIMenuController.h>
 @interface GTTableViewAdapterCellItem : NSObject
 /**
  cell 重用标示(默认和cellClass 相同)
@@ -50,6 +51,50 @@
   cell高亮时候的背景的色（16进制的）
  */
 @property(nonatomic, strong)NSString *cellHighlightBackgroudColor;
+
+/**
+ cell是否可编辑（YES 表示可以编辑，NO表示不可以编辑）
+ */
+@property(nonatomic, assign) BOOL cellCanEdit;
+    
+/**
+ cell是否可以移动(YES 表示可以移动，NO表示不可以移动)
+ */
+@property(nonatomic,assign)BOOL cellCanMove;
+    
+/**
+ 长按是否会出现menu (YES 表示会出现，NO表示不会出现，默认为NO)
+ */
+@property(nonatomic,assign)BOOL needShowMenu;
+
+/**
+ 长按钮显示的menu的menuItem
+ */
+@property(nonatomic,copy)NSArray<UIMenuItem *> *menuItems;
+/**
+ cell编辑样式默认是UITableViewCellEditingStyleNone
+ */
+@property(nonatomic,assign)UITableViewCellEditingStyle cellEditingStyle;
+    
+/**
+ cell 侧滑出来的按钮数组
+ */
+@property(nonatomic,copy)NSArray<UITableViewRowAction *> *cellActions;
+    
+/**
+ cell 分割线左边距
+ */
+@property(nonatomic, assign)CGFloat separatorLeftMargin;
+    
+/**
+ cell 分割线右边距
+ */
+@property(nonatomic, assign)CGFloat separatorRightMargin;
+    
+/**
+ 是否隐藏分割线（默认为NO，设置为YES时候会隐藏分割线）
+ */
+@property(nonatomic, assign)BOOL hideSeparator;
 /**
  在cell 未准备好时候，需要展示的cell(默认UITableViewCell)
  */
@@ -110,7 +155,7 @@
 - (void)removeCellItemAtRow:(NSInteger)row;
 - (void)insertCellItem:(GTTableViewAdapterCellItem *)cellItem atRow:(NSInteger)row;
 - (void)replaceCellItemAtRow:(NSInteger)row withCellItem:(GTTableViewAdapterCellItem *)cellItem;
-
+- (GTTableViewAdapterCellItem *)cellItemAtRow:(NSInteger)row;
 /**
  添加section footer
  */

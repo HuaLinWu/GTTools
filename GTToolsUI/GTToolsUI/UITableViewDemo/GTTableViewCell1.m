@@ -11,12 +11,26 @@
 
 @end
 @implementation GTTableViewCell1
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+/**
+ *  设置label能够执行那些具体操作
+ *
+ *  @param action 具体操作
+ *
+ *  @return YES:支持该操作
+ */
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    //    NSLog(@"%@",NSStringFromSelector(action));
+    
+    if(action == @selector(cut:) || action == @selector(copy:) || action == @selector(zang:)|| action == @selector(myPaste:)) return YES;
+    return NO;
+}
+- (void)zang:(UIMenuController *)item {
+    
 }
 - (void)bindData:(id)data {
     if([data isKindOfClass:[NSDictionary class]]) {

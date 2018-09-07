@@ -79,7 +79,7 @@
 - (void)insertCellItem:(GTTableViewAdapterCellItem *)cellItem atRow:(NSInteger)row {
     
      GTTableViewAdapterCellItem *validCellItem = [self getValidCellItem:cellItem];
-    if(validCellItem && 0<=row && row<self.gtCellItems.count) {
+    if(validCellItem && 0<=row) {
          [self.gtCellItems insertObject:validCellItem atIndex:row];
     }
 }
@@ -87,6 +87,13 @@
     GTTableViewAdapterCellItem *validCellItem = [self getValidCellItem:cellItem];
     if(validCellItem && 0<=row && row<self.gtCellItems.count) {
         [self.gtCellItems replaceObjectAtIndex:row withObject:validCellItem];
+    }
+}
+- (GTTableViewAdapterCellItem *)cellItemAtRow:(NSInteger)row {
+    if(row<self.gtCellItems.count) {
+        return self.gtCellItems[row];
+    } else {
+        return nil;
     }
 }
 - (void)addSectionFooterItem:(GTTableViewAdapterSectionExtendViewItem *)footerItem {

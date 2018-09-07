@@ -13,6 +13,9 @@
 @optional
 - (void)adapter:(GTTableViewAdapter *)adapter didSelectRowAtIndexPath:(NSIndexPath *)indexPath didSelectRowData:(id)rowData;
 - (void)adapter:(GTTableViewAdapter *)adapter didDeselectRowAtIndexPath:(NSIndexPath *)indexPath didSelectRowData:(id)rowData;
+- (void)adapter:(GTTableViewAdapter *)adapter deleteRowAtIndexPath:(NSIndexPath *)indexPath deleteRowData:(id)data;
+- (void)adapter:(GTTableViewAdapter *)adapter insertRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)adapter:(GTTableViewAdapter *)adapter moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath cellDataOfSourceIndexPath:(id)sourceCellData toIndexPath:(NSIndexPath *)destinationIndexPath  cellDataOfDestinationIndexPath:(id)destinationCellData;
 @required
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "GTTableViewAdapter.h"
-#import <UIKit/UITableView.h>
+#import <UIKit/UIKit.h>
 #import <UIKit/UIApplication.h>
 #import <objc/runtime.h>
 @interface GTTableViewAdapter()
@@ -163,7 +163,7 @@
     if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
         if(cellItem.cellBackgroudColor){
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            if(cell.backgroundView) {
+            if(cell.backgroundView && !cell.backgroundView.hidden) {
                 cell.backgroundView.backgroundColor = [self gt_colorWithHexString:cellItem.cellHighlightBackgroudColor];
             }
         }
@@ -174,7 +174,7 @@
     if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
         if(cellItem.cellBackgroudColor){
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            if(cell.backgroundView) {
+            if(cell.backgroundView && !cell.backgroundView.hidden) {
                 cell.backgroundView.backgroundColor = [self gt_colorWithHexString:cellItem.cellBackgroudColor];
             }
         }
@@ -216,12 +216,24 @@
 //// Editing
 //
 //// Allows customization of the editingStyle for a particular cell located at 'indexPath'. If not implemented, all editable cells will have UITableViewCellEditingStyleDelete set for them when the table has editing property set to YES.
-//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+         GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+        return cellItem.cellEditingStyle;
+    }
+    return UITableViewCellEditingStyleNone;
+}
 //- (nullable NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED;
 //
 //// Use -tableView:trailingSwipeActionsConfigurationForRowAtIndexPath: instead of this method, which will be deprecated in a future release.
 //// This method supersedes -tableView:titleForDeleteConfirmationButtonForRowAtIndexPath: if return value is non-nil
-//- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0) __TVOS_PROHIBITED;
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+        GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+        return cellItem.cellActions;
+    }
+    return nil;
+}
 //
 //// Swipe actions
 //// These methods supersede -editActionsForRowAtIndexPath: if implemented
@@ -231,10 +243,8 @@
 //
 //// Controls whether the background is indented while editing.  If not implemented, the default is YES.  This is unrelated to the indentation level below.  This method only applies to grouped style table views.
 //- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath;
-//
-//// The willBegin/didEnd methods are called whenever the 'editing' property is automatically changed by the table (allowing insert/delete/move). This is done by a swipe activating a single row
-//- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath __TVOS_PROHIBITED;
-//- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(nullable NSIndexPath *)indexPath __TVOS_PROHIBITED;
+
+
 //
 //// Moving/reordering
 //
@@ -245,11 +255,6 @@
 //
 //- (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath; // return 'depth' of row for hierarchies
 //
-//// Copy/Paste.  All three methods must be implemented by the delegate.
-//
-//- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(5_0);
-//- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(nullable id)sender NS_AVAILABLE_IOS(5_0);
-//- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(nullable id)sender NS_AVAILABLE_IOS(5_0);
 //
 //// Focus
 //
@@ -274,6 +279,7 @@
      GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
     NSString *cellClassStr;
     NSString *cellReuseIdentifier;
+    //创建cell
     if(!cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
         //cell未就绪
         cellClassStr = cellItem.replaceCellClass;
@@ -287,19 +293,49 @@
     if(!cell) {
         Class class = NSClassFromString(cellClassStr);
         cell = [[class alloc] init];
-        if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)){
-            if(cellItem.cellBackgroudColor) {
+    }
+    //cell就绪
+    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+        //设置背景色和高亮颜色
+        cell.accessoryType = cellItem.accessoryType;
+        if(cellItem.cellBackgroudColor) {
+            //设置背景色
+            if(!cell.backgroundView) {
                 cell.backgroundView = [[UIView alloc] init];
+            } else {
+                cell.backgroundView.hidden = NO;
+            }
+            cell.backgroundView.backgroundColor = [self gt_colorWithHexString:cellItem.cellBackgroudColor];
+        } else {
+            //没有设置背景色
+            if(cell.backgroundView) {
+                cell.backgroundView.hidden = YES;
             }
         }
-        
-    }
-    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
-        cell.accessoryType = cellItem.accessoryType;
-        if(cell.backgroundView) {
-            cell.backgroundView.backgroundColor = [self gt_colorWithHexString:cellItem.cellBackgroudColor];
+        //设置高亮颜色设置了高亮颜色必须将selectionStyle 设置为UITableViewCellSelectionStyleNone 否则无效
+        if(cellItem.cellHighlightBackgroudColor) {
+           cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        } else {
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         }
+        //设置是否支持menu
+        if(cellItem.needShowMenu) {
+            UILongPressGestureRecognizer *menuLongPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showMenuGestureRecognizer:)];
+            [cell addGestureRecognizer:menuLongPressGestureRecognizer];
+        } else {
+            for(UIGestureRecognizer *gestureRecognizer in cell.gestureRecognizers) {
+                [gestureRecognizer removeTarget:self action:@selector(showMenuGestureRecognizer:)];
+            }
+        }
+       
     }
+    //更新cell 的分割线左边距，和右边距
+    if(!cellItem.hideSeparator) {
+       cell.separatorInset = UIEdgeInsetsMake(0, cellItem.separatorLeftMargin, 0, cellItem.separatorRightMargin);
+    } else {
+        cell.separatorInset = UIEdgeInsetsMake(0, tableView.bounds.size.width/2, 0, tableView.bounds.size.width/2);
+    }
+    //调用cell 绑定数据的方法
     if([cell respondsToSelector:cellItem.cellBindDataSeletor]) {
 
         [cell performSelector:cellItem.cellBindDataSeletor withObject:cellItem.cellData];
@@ -327,17 +363,26 @@
 //// Editing
 //
 //// Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+        GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+        return cellItem.cellCanEdit;
+    }
+    return NO;
+}
 //
 //// Moving/reordering
 //
 //// Allows the reorder accessory view to optionally be shown for a particular row. By default, the reorder control will be shown only if the datasource implements -tableView:moveRowAtIndexPath:toIndexPath:
-//- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
-//
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(cellIsReadyAtIndexPath(self.sectionItems, indexPath)) {
+        GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+        return cellItem.cellCanMove;
+    }
+    return NO;
+}
+
 //// Index
 //// return list of section titles to display in section index view (e.g. "ABCD...Z#")
 //- (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -352,24 +397,40 @@
 //
 //// After a row has the minus or plus button invoked (based on the UITableViewCellEditingStyle for the cell), the dataSource must commit the change
 //// Not called for edit actions using UITableViewRowAction - the action's handler will be invoked instead
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(editingStyle == UITableViewCellEditingStyleDelete) {
+        deleteDataSourceAtIndexPath(self.sectionItems, indexPath);
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if([self.delegate respondsToSelector:@selector(adapter:deleteRowAtIndexPath:deleteRowData:)]) {
+            GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(self.sectionItems, indexPath);
+            [self.delegate adapter:self deleteRowAtIndexPath:indexPath deleteRowData:cellItem.cellData];
+        }
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        if([self.delegate respondsToSelector:@selector(adapter:insertRowAtIndexPath:)]) {
+            [self.delegate adapter:self insertRowAtIndexPath:indexPath];
+        }
+    }
+}
 //
 //// Data manipulation - reorder / moving support
 //
-//- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-//    
-//}
-
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    exchangeDataSource(self.sectionItems, sourceIndexPath, destinationIndexPath);
+    if([self.delegate respondsToSelector:@selector(adapter:moveRowAtIndexPath:cellDataOfSourceIndexPath:toIndexPath:cellDataOfDestinationIndexPath:)]) {
+        GTTableViewAdapterCellItem *sourceCellItem = cellItemAtIndexPath(self.sectionItems, sourceIndexPath);
+        GTTableViewAdapterCellItem *destinationCellItem = cellItemAtIndexPath(self.sectionItems, destinationIndexPath);
+        [self.delegate adapter:self moveRowAtIndexPath:sourceIndexPath cellDataOfSourceIndexPath:sourceCellItem.cellData toIndexPath:destinationIndexPath cellDataOfDestinationIndexPath:destinationCellItem.cellData];
+    }
+}
 #pragma mark private_methods
 static inline CGFloat cellItemsNumberAtSection(NSMutableArray *sectionItems,NSInteger section) {
    GTTableViewAdapterSectionItem *sectionItem= sectionItemAtSection(sectionItems,section);
     return sectionItem.cellItems.count;
 }
 static inline GTTableViewAdapterCellItem *cellItemAtIndexPath(NSMutableArray *sectionItems,NSIndexPath * indexPath) {
-     GTTableViewAdapterSectionItem *sectionItem= sectionItemAtSection(sectionItems,indexPath.section);
-    GTTableViewAdapterCellItem *cellItem = [sectionItem.cellItems objectAtIndex:indexPath.row];
+        GTTableViewAdapterSectionItem *sectionItem= sectionItemAtSection(sectionItems,indexPath.section);
+        GTTableViewAdapterCellItem *cellItem = [sectionItem cellItemAtRow:indexPath.row];
     return cellItem;
 }
 static inline GTTableViewAdapterSectionItem *sectionItemAtSection(NSMutableArray *sectionItems,NSInteger section) {
@@ -380,6 +441,20 @@ static inline GTTableViewAdapterSectionItem *sectionItemAtSection(NSMutableArray
 static inline BOOL cellIsReadyAtIndexPath(NSMutableArray *sectionItems,NSIndexPath * indexPath) {
     GTTableViewAdapterCellItem *cellItem = cellItemAtIndexPath(sectionItems,indexPath);
     return [[cellItem valueForKey:@"needUpdate"] boolValue];
+}
+static inline void exchangeDataSource(NSMutableArray *sectionItems,NSIndexPath *sourceIndexPath,NSIndexPath * toIndexPath) {
+     GTTableViewAdapterSectionItem *sourceSectionItem= sectionItemAtSection(sectionItems,sourceIndexPath.section);
+    GTTableViewAdapterCellItem *sourceCellItem = [sourceSectionItem.cellItems objectAtIndex:sourceIndexPath.row];
+   [sourceSectionItem removeCellItemAtRow:sourceIndexPath.row];
+    
+    GTTableViewAdapterSectionItem *toSectionItem= sectionItemAtSection(sectionItems,toIndexPath.section);
+    [toSectionItem insertCellItem:sourceCellItem atRow:toIndexPath.row];
+  
+    
+}
+static inline void deleteDataSourceAtIndexPath(NSMutableArray *sectionItems,NSIndexPath *indexPath) {
+    GTTableViewAdapterSectionItem *sectionItem= sectionItemAtSection(sectionItems,indexPath.section);
+    [sectionItem removeCellItemAtRow:indexPath.row];
 }
 - (UIColor *)gt_colorWithHexString:(NSString *)color {
     NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
@@ -421,6 +496,23 @@ static inline BOOL cellIsReadyAtIndexPath(NSMutableArray *sectionItems,NSIndexPa
     
     return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1];
 }
+- (void)showMenuGestureRecognizer:(UILongPressGestureRecognizer *)gestureRecognizer {
+    if(gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        UITableViewCell *cell = (UITableViewCell *)[gestureRecognizer view];
+        NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
+        GTTableViewAdapterCellItem *cellItem =  cellItemAtIndexPath(self.sectionItems, indexPath);
+        if(cellItem.needShowMenu) {
+            UIMenuController *menuController = [UIMenuController sharedMenuController];
+            menuController.menuItems = cellItem.menuItems;
+            [cell becomeFirstResponder];
+            [menuController setTargetRect:CGRectMake(0, cell.frame.size.height * 0.5, cell.frame.size.width, cell.frame.size.height) inView:cell];
+            [menuController setMenuVisible:YES animated:YES];
+        }
+    }
+    
+  
+}
+
 #pragma mark set/get
 - (NSMutableArray *)sectionItems {
     if(!_sectionItems) {
