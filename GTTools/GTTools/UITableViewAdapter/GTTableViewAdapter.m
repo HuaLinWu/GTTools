@@ -31,6 +31,19 @@
          [self.tableview reloadData];
     });
 }
+- (void)reloadSection:(NSInteger)section withRowAnimation:(UITableViewRowAnimation)rowAnimation {
+    if(section < self.sectionItems.count) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:section];
+            [self.tableview reloadSections:indexSet withRowAnimation:rowAnimation];
+        });
+    }
+}
+- (void)reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)rowAnimation {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableview reloadRowsAtIndexPaths:indexPaths withRowAnimation:rowAnimation];
+    });
+}
 #pragma mark observe
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if([keyPath isEqualToString:@"needUpdate"] && [object isKindOfClass:[GTTableViewAdapterCellItem class]]) {
