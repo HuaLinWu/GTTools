@@ -63,4 +63,12 @@
  @return 是否写入成功
  */
 + (BOOL)writeData:(NSData *)data toFile:(NSString *)path;
+
+/**
+ 从指定的文件内读取数据
+
+ @param path 文件所在的路径
+ @return 文件里面的内容（如果文件不存在返回nil）
+ */
++ (NSData *)readDataFromFile:(NSString *)path;
 @end

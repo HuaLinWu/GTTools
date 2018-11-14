@@ -84,4 +84,12 @@
     }
     return NO;
 }
++ (NSData *)readDataFromFile:(NSString *)path {
+    if([self fileExistsAtPath:path]) {
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        return data;
+    } else {
+        return nil;
+    }
+}
 @end
