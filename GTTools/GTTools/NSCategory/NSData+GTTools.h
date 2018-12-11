@@ -39,4 +39,11 @@
  @return 解密过后的NSData
  */
 - (NSData *)base64Decode;
+
+/**
+ md5 32 位加密
+
+ @return 返回加密过后的字符串
+ */
+- (NSString *)md5Str;
 @end
