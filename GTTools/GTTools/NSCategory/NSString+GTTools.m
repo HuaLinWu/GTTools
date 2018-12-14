@@ -39,13 +39,22 @@
     if(cyclic) {
         NSString *tempStr = self;
         NSString *decodeStr = [self stringByRemovingPercentEncoding];
-        while (![tempStr isEqualToString:decodeStr]) {
-            tempStr = decodeStr;
-            decodeStr = [decodeStr stringByRemovingPercentEncoding];
+        if(!decodeStr) {
+            return self;
+        } else {
+            while (decodeStr&&![tempStr isEqualToString:decodeStr]) {
+                tempStr = decodeStr;
+                decodeStr = [decodeStr stringByRemovingPercentEncoding];
+            }
+             return tempStr;
         }
-        return tempStr;
     } else {
-       return [self stringByRemovingPercentEncoding];
+        NSString *decodeStr = [self stringByRemovingPercentEncoding];
+        if(decodeStr) {
+            return decodeStr;
+        } else {
+            return self;
+        }
     }
 }
 @end

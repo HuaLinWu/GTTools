@@ -23,7 +23,7 @@
     item1.cellEditingStyle = UITableViewCellEditingStyleDelete;
     item1.separatorLeftMargin =50;
     item1.separatorRightMargin =50;
-    item1.showMenu = YES;
+//    item1.showMenu = YES;
     [sectionItem0 addCellItem:item1];
     
     GTTableViewAdapterCellItem *item2 = [[GTTableViewAdapterCellItem alloc] init];
@@ -33,7 +33,7 @@
     item2.replaceRowHeight = 44;
     item2.cellCanEdit = YES;
     item2.cellCanMove = YES;
-    item2.showMenu = YES;
+//    item2.showMenu = YES;
     item2.cellEditingStyle = UITableViewCellEditingStyleInsert;
 //    item2.cellBackgroudColor=@"ff4400";
 //    item2.cellHighlightBackgroudColor=@"000000";
