@@ -85,6 +85,10 @@
     [self.fileAttributeMap removeObjectForKey:key];
     [self.fileAttributeMap writeToFile:[self filesAttributeFilePath] atomically:YES];
 }
+- (void)removeAllObject {
+    [GTFileManager deleteFileInPath:self.cacheDirectoriePath];
+    [GTFileManager deleteFileInPath:self.filesAttributeFilePath];
+}
 #pragma mark private_method
 - (NSString *)md5String:(NSString *)inputStr {
     const char *cStr = [inputStr UTF8String];

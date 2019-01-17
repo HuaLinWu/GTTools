@@ -83,6 +83,39 @@
     node.nextNode = self.headNode;
     self.headNode = node;
 }
+- (void)removeNodeForKey:(NSString *)key {
+    _GTMemoryMapNode *node = [self nodeForKey:key];
+    if(node) {
+        if(node == self.footNode) {
+            _GTMemoryMapNode *preNode = node.preNode;
+            preNode.nextNode = nil;
+            node.preNode = nil;
+            self.footNode = preNode;
+            CFDictionaryRemoveValue(self.mapDict, (__bridge const void *)(key));
+        } else if(node == self.headNode) {
+            _GTMemoryMapNode *nextNode = node.nextNode;
+            node.nextNode = nil;
+            nextNode.preNode = nil;
+            self.headNode = nextNode;
+            CFDictionaryRemoveValue(self.mapDict, (__bridge const void *)(key));
+        } else {
+            _GTMemoryMapNode *preNode = node.preNode;
+            _GTMemoryMapNode *nextNode = node.nextNode;
+            preNode.nextNode = nil;
+            preNode.nextNode = nextNode;
+            nextNode.preNode = nil;
+            nextNode.preNode = preNode;
+            node.preNode = nil;
+            node.nextNode = nil;
+            CFDictionaryRemoveValue(self.mapDict, (__bridge const void *)(key));
+        }
+    }
+}
+- (void)removeAllNode {
+    CFDictionaryRemoveAllValues(self.mapDict);
+    self.headNode = nil;
+    self.footNode = nil;
+}
 #pragma mark set/get
 - (CFMutableDictionaryRef)mapDict {
     if(!_mapDict) {
@@ -132,7 +165,10 @@
     }
 }
 - (void)removeObjectForKey:(NSString *)key {
-    
+    [self.map removeNodeForKey:key];
+}
+- (void)removeAllObject {
+    [self.map removeAllNode];
 }
 #pragma mark set/get
 - (_GTMemoryMap *)map {
