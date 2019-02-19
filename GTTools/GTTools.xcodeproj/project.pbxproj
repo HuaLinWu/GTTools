@@ -9,15 +9,6 @@
 /* Begin PBXBuildFile section */
 		FE0F8D53210EE9B80026355D /* GTEventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D51210EE9B80026355D /* GTEventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE0F8D54210EE9B80026355D /* GTEventBus.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D52210EE9B80026355D /* GTEventBus.m */; };
-		FE0F8D68210FFA5A0026355D /* GTRoute+OpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D5F210FFA590026355D /* GTRoute+OpenURL.m */; };
-		FE0F8D69210FFA5A0026355D /* GTRouteGlobalConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D60210FFA590026355D /* GTRouteGlobalConstant.m */; };
-		FE0F8D6A210FFA5A0026355D /* GTRoute+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D61210FFA590026355D /* GTRoute+PresentViewController.m */; };
-		FE0F8D6B210FFA5A0026355D /* UIViewControllerRouteProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D62210FFA590026355D /* UIViewControllerRouteProtocol.h */; };
-		FE0F8D6C210FFA5A0026355D /* GTRoute+PresentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D63210FFA590026355D /* GTRoute+PresentViewController.h */; };
-		FE0F8D6D210FFA5A0026355D /* GTRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D64210FFA590026355D /* GTRoute.m */; };
-		FE0F8D6E210FFA5A0026355D /* GTRoute+OpenURL.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D65210FFA590026355D /* GTRoute+OpenURL.h */; };
-		FE0F8D6F210FFA5A0026355D /* GTRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D66210FFA590026355D /* GTRoute.h */; };
-		FE0F8D70210FFA5A0026355D /* GTRouteGlobalConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D67210FFA590026355D /* GTRouteGlobalConstant.h */; };
 		FE0F8D7A2110442F0026355D /* NSURL+GTTools.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0F8D782110442F0026355D /* NSURL+GTTools.h */; };
 		FE0F8D7B2110442F0026355D /* NSURL+GTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D792110442F0026355D /* NSURL+GTTools.m */; };
 		FE0F8D7D211055070026355D /* NSURLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0F8D7C211055070026355D /* NSURLTest.m */; };
@@ -102,9 +93,16 @@
 		FEB3DEF7212D52C700BBBB10 /* GTTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB3DEF5212D52C700BBBB10 /* GTTableViewAdapter.m */; };
 		FEBB9B8C2126C4770037EB38 /* GTMutableThreads.h in Headers */ = {isa = PBXBuildFile; fileRef = FEBB9B8B2126C4770037EB38 /* GTMutableThreads.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FEBB9B8E2126C94E0037EB38 /* GTMutableThreads.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBB9B8D2126C94E0037EB38 /* GTMutableThreads.m */; };
+		FED82658221AA1C70035E996 /* GTBusConnectorPrt.h in Headers */ = {isa = PBXBuildFile; fileRef = FED82657221AA1C70035E996 /* GTBusConnectorPrt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FED82660221BF4A50035E996 /* GTRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = FED8265E221BF4A50035E996 /* GTRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FED82661221BF4A50035E996 /* GTRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = FED8265F221BF4A50035E996 /* GTRouter.m */; };
+		FED82663221BFBAB0035E996 /* GTRouterVCProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = FED82662221BFBAB0035E996 /* GTRouterVCProtocol.h */; };
 		FEDD154921118444007A6F7F /* GTFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FEDD154721118444007A6F7F /* GTFileManager.h */; };
 		FEDD154A21118444007A6F7F /* GTFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD154821118444007A6F7F /* GTFileManager.m */; };
 		FEDD15792112FF8C007A6F7F /* GTDiskCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */; };
+		FEE6EE2B22165A210002B6DF /* GTBusMediator.h in Headers */ = {isa = PBXBuildFile; fileRef = FEE6EE2922165A210002B6DF /* GTBusMediator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FEE6EE2C22165A210002B6DF /* GTBusMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE6EE2A22165A210002B6DF /* GTBusMediator.m */; };
+		FEE6EE2D22165A210002B6DF /* GTBusMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE6EE2A22165A210002B6DF /* GTBusMediator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,15 +118,6 @@
 /* Begin PBXFileReference section */
 		FE0F8D51210EE9B80026355D /* GTEventBus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTEventBus.h; sourceTree = "<group>"; };
 		FE0F8D52210EE9B80026355D /* GTEventBus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEventBus.m; sourceTree = "<group>"; };
-		FE0F8D5F210FFA590026355D /* GTRoute+OpenURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRoute+OpenURL.m"; sourceTree = "<group>"; };
-		FE0F8D60210FFA590026355D /* GTRouteGlobalConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTRouteGlobalConstant.m; sourceTree = "<group>"; };
-		FE0F8D61210FFA590026355D /* GTRoute+PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRoute+PresentViewController.m"; sourceTree = "<group>"; };
-		FE0F8D62210FFA590026355D /* UIViewControllerRouteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewControllerRouteProtocol.h; sourceTree = "<group>"; };
-		FE0F8D63210FFA590026355D /* GTRoute+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRoute+PresentViewController.h"; sourceTree = "<group>"; };
-		FE0F8D64210FFA590026355D /* GTRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTRoute.m; sourceTree = "<group>"; };
-		FE0F8D65210FFA590026355D /* GTRoute+OpenURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRoute+OpenURL.h"; sourceTree = "<group>"; };
-		FE0F8D66210FFA590026355D /* GTRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTRoute.h; sourceTree = "<group>"; };
-		FE0F8D67210FFA590026355D /* GTRouteGlobalConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTRouteGlobalConstant.h; sourceTree = "<group>"; };
 		FE0F8D782110442F0026355D /* NSURL+GTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+GTTools.h"; sourceTree = "<group>"; };
 		FE0F8D792110442F0026355D /* NSURL+GTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+GTTools.m"; sourceTree = "<group>"; };
 		FE0F8D7C211055070026355D /* NSURLTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSURLTest.m; sourceTree = "<group>"; };
@@ -216,9 +205,15 @@
 		FEB3DEF5212D52C700BBBB10 /* GTTableViewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTableViewAdapter.m; sourceTree = "<group>"; };
 		FEBB9B8B2126C4770037EB38 /* GTMutableThreads.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMutableThreads.h; sourceTree = "<group>"; };
 		FEBB9B8D2126C94E0037EB38 /* GTMutableThreads.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTMutableThreads.m; sourceTree = "<group>"; };
+		FED82657221AA1C70035E996 /* GTBusConnectorPrt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTBusConnectorPrt.h; sourceTree = "<group>"; };
+		FED8265E221BF4A50035E996 /* GTRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTRouter.h; sourceTree = "<group>"; };
+		FED8265F221BF4A50035E996 /* GTRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTRouter.m; sourceTree = "<group>"; };
+		FED82662221BFBAB0035E996 /* GTRouterVCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTRouterVCProtocol.h; sourceTree = "<group>"; };
 		FEDD154721118444007A6F7F /* GTFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTFileManager.h; sourceTree = "<group>"; };
 		FEDD154821118444007A6F7F /* GTFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTFileManager.m; sourceTree = "<group>"; };
 		FEDD15782112FF8C007A6F7F /* GTDiskCacheTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTDiskCacheTest.m; sourceTree = "<group>"; };
+		FEE6EE2922165A210002B6DF /* GTBusMediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTBusMediator.h; sourceTree = "<group>"; };
+		FEE6EE2A22165A210002B6DF /* GTBusMediator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBusMediator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,15 +247,9 @@
 			children = (
 				FE0F8D51210EE9B80026355D /* GTEventBus.h */,
 				FE0F8D52210EE9B80026355D /* GTEventBus.m */,
-				FE0F8D66210FFA590026355D /* GTRoute.h */,
-				FE0F8D64210FFA590026355D /* GTRoute.m */,
-				FE0F8D65210FFA590026355D /* GTRoute+OpenURL.h */,
-				FE0F8D5F210FFA590026355D /* GTRoute+OpenURL.m */,
-				FE0F8D63210FFA590026355D /* GTRoute+PresentViewController.h */,
-				FE0F8D61210FFA590026355D /* GTRoute+PresentViewController.m */,
-				FE0F8D67210FFA590026355D /* GTRouteGlobalConstant.h */,
-				FE0F8D60210FFA590026355D /* GTRouteGlobalConstant.m */,
-				FE0F8D62210FFA590026355D /* UIViewControllerRouteProtocol.h */,
+				FED8265E221BF4A50035E996 /* GTRouter.h */,
+				FED8265F221BF4A50035E996 /* GTRouter.m */,
+				FED82662221BFBAB0035E996 /* GTRouterVCProtocol.h */,
 			);
 			path = GTRouter;
 			sourceTree = "<group>";
@@ -298,6 +287,7 @@
 				FE8AE5A4211701D500AC264F /* GTTimer.m */,
 				FEBB9B8B2126C4770037EB38 /* GTMutableThreads.h */,
 				FEBB9B8D2126C94E0037EB38 /* GTMutableThreads.m */,
+				FEE6EE28221659850002B6DF /* GTBusMediator */,
 				FEB3DEF3212D50A800BBBB10 /* UICollectionViewAdapter */,
 				FEB3DEF2212D4FA900BBBB10 /* UITableViewAdapter */,
 				FE212AC120F2F7CF0046520F /* GTRouter */,
@@ -459,6 +449,16 @@
 			path = UICollectionViewAdapter;
 			sourceTree = "<group>";
 		};
+		FEE6EE28221659850002B6DF /* GTBusMediator */ = {
+			isa = PBXGroup;
+			children = (
+				FED82657221AA1C70035E996 /* GTBusConnectorPrt.h */,
+				FEE6EE2922165A210002B6DF /* GTBusMediator.h */,
+				FEE6EE2A22165A210002B6DF /* GTBusMediator.m */,
+			);
+			path = GTBusMediator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -466,6 +466,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FED82660221BF4A50035E996 /* GTRouter.h in Headers */,
+				FED82658221AA1C70035E996 /* GTBusConnectorPrt.h in Headers */,
+				FEE6EE2B22165A210002B6DF /* GTBusMediator.h in Headers */,
 				FEBB9B8C2126C4770037EB38 /* GTMutableThreads.h in Headers */,
 				FE654263213514EB008AB165 /* GTTableViewAdapterSectionItem.h in Headers */,
 				FEB3DEF6212D52C700BBBB10 /* GTTableViewAdapter.h in Headers */,
@@ -476,15 +479,14 @@
 				FE62891620DCA50100AA27B5 /* GTBaseJSBridge.h in Headers */,
 				FE1E040920E1D4DF00FB080E /* GTUIWebViewJSBridge.h in Headers */,
 				FE3A413C20DB361700F78947 /* UIView+GTTools.h in Headers */,
+				FED82663221BFBAB0035E996 /* GTRouterVCProtocol.h in Headers */,
 				FE3A412220DA4D5900F78947 /* GTDateFormatterManager.h in Headers */,
-				FE0F8D6E210FFA5A0026355D /* GTRoute+OpenURL.h in Headers */,
 				FE3A40F520DA00BE00F78947 /* GTNullFilter.h in Headers */,
 				FE4E94FD20E6279B00FEE678 /* UIFont+GTTools.h in Headers */,
 				FEDD154921118444007A6F7F /* GTFileManager.h in Headers */,
 				FE3591AA20E718B300D54269 /* GTBaseNetwork.h in Headers */,
 				FE1E040D20E1D4F900FB080E /* GTWKWebViewJSBridge.h in Headers */,
 				FE212ABB20EDFA660046520F /* GTWebViewJSBridge_JS.h in Headers */,
-				FE0F8D70210FFA5A0026355D /* GTRouteGlobalConstant.h in Headers */,
 				FE3A40F920DA0EC000F78947 /* GTModelManager.h in Headers */,
 				FE7E09CC21144E48002E109F /* GTCache.h in Headers */,
 				FE3A410320DA0F4100F78947 /* YYModel.h in Headers */,
@@ -496,10 +498,8 @@
 				FE3A411A20DA45AA00F78947 /* CAGradientLayer+GTTools.h in Headers */,
 				FE3A410220DA0F4100F78947 /* YYClassInfo.h in Headers */,
 				FE4E950120E628E700FEE678 /* NSData+GTTools.h in Headers */,
-				FE0F8D6F210FFA5A0026355D /* GTRoute.h in Headers */,
 				FE3A419820DB786000F78947 /* Aspects.h in Headers */,
 				FE4E950520E6338300FEE678 /* UIButton+GTTools.h in Headers */,
-				FE0F8D6B210FFA5A0026355D /* UIViewControllerRouteProtocol.h in Headers */,
 				FE3A410820DA220700F78947 /* GTModelProtocol.h in Headers */,
 				FE3A414420DB3F2F00F78947 /* GTMemoryCache.h in Headers */,
 				FE62891A20DE00DC00AA27B5 /* NSString+GTTools.h in Headers */,
@@ -508,7 +508,6 @@
 				FE3A413420DA790E00F78947 /* UICKeyChainStore.h in Headers */,
 				FE3A410620DA0F4100F78947 /* NSObject+YYModel.h in Headers */,
 				FE4E94F120E6152B00FEE678 /* NSAttributedString+GTTools.h in Headers */,
-				FE0F8D6C210FFA5A0026355D /* GTRoute+PresentViewController.h in Headers */,
 				FE3A414820DB3F5E00F78947 /* GTDiskCache.h in Headers */,
 				FE3A414C20DB3FF500F78947 /* GTWebView.h in Headers */,
 			);
@@ -610,6 +609,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE6EE2C22165A210002B6DF /* GTBusMediator.m in Sources */,
 				FE4E94FA20E61F6F00FEE678 /* UILabel+GTTools.m in Sources */,
 				FEBB9B8E2126C94E0037EB38 /* GTMutableThreads.m in Sources */,
 				FE4E94FE20E6279B00FEE678 /* UIFont+GTTools.m in Sources */,
@@ -620,19 +620,16 @@
 				FE8AE5A6211701D500AC264F /* GTTimer.m in Sources */,
 				FE62891B20DE00DC00AA27B5 /* NSString+GTTools.m in Sources */,
 				FE4E950620E6338300FEE678 /* UIButton+GTTools.m in Sources */,
+				FED82661221BF4A50035E996 /* GTRouter.m in Sources */,
 				FE0F8D54210EE9B80026355D /* GTEventBus.m in Sources */,
 				FE1E040A20E1D4DF00FB080E /* GTUIWebViewJSBridge.m in Sources */,
 				FE3A411B20DA45AA00F78947 /* CAGradientLayer+GTTools.m in Sources */,
 				FE3A40F620DA00BE00F78947 /* GTNullFilter.m in Sources */,
 				FE3A414920DB3F5E00F78947 /* GTDiskCache.m in Sources */,
 				FE3A410D20DA28AE00F78947 /* NSArray+GTTools.m in Sources */,
-				FE0F8D68210FFA5A0026355D /* GTRoute+OpenURL.m in Sources */,
 				FE3A412920DA62BC00F78947 /* GTSoftwareInfo.m in Sources */,
-				FE0F8D6D210FFA5A0026355D /* GTRoute.m in Sources */,
 				FE3591AB20E718B300D54269 /* GTBaseNetwork.m in Sources */,
-				FE0F8D6A210FFA5A0026355D /* GTRoute+PresentViewController.m in Sources */,
 				FE4E94EE20E5CF4E00FEE678 /* UIImage+GTTools.m in Sources */,
-				FE0F8D69210FFA5A0026355D /* GTRouteGlobalConstant.m in Sources */,
 				FE4E94F620E61C2700FEE678 /* UIImageView+GTTools.m in Sources */,
 				FE4E94F220E6152B00FEE678 /* NSAttributedString+GTTools.m in Sources */,
 				FE3A410520DA0F4100F78947 /* YYClassInfo.m in Sources */,
@@ -658,6 +655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE6EE2D22165A210002B6DF /* GTBusMediator.m in Sources */,
 				FE3A411320DA3E2300F78947 /* GTModelTest.m in Sources */,
 				FE7E09C621143A2E002E109F /* GTMemoryCacheTest.m in Sources */,
 				FE3A412520DA55B800F78947 /* DateFormatterManagerTest.m in Sources */,
